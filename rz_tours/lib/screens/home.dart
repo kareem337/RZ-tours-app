@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:rz_tours/screens/home.dart';
+import 'package:rz_tours/screens/sign_in.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -7,8 +9,30 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          leading: Icon(Icons.power),
+          
           title: Text("RZ Tours"),
+        ),
+                drawer: Drawer(
+          child: ListView(
+            children: [
+              ListTile(
+                title: Text("Home"),
+                onTap: ()=>Navigator.push(context,
+                    MaterialPageRoute(
+                        builder: (context)=>Home()
+                    )
+                ),
+              ),
+              ListTile(
+                title: Text("About Us"),
+                onTap: ()=>Navigator.push(context,
+                    MaterialPageRoute(
+                        builder: (context)=>SignIn()
+                    )
+                ),
+              )
+            ],
+          ),
         ),
         body: ListView(children: [
           SafeArea(
@@ -30,10 +54,10 @@ class Home extends StatelessWidget {
                   children: <Widget>[
                     Image(
                         image: NetworkImage(
-                            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFpdliLd-Zrx6hxBdCHvzb7kofJtYs3qkTHA&usqp=CAU")),
+                            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMSSJnFuUQ4DqATJqDJV99xyYx4Z6QfFJjHg&usqp=CAU")),
                     Image(
                         image: NetworkImage(
-                            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFpdliLd-Zrx6hxBdCHvzb7kofJtYs3qkTHA&usqp=CAU")),
+                            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkY_jijp194fv3YodNkM-_kOsZ1_E0S6w4Ng&usqp=CAU")),
                     Image(
                         image: NetworkImage(
                             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFpdliLd-Zrx6hxBdCHvzb7kofJtYs3qkTHA&usqp=CAU")),
@@ -91,7 +115,7 @@ class Home extends StatelessWidget {
                             backgroundColor: Colors.grey,
                             child: IconButton(
                               icon: Icon(
-                                Icons.hotel,
+                                Icons.flight,
                                 color: Colors.white,
                               ),
                               onPressed: () {},
@@ -101,7 +125,7 @@ class Home extends StatelessWidget {
                             height: 10,
                           ),
                           Text(
-                            "Hotel",
+                            "Trips",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 20),
                           )
@@ -150,7 +174,7 @@ class Home extends StatelessWidget {
                             backgroundColor: Colors.grey,
                             child: IconButton(
                               icon: Icon(
-                                Icons.hotel,
+                                Icons.home,
                                 color: Colors.white,
                               ),
                               onPressed: () {},
@@ -160,7 +184,7 @@ class Home extends StatelessWidget {
                             height: 10,
                           ),
                           Text(
-                            "Hotel",
+                            "Museum",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 20),
                           )

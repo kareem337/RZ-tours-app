@@ -1,83 +1,134 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:rz_tours/screens/forget_password.dart';
+import 'package:rz_tours/screens/home.dart';
 class SignIn extends StatelessWidget {
-  const SignIn({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/background.jpg'),
-            fit: BoxFit.cover,
+      appBar:
+          AppBar( title: Text("RZ tours "), actions: [
+
+      ]),
+              drawer: Drawer(
+          child: ListView(
+            children: [
+              ListTile(
+                title: Text("Home"),
+                onTap: ()=>Navigator.push(context,
+                    MaterialPageRoute(
+                        builder: (context)=>Home()
+                    )
+                ),
+              ),
+              ListTile(
+                title: Text("About Us"),
+                onTap: ()=>Navigator.push(context,
+                    MaterialPageRoute(
+                        builder: (context)=>SignIn()
+                    )
+                ),
+              )
+            ],
           ),
         ),
-        padding: const EdgeInsets.all(30.0),
+      body: Container(
+        alignment: Alignment.center,
+        margin: EdgeInsets.all(20),
         child: Column(
           children: [
-            const SizedBox(
-              height: 200.0,
+            SizedBox(
+              height: 150,
             ),
-            const TextField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                hintText: 'Email',
-                hintStyle: TextStyle(
-                  color: Colors.black,
-                ),
-                prefixIcon: Icon(
-                  Icons.email,
-                ),
+            Text(
+              "RZ Tours",
+              style: TextStyle(
+                fontSize: 50,
+                fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(
-              height: 20.0,
-            ),
-            const TextField(
+            SizedBox(height: 30, width: 90),
+            TextFormField(
+              keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                hintText: 'Password',
-                hintStyle: TextStyle(
-                  color: Colors.black,
-                ),
-                prefixIcon: Icon(
-                  Icons.password,
-                ),
-              ),
+                  border: OutlineInputBorder(),
+                  labelText: 'Email',
+                  hintText: "Email"),
             ),
-            const SizedBox(
-              height: 5.0,
+            SizedBox(height: 20),
+            TextFormField(
+              keyboardType: TextInputType.visiblePassword,
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Password',
+                  hintText: "Password"),
             ),
-            ButtonBar(
-              children: [
-                ElevatedButton(
-                  onPressed: () {},
-                  child: const Text(
-                    'Signin',
-                    style: TextStyle(
-                      fontSize: 15.0,
-                    ),
+            SizedBox(height: 10),
+            Row(children: [
+              SizedBox(width: 220),
+              InkWell(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => ForgetPassword(),));
+                },
+                child: Text(
+                  "Forget Password?",
+                  style: TextStyle(
+                    fontSize: 15,
                   ),
                 ),
-              ],
-            ),
-            const SizedBox(
-              height: 60.0,
-            ),
-            TextButton(
-              onPressed: () {},
-              child: const Text(
-                'Create an Account? Signup',
+              ),
+            ]),
+            SizedBox(height: 15),
+            ElevatedButton(
+              onPressed: () {
+                // Respond to button press
+              },
+              child: Text(
+                'Login',
                 style: TextStyle(
-                  fontSize: 15.0,
+                  fontWeight: FontWeight.w800,
+                  fontSize: 20,
                 ),
               ),
             ),
+            SizedBox(height: 10),
+            Row(
+              children: [
+                SizedBox(width: 40),
+                Text(
+                  "Don't have an account?",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                TextButton(
+                  onPressed: () {
+                    // Respond to button press
+                  },
+                  child: Text(
+                    "Sign Up",
+                    style: TextStyle(
+                      color: Colors.blue,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                    ),
+                  ),
+                )
+              ],
+            )
           ],
         ),
       ),
     );
   }
+
+  void not() {
+    print("notifications");
+  }
 }
+
+/*
+alignment: Alignment.center,
+margin: EdgeInsets.only(bottom:400) ,
+alignment: Alignment.center,
+margin: EdgeInsets.only(bottom:400) ,
+
+ */
