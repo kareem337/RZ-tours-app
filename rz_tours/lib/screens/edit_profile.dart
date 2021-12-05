@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:srcflutter/animation_screen.dart';
-import 'package:srcflutter/tagroba.dart';
-
+import 'package:rz_tours/screens/sign_in.dart';
+import 'package:rz_tours/screens/home.dart';
 class EditProfile extends StatefulWidget
 {
   @override
@@ -24,7 +23,7 @@ class _EditProfileState extends State<EditProfile>{
                 title: Text("Home"),
                 onTap: ()=>Navigator.push(context,
                     MaterialPageRoute(
-                        builder: (context)=>Tagroba()
+                        builder: (context)=>Home()
                     )
                 ),
               ),
@@ -32,7 +31,7 @@ class _EditProfileState extends State<EditProfile>{
                 title: Text("About Us"),
                 onTap: ()=>Navigator.push(context,
                     MaterialPageRoute(
-                        builder: (context)=>AnimatedContainerPage()
+                        builder: (context)=>SignIn()
                     )
                 ),
               )

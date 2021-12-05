@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:srcflutter/tagroba.dart';
+import 'package:rz_tours/screens/home.dart';
 
 class CartScreen extends StatelessWidget {
   @override
@@ -110,7 +110,7 @@ class CartScreen extends StatelessWidget {
                 ElevatedButton(
                     onPressed: ()=>Navigator.push(context,
                     MaterialPageRoute(
-                        builder: (context)=>Tagroba()
+                        builder: (context)=>Home()
                     )
                 ), child: Text("Go To Payement",style:TextStyle(
                     fontSize: 16,
