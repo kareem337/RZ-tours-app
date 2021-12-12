@@ -73,7 +73,7 @@ class _CartViewState extends State<CartView> {
               borderRadius: BorderRadius.circular(20.0),
             ),
             child: Text(
-              'PROCEED TO CHECKOUT',
+              'ADD TO CART',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 14.0,

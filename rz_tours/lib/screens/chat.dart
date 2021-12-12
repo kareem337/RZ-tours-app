@@ -16,19 +16,17 @@ class _ChatState extends State<Chat> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.amberAccent[100],
+        backgroundColor: Colors.blueGrey,
         title: Row(
           children: [
             // ignore: prefer_const_constructors
             CircleAvatar(
               radius: 20,
               // ignore: prefer_const_constructors
-              backgroundImage: NetworkImage(
-                  "https://pyxis.nymag.com/v1/imgs/6ca/c27/d480ad69b8be1bff0dc381baefb2d41ac0-30-tim-cook.2x.h473.w710.jpg"),
             ),
             Column(
               // ignore: prefer_const_literals_to_create_immutables
-              children: [Text("Name of The User"), Text("Active 1 min ago")],
+              children: [Text("Name of The User"), Text("Online")],
             )
           ],
         ),
@@ -42,13 +40,13 @@ class _ChatState extends State<Chat> {
         child: ListView(
           children: [
             Container(
-              color: Colors.amberAccent[100],
-              width: 100,
-              height: 100,
+              color: Colors.blueGrey,
+              width: 50,
+              height: 50,
             ),
             Container(
               child: Text('$s'),
-              color: Colors.blue,
+              color: Colors.greenAccent,
               width: 100,
               height: 100,
             ),
