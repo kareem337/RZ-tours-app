@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rz_tours/screens/home.dart';
 import 'package:rz_tours/screens/edit_profile.dart';
-import 'package:rz_tours/screens/sign_in.dart';
 
 
 void main() {
@@ -13,12 +12,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: '\home',
-      routes: {
-        "\home": (context) => Home(),
-        "\login": (context) => SignIn(),
-         
-      },
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
