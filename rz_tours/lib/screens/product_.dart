@@ -14,30 +14,27 @@ class _CartViewState extends State<CartView> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Shopping Cart',
+          'Mueseums and trips',
           style: TextStyle(
             fontWeight: FontWeight.w400,
             fontSize: 21.0,
           ),
         ),
-        backgroundColor: Colors.indigo,
+        backgroundColor: Colors.white,
         elevation: 0.0,
       ),
       body: ListView(
         padding: const EdgeInsets.all(16.0),
         children: [
-          CartItem('background.jpg', 'hello', 10),
-          CartItem('background.jpg', 'hello', 10),
-          CartItem('background.jpg', 'hello', 10),
-          CartItem('background.jpg', 'hello', 10),
-          CartItem('background.jpg', 'hello', 10),
-          CartItem('background.jpg', 'hello', 10),
-          CartItem('background.jpg', 'hello', 10),
+          CartItem('Tahrir museum.jpg', 'Egyptain Museum ', 10),
+          CartItem('Coptic Museum.jpg', 'Coptic Museum', 10),
+          CartItem('Abdeen.jpg', 'Adbeen', 10),
+          CartItem('El baron Palace.jpg', 'El Baron Palace', 10),
           CartItem('background.jpg', 'hello', 10),
           SizedBox(height: 20.0),
           Divider(),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Text(
                 'Total',
@@ -47,7 +44,7 @@ class _CartViewState extends State<CartView> {
                 ),
               ),
               Text(
-                '\$ 600',
+                '\$',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 16.0,
@@ -58,46 +55,18 @@ class _CartViewState extends State<CartView> {
           SizedBox(height: 4.0),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Delivery Charge',
-                style: TextStyle(
-                  fontSize: 14.0,
-                ),
-              ),
-              Text(
-                '\$ 30',
-                style: TextStyle(
-                  fontSize: 16.0,
-                ),
-              ),
-            ],
+            children: [],
           ),
           Divider(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Sub Total',
-                style: TextStyle(
-                  fontSize: 14.0,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                '\$ 630',
-                style: TextStyle(
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
+            children: [],
           ),
           Spacer(),
           SizedBox(height: 10.0),
           MaterialButton(
             onPressed: () {},
-            color: Colors.indigo,
+            color: Colors.black,
             height: 50.0,
             minWidth: double.infinity,
             shape: RoundedRectangleBorder(
