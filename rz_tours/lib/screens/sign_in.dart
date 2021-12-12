@@ -2,36 +2,28 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rz_tours/screens/forget_password.dart';
 import 'package:rz_tours/screens/home.dart';
+
 class SignIn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:
-          AppBar( title: Text("RZ tours "), actions: [
-
-      ]),
-              drawer: Drawer(
-           child: ListView(
-            children: [
-              ListTile(
-                title: Text("Home"),
-                onTap: ()=>Navigator.push(context,
-                    MaterialPageRoute(
-                        builder: (context)=>Home()
-                    )
-                ),
-              ),
-              ListTile(
-                title: Text("About Us"),
-                onTap: ()=>Navigator.push(context,
-                    MaterialPageRoute(
-                        builder: (context)=>SignIn()
-                    )
-                ),
-              )
-            ],
-          ),
+      appBar: AppBar(title: Text("RZ tours "), actions: []),
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            ListTile(
+              title: Text("Home"),
+              onTap: () => Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Home())),
+            ),
+            ListTile(
+              title: Text("About Us"),
+              onTap: () => Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => SignIn())),
+            )
+          ],
         ),
+      ),
       body: Container(
         alignment: Alignment.center,
         margin: EdgeInsets.all(20),
@@ -67,8 +59,12 @@ class SignIn extends StatelessWidget {
             Row(children: [
               SizedBox(width: 220),
               InkWell(
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => ForgetPassword(),));
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ForgetPassword(),
+                      ));
                 },
                 child: Text(
                   "Forget Password?",

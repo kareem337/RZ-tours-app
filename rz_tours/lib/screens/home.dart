@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rz_tours/screens/home.dart';
 import 'package:rz_tours/screens/sign_in.dart';
+import 'package:rz_tours/widgets/button_bar.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -9,27 +10,21 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          
           title: Text("RZ Tours"),
         ),
-                drawer: Drawer(
+        bottomNavigationBar: Buttom(),
+        drawer: Drawer(
           child: ListView(
             children: [
               ListTile(
                 title: Text("Home"),
-                onTap: ()=>Navigator.push(context,
-                    MaterialPageRoute(
-                        builder: (context)=>Home()
-                    )
-                ),
+                onTap: () => Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Home())),
               ),
               ListTile(
                 title: Text("About Us"),
-                onTap: ()=>Navigator.push(context,
-                    MaterialPageRoute(
-                        builder: (context)=>SignIn()
-                    )
-                ),
+                onTap: () => Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => SignIn())),
               )
             ],
           ),
@@ -135,7 +130,9 @@ class Home extends StatelessWidget {
                   )
                 ],
               ),
-              SizedBox(height: 10,),
+              SizedBox(
+                height: 10,
+              ),
               Row(
                 children: [
                   Expanded(
@@ -194,33 +191,8 @@ class Home extends StatelessWidget {
                   )
                 ],
               ),
-              SizedBox(height: 5,),
-              BottomNavigationBar(
-
-                items: const <BottomNavigationBarItem>[
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.home),
-                    label: 'Home',
-                    backgroundColor: Colors.grey,
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.shopping_cart),
-                    label: 'Business',
-                    backgroundColor: Colors.green,
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.perm_phone_msg_sharp),
-                    label: 'School',
-                    backgroundColor: Colors.purple,
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.message),
-                    label: 'Settings',
-                    backgroundColor: Colors.pink,
-                  ),
-                ],
-                currentIndex: 0,
-                selectedItemColor: Colors.amber[800],
+              SizedBox(
+                height: 5,
               ),
             ],
           ))
