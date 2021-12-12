@@ -9,6 +9,9 @@ class Person
   late int _id;
   late String _image;
 
+  Person(this._firstName, this._lastName, this._email, this._password,
+      this._number, this._gender, this._id, this._image);
+
 login()
 {
 
@@ -16,7 +19,7 @@ login()
 
 chat()
 {
-  
+
 }
 
 
