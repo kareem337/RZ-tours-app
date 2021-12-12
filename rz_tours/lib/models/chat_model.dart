@@ -3,4 +3,13 @@ class Chats {
   late int RecieverId;
   late String Message;
   Chats(this.SenderId, this.RecieverId, this.Message);
+  sendMessage()
+  {
+
+  }
+
+  fetchChat()
+  {
+    
+  }
 }
