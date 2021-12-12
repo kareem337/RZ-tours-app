@@ -1,6 +1,6 @@
 class Cart {
-  late String image;
-  late String name;
-  late double price;
-  Cart(this.image, this.name, this.price);
+  late String _image;
+  late String _name;
+  late double _price;
+  Cart(this._image, this._name, this._price);
 }

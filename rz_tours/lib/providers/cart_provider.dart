@@ -2,19 +2,19 @@ import 'package:flutter/foundation.dart';
 import 'package:rz_tours/models/cart_model.dart';
 
 class CartProvider extends ChangeNotifier {
-  List<Cart> carts = <Cart>[];
+  List<Cart> _carts = <Cart>[];
   List<Cart> get getCarts {
-    return carts;
+    return _carts;
   }
 
-  void AddCart(String image, String name, double price) {
-    Cart c = new Cart(image, name, price);
-    carts.add(c);
+  void AddCart(String _image, String _name, double _price) {
+    Cart c = new Cart(_image, _name, _price);
+    _carts.add(c);
     notifyListeners();
   }
 
   void RemoveCart(int index) {
-    carts.removeAt(index);
+    _carts.removeAt(index);
     notifyListeners();
   }
 }
