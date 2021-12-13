@@ -18,10 +18,7 @@ class CartItem extends StatelessWidget {
               Container(
                 width: 80.0,
                 height: 80.0,
-                decoration: BoxDecoration(
-                  color: Colors.green[300],
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
+                decoration: BoxDecoration(),
                 child: Center(
                   child: Container(
                     width: 60.0,

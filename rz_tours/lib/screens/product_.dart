@@ -28,9 +28,12 @@ class _CartViewState extends State<CartView> {
         children: [
           CartItem('Tahrir museum.jpg', 'Egyptain Museum ', 10),
           CartItem('Coptic Museum.jpg', 'Coptic Museum', 10),
-          CartItem('Abdeen.jpg', 'Adbeen', 10),
+          CartItem('Abdeen.jpg', 'Abdeen', 10),
           CartItem('El baron Palace.jpg', 'El Baron Palace', 10),
-          CartItem('background.jpg', 'hello', 10),
+          CartItem('Alex.jpg', 'Alex', 10),
+          CartItem('luxor.jpg', 'Luxor', 10),
+          CartItem('abu simple.jpg', 'Aswan', 10),
+          CartItem('dahab.jpg', 'Dahab', 10),
           SizedBox(height: 20.0),
           Divider(),
           Row(
