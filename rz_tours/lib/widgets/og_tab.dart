@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_application_products_page/models/og_tab_item.dart';
-import 'package:flutter_application_products_page/utils/constants.dart';
+import 'package:rz_tours/models/og_tab_item.dart';
+import 'package:rz_tours/utils/constants.dart';
 
 class OgTab extends StatefulWidget {
   final List<OgTabItem> items;

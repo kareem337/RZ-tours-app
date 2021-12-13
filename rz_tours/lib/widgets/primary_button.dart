@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter_application_products_page/utils/constants.dart';
+import 'package:rz_tours/utils/constants.dart';
 
 class PrimaryButton extends StatelessWidget {
   final String text;

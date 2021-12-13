@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_products_page/models/Trips.dart';
+import 'package:rz_tours/models/Trips.dart';
 
 class StaticData {
   // ignore: non_constant_identifier_names

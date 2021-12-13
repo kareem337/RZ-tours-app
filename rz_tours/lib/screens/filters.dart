@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_products_page/models/og_tab_item.dart';
-import 'package:flutter_application_products_page/pages/search_result.dart';
-import 'package:flutter_application_products_page/utils/constants.dart';
-import 'package:flutter_application_products_page/utils/helper.dart';
-import 'package:flutter_application_products_page/widgets/button_group_spaced.dart';
-import 'package:flutter_application_products_page/widgets/input_widget.dart';
-import 'package:flutter_application_products_page/widgets/og_tab.dart';
-import 'package:flutter_application_products_page/widgets/primary_button.dart';
+import 'package:rz_tours/models/og_tab_item.dart';
+import 'package:rz_tours/screens/search_result.dart';
+import 'package:rz_tours/utils/constants.dart';
+import 'package:rz_tours/utils/helper.dart';
+import 'package:rz_tours/widgets/button_group_spaced.dart';
+import 'package:rz_tours/widgets/input_widget.dart';
+import 'package:rz_tours/widgets/og_tab.dart';
+import 'package:rz_tours/widgets/primary_button.dart';
 
 class Filters extends StatelessWidget {
   @override

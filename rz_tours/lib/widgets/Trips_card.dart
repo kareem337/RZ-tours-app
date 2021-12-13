@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_application_products_page/models/Trips.dart';
-import 'package:flutter_application_products_page/utils/constants.dart';
+import 'package:rz_tours/models/Trips.dart';
+import 'package:rz_tours/utils/constants.dart';
 
 class TripCard extends StatelessWidget {
   final Trip trip;

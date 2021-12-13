@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_products_page/utils/constants.dart';
+import 'package:rz_tours/utils/constants.dart';
 
 class ButtonGroupSpaced extends StatefulWidget {
   final List<String> items;

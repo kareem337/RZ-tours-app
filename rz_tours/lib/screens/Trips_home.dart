@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_application_products_page/pages/filters.dart';
-import 'package:flutter_application_products_page/utils/constants.dart';
-import 'package:flutter_application_products_page/utils/helper.dart';
-import 'package:flutter_application_products_page/utils/static_data.dart';
-import 'package:flutter_application_products_page/widgets/bottom_bar.dart';
-import 'package:flutter_application_products_page/widgets/input_widget.dart';
-import 'package:flutter_application_products_page/widgets/Trips_card.dart';
+import 'package:rz_tours/screens/filters.dart';
+import 'package:rz_tours/utils/constants.dart';
+import 'package:rz_tours/utils/helper.dart';
+import 'package:rz_tours/utils/static_data.dart';
+import 'package:rz_tours/widgets/bottom_bar.dart';
+import 'package:rz_tours/widgets/input_widget.dart';
+import 'package:rz_tours/widgets/Trips_card.dart';
 
 class Home extends StatelessWidget {
   @override
