@@ -69,7 +69,8 @@ class CartScreen extends StatelessWidget {
                             fontSize: 16,
                             fontFamily: "italic"
                         ) ,),
-                    )
+                    ),
+                    
                   ],
                 ),
                 SizedBox(height: 50,),

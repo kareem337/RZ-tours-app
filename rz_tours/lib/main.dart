@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:rz_tours/screens/cart.dart';
+import 'package:rz_tours/screens/chat.dart';
 import 'package:rz_tours/screens/home.dart';
 import 'package:rz_tours/screens/edit_profile.dart';
-
 
 void main() {
   runApp(MyApp());
