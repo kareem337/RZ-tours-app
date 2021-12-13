@@ -3,6 +3,7 @@ import 'package:rz_tours/screens/cart.dart';
 import 'package:rz_tours/screens/chat.dart';
 import 'package:rz_tours/screens/home.dart';
 import 'package:rz_tours/screens/edit_profile.dart';
+import 'package:rz_tours/screens/sign_in.dart';
 
 void main() {
   runApp(MyApp());

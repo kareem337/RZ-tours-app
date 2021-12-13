@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rz_tours/screens/forget_password.dart';
 import 'package:rz_tours/screens/home.dart';
+import 'package:rz_tours/validations/validations_functions.dart';
 import 'package:rz_tours/widgets/text_form_widget.dart';
-
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -62,7 +62,7 @@ class _SignInState extends State<SignIn> {
                     hintText: "Email"),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return "Please Enter Your Name";
+                    return "Please Enter Your E-Mail";
                   }
                   if (!isEmail(value)) {
                     return "Ivalid Email Please Re-Enter The Email ";
@@ -73,7 +73,7 @@ class _SignInState extends State<SignIn> {
               SizedBox(height: 20),
               TextFormField(
                 validator: (value) {
-                  if (value == null || value.isEmpty) {
+                  if (!isNull(value!)) {
                     return "Password Is Empty";
                   }
                   if (!isPassword(value)) {
@@ -86,7 +86,7 @@ class _SignInState extends State<SignIn> {
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Password',
-                    hintText: "Enter Password More Than 5 Characters"),
+                    hintText:"one small letter & one capital & >6 characters "),
               ),
               SizedBox(
                 height: 10,
@@ -119,7 +119,7 @@ class _SignInState extends State<SignIn> {
                     // If the form is valid, display a snackbar. In the real world,
                     // you'd often call a server or save the information in a database.
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Processing Data')),
+                      SnackBar(content: Text('Logged In Succeffuly')),
                     );
                   }
                 },
@@ -166,24 +166,7 @@ void not() {
   print("notifications");
 }
 
-bool isEmail(String em) {
-  String p =
-      r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
 
-  RegExp regExp = new RegExp(p);
-
-  return regExp.hasMatch(em);
-}
-
-bool isPassword(String password) {
-  if (password.length > 5 &&
-      !password.contains(RegExp(r'\W')) &&
-      RegExp(r'\d+\w*\d+').hasMatch(password)) {
-    return true;
-  } else {
-    return false;
-  }
-}
 /*
 alignment: Alignment.center,
 margin: EdgeInsets.only(bottom:400) ,
