@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rz_tours/widgets/products.dart';
+import 'package:rz_tours/widgets/cart.dart';
 
 class CartView extends StatefulWidget {
   CartView({Key? key}) : super(key: key);
@@ -76,7 +76,7 @@ class _CartViewState extends State<CartView> {
               borderRadius: BorderRadius.circular(20.0),
             ),
             child: Text(
-              'ADD TO CART',
+              'PROCEED TO CHECKOUT',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 14.0,

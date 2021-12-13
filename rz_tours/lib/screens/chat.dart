@@ -1,7 +1,4 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:rz_tours/widgets/button_bar.dart';
 
 class Chat extends StatefulWidget {
   const Chat({Key? key}) : super(key: key);

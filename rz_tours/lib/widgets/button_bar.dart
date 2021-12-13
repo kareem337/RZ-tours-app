@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rz_tours/screens/chat.dart';
-import 'package:rz_tours/screens/product_.dart';
+import 'package:rz_tours/screens/cart_.dart';
 
 class Buttom extends StatelessWidget {
   const Buttom({Key? key}) : super(key: key);

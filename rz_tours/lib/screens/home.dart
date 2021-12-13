@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rz_tours/screens/home.dart';
+import 'package:rz_tours/screens/products.dart';
 import 'package:rz_tours/screens/sign_in.dart';
 import 'package:rz_tours/widgets/button_bar.dart';
 
@@ -86,7 +87,12 @@ class Home extends StatelessWidget {
                                 Icons.hotel,
                                 color: Colors.white,
                               ),
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Product()));
+                              },
                             ),
                           ),
                           SizedBox(
@@ -113,7 +119,12 @@ class Home extends StatelessWidget {
                                 Icons.flight,
                                 color: Colors.white,
                               ),
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Product()));
+                              },
                             ),
                           ),
                           SizedBox(
@@ -147,7 +158,12 @@ class Home extends StatelessWidget {
                                 Icons.hotel,
                                 color: Colors.white,
                               ),
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Product()));
+                              },
                             ),
                           ),
                           SizedBox(
@@ -174,7 +190,12 @@ class Home extends StatelessWidget {
                                 Icons.home,
                                 color: Colors.white,
                               ),
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Product()));
+                              },
                             ),
                           ),
                           SizedBox(
