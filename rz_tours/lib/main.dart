@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
      // initialRoute: "/",
       onGenerateRoute: _onGenerateRoute,
       home: Home(),
-    );
+    ),
     );
   }
 }
@@ -42,7 +42,7 @@ Route<dynamic> _onGenerateRoute(RouteSettings settings) {
   switch (settings.name) {
     case "/":
       return MaterialPageRoute(builder: (BuildContext context) {
-        return Home();
+        return Trips_home();
       });
     case "/search-result":
       return MaterialPageRoute(builder: (BuildContext context) {

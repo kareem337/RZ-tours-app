@@ -9,7 +9,7 @@ import 'package:rz_tours/widgets/bottom_bar.dart';
 import 'package:rz_tours/widgets/input_widget.dart';
 import 'package:rz_tours/widgets/Trips_card.dart';
 
-class Home extends StatelessWidget {
+class Trips_home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
