@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:rz_tours/screens/forget_password.dart';
 import 'package:rz_tours/screens/home.dart';
 import 'package:rz_tours/validations/validations_functions.dart';
+import 'package:rz_tours/widgets/button_bar.dart';
+import 'package:rz_tours/widgets/drawer.dart';
 import 'package:rz_tours/widgets/text_form_widget.dart';
 
 class SignIn extends StatefulWidget {
@@ -16,25 +18,12 @@ class _SignInState extends State<SignIn> {
   @override
   final _formKey = GlobalKey<FormState>();
   TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("RZ tours "), actions: []),
-      drawer: Drawer(
-        child: ListView(
-          children: [
-            ListTile(
-              title: Text("Home"),
-              onTap: () => Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Home())),
-            ),
-            ListTile(
-              title: Text("About Us"),
-              onTap: () => Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => SignIn())),
-            )
-          ],
-        ),
-      ),
+      drawer: DrawerWidget(),
       body: Form(
         key: _formKey,
         child: Container(
@@ -72,6 +61,7 @@ class _SignInState extends State<SignIn> {
               ),
               SizedBox(height: 20),
               TextFormField(
+                controller: _passwordController,
                 validator: (value) {
                   if (!isNull(value!)) {
                     return "Password Is Empty";
@@ -86,7 +76,8 @@ class _SignInState extends State<SignIn> {
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Password',
-                    hintText:"one small letter & one capital & >6 characters "),
+                    hintText:
+                        "one small letter & one capital & >6 characters "),
               ),
               SizedBox(
                 height: 10,
@@ -153,7 +144,7 @@ class _SignInState extends State<SignIn> {
                     ),
                   )
                 ],
-              )
+              ),
             ],
           ),
         ),
