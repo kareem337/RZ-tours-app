@@ -6,7 +6,6 @@ class Chat extends StatefulWidget {
   @override
   State<Chat> createState() => _ChatState();
 }
-
 class _ChatState extends State<Chat> {
   String? s;
   @override
@@ -112,7 +111,9 @@ class _ChatState extends State<Chat> {
                   width: 15,
                 ),
                 FloatingActionButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    
+                  },
                   child: Icon(
                     Icons.send,
                     color: Colors.white,

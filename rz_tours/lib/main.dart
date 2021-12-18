@@ -11,6 +11,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:rz_tours/screens/filters.dart';
 import 'package:rz_tours/screens/Trips_home.dart';
 import 'package:rz_tours/screens/search_result.dart';
+import 'package:rz_tours/screens/sign_up.dart';
 
 void main() {
   runApp(MyApp());
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
       ),
       home: Home(),
     ),
+
     );
   }
 }
