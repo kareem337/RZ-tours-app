@@ -7,14 +7,13 @@ class CartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      appBar: AppBar(title: Text("Cart Screen"),),
       body:Container(
         padding: EdgeInsets.all(20),
         margin: EdgeInsets.all(20),
         child: ListView(
           children: [
             Center(
-              child: Text("Razaz Tours" ,style:TextStyle(
+              child: Text("Egyptian Museum" ,style:TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.w600,
                   fontFamily:"italic",

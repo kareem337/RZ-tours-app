@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rz_tours/models/Trips.dart';
+import 'package:rz_tours/screens/product_view.dart';
+import 'package:rz_tours/screens/cart_.dart';
 import 'package:rz_tours/utils/constants.dart';
+import 'package:rz_tours/utils/helper.dart';
 
 class TripCard extends StatelessWidget {
   final Trip trip;
@@ -32,7 +35,7 @@ class TripCard extends StatelessWidget {
                   top: 10.0,
                   right: 10.0,
                   child: InkWell(
-                    onTap: () {},
+                    onTap: () { Helper.nextScreen(context, CartScreen());},
                     child: Container(
                       width: 45.0,
                       height: 45.0,
@@ -41,7 +44,7 @@ class TripCard extends StatelessWidget {
                         color: Colors.white,
                       ),
                       child: Icon(
-                        FlutterIcons.favorite_mdi,
+                        Icons.visibility,
                         color: this.trip.liked
                             ? Color.fromRGBO(255, 136, 0, 1)
                             : Color(0xFFC4C4C4),
