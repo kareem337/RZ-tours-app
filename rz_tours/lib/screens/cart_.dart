@@ -13,6 +13,10 @@ class _CartViewState extends State<CartView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(50.0),
+        child: CustomAppBar('Home'),
+      ),
       body: ListView(
         padding: const EdgeInsets.all(16.0),
         children: [
