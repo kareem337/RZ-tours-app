@@ -1,12 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rz_tours/screens/home.dart';
+import 'package:rz_tours/widgets/app_bar.dart';
+import 'package:rz_tours/widgets/drawer.dart';
 
 class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
+      appBar: CustomAppBar(),
+      drawer: DrawerWidget(),
       body:Container(
         padding: EdgeInsets.all(20),
         margin: EdgeInsets.all(20),

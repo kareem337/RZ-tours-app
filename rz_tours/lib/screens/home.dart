@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rz_tours/screens/Trips_home.dart';
 import 'package:rz_tours/utils/helper.dart';
 import 'package:rz_tours/utils/places.dart';
+import 'package:rz_tours/widgets/app_bar.dart';
 import 'package:rz_tours/widgets/bottom_bar.dart';
 import 'package:rz_tours/widgets/drawer.dart';
 import 'package:rz_tours/widgets/horizontal_place_item.dart';
@@ -17,9 +18,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("RZ Tours"),
-      ),
+      appBar: CustomAppBar(),
        drawer: DrawerWidget(),
        bottomNavigationBar: BottomBar(),
       body: SafeArea(
