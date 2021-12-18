@@ -1,222 +1,192 @@
 import 'package:flutter/material.dart';
-import 'package:rz_tours/screens/home.dart';
-import 'package:rz_tours/screens/products.dart';
-import 'package:rz_tours/screens/sign_in.dart';
-import 'package:rz_tours/widgets/button_bar.dart';
+import 'package:rz_tours/utils/places.dart';
+import 'package:rz_tours/widgets/horizontal_place_item.dart';
+import 'package:rz_tours/widgets/search_bar.dart';
 
 class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("RZ Tours"),
-        ),
-        bottomNavigationBar: Buttom(),
-        drawer: Drawer(
-          child: ListView(
-            children: [
-              ListTile(
-                title: Text("Home"),
-                onTap: () => Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Home())),
+      appBar: AppBar(
+        leading: Icon(Icons.home),
+        title: Text("RZ Tours"),
+      ),
+      body: ListView(
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.all(20.0),
+            child: Text(
+              "Explore the beauty of \nEgypt",
+              style: TextStyle(
+                fontSize: 30.0,
+                fontWeight: FontWeight.w600,
               ),
-              ListTile(
-                title: Text("About Us"),
-                onTap: () => Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => SignIn())),
-              )
-            ],
+            ),
           ),
-        ),
-        body: ListView(children: [
-          SafeArea(
-              child: Column(
-            children: [
-              Container(
-                  margin: EdgeInsets.all(30),
-                  child: Text(
-                    "Explore The Beauty Of Egypt",
-                    style: TextStyle(
-                        fontSize: 37,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: "Raleway"),
-                  )),
-              Container(
-                height: 200,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: <Widget>[
-                    Image(
-                        image: NetworkImage(
-                            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMSSJnFuUQ4DqATJqDJV99xyYx4Z6QfFJjHg&usqp=CAU")),
-                    Image(
-                        image: NetworkImage(
-                            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkY_jijp194fv3YodNkM-_kOsZ1_E0S6w4Ng&usqp=CAU")),
-                    Image(
-                        image: NetworkImage(
-                            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFpdliLd-Zrx6hxBdCHvzb7kofJtYs3qkTHA&usqp=CAU")),
-                    Image(
-                        image: NetworkImage(
-                            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFpdliLd-Zrx6hxBdCHvzb7kofJtYs3qkTHA&usqp=CAU"))
-                  ],
+          Padding(
+            padding: EdgeInsets.all(20.0),
+            child: SearchBar(),
+          ),
+          Padding(
+            padding: EdgeInsets.all(10.0),
+            child: Text(
+                "Top Destinations",
+                style: TextStyle(
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-              Container(
-                  margin: EdgeInsets.all(10),
-                  padding: EdgeInsets.only(right: 200),
-                  child: Text(
-                    "See more",
+          ),
+          buildHorizontalList(context),
+          Padding(
+            padding: EdgeInsets.all(10.0),
+            child: Text(
+                "Most Visted",
+                style: TextStyle(
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+          ),
+          buildHorizontalList(context),
+          Cards(context),
+        ],
+      ),
+    );
+  }
+
+  buildHorizontalList(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.only(top: 10.0, left: 20.0),
+      height: 270.0,
+      width: MediaQuery.of(context).size.width,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        primary: false,
+        itemCount: places.length,
+        itemBuilder: (BuildContext context, int index) {
+          Map place = places.reversed.toList()[index];
+          return HorizontalPlaceItem(place: place);
+        },
+      ),
+    );
+  }
+
+  Cards(BuildContext context) {
+    return Container(
+      child: Column(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.blue,
+            ),
+            width: 300,
+            height: 60,
+            child: Container(
+              padding: EdgeInsets.all(10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.home
+                  ),
+                  Text(
+                    "  Hotels",
                     style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  )),
-              Row(
-                children: [
-                  Expanded(
-                    child: Container(
-                      child: Column(
-                        children: [
-                          CircleAvatar(
-                            radius: 30,
-                            backgroundColor: Colors.grey,
-                            child: IconButton(
-                              icon: Icon(
-                                Icons.hotel,
-                                color: Colors.white,
-                              ),
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Product()));
-                              },
-                            ),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            "Hotel",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 20),
-                          )
-                        ],
-                      ),
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
-                  Expanded(
-                    child: Container(
-                      child: Column(
-                        children: [
-                          CircleAvatar(
-                            radius: 30,
-                            backgroundColor: Colors.grey,
-                            child: IconButton(
-                              icon: Icon(
-                                Icons.flight,
-                                color: Colors.white,
-                              ),
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Product()));
-                              },
-                            ),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            "Trips",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 20),
-                          )
-                        ],
-                      ),
-                    ),
-                  )
                 ],
               ),
-              SizedBox(
-                height: 10,
-              ),
-              Row(
+            ),
+          )
+        ,
+        SizedBox(height: 10,),
+        Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.blue,
+            ),
+            width: 300,
+            height: 60,
+            child: Container(
+              padding: EdgeInsets.all(10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Expanded(
-                    child: Container(
-                      child: Column(
-                        children: [
-                          CircleAvatar(
-                            radius: 30,
-                            backgroundColor: Colors.grey,
-                            child: IconButton(
-                              icon: Icon(
-                                Icons.hotel,
-                                color: Colors.white,
-                              ),
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Product()));
-                              },
-                            ),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            "Hotel",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 20),
-                          )
-                        ],
-                      ),
+                  Icon(
+                    Icons.flight
+                  ),
+                  Text(
+                    "  Trips",
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
-                  Expanded(
-                    child: Container(
-                      child: Column(
-                        children: [
-                          CircleAvatar(
-                            radius: 30,
-                            backgroundColor: Colors.grey,
-                            child: IconButton(
-                              icon: Icon(
-                                Icons.home,
-                                color: Colors.white,
-                              ),
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Product()));
-                              },
-                            ),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            "Museum",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 20),
-                          )
-                        ],
-                      ),
-                    ),
-                  )
                 ],
               ),
-              SizedBox(
-                height: 5,
+            ),
+          )
+          ,
+          SizedBox(height: 10,),
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.blue,
+            ),
+            width: 300,
+            height: 60,
+            child: Container(
+              padding: EdgeInsets.all(10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.directions_boat
+                  ),
+                  Text(
+                    "  Cruises",
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ))
-        ]));
+            ),
+          ),
+          SizedBox(height: 10,),
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.blue,
+            ),
+            width: 300,
+            height: 60,
+            child: Container(
+              padding: EdgeInsets.all(10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.shopping_bag
+                  ),
+                  Text(
+                    "  Packages",
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          )
+          ],
+      ),
+    );
   }
 }
