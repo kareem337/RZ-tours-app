@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rz_tours/widgets/custom_app_bar.dart';
 import 'package:rz_tours/widgets/cart.dart';
 
 class CartView extends StatefulWidget {
@@ -12,17 +13,6 @@ class _CartViewState extends State<CartView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Mueseums and trips',
-          style: TextStyle(
-            fontWeight: FontWeight.w400,
-            fontSize: 21.0,
-          ),
-        ),
-        backgroundColor: Colors.white,
-        elevation: 0.0,
-      ),
       body: ListView(
         padding: const EdgeInsets.all(16.0),
         children: [
