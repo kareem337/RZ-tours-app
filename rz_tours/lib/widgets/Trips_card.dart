@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rz_tours/models/Trips.dart';
 import 'package:rz_tours/utils/constants.dart';
@@ -41,7 +40,7 @@ class TripCard extends StatelessWidget {
                         color: Colors.white,
                       ),
                       child: Icon(
-                        FlutterIcons.favorite_mdi,
+                        Icons.favorite,
                         color: this.trip.liked
                             ? Color.fromRGBO(255, 136, 0, 1)
                             : Color(0xFFC4C4C4),
@@ -118,7 +117,7 @@ class TripCard extends StatelessWidget {
                 Row(
                   children: [
                     Icon(
-                      FlutterIcons.map_pin_fea,
+                      Icons.search_outlined,
                       size: 15.0,
                       color: Color.fromRGBO(255, 136, 0, 1),
                     ),
