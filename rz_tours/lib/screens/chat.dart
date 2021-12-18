@@ -32,11 +32,6 @@ class _ChatState extends State<Chat> {
                 SizedBox(
                   width: 2,
                 ),
-                CircleAvatar(
-                  backgroundImage: NetworkImage(
-                      "<https://randomuser.me/api/portraits/men/5.jpg>"),
-                  maxRadius: 20,
-                ),
                 SizedBox(
                   width: 12,
                 ),
