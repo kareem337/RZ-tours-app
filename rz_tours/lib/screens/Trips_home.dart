@@ -6,6 +6,7 @@ import 'package:rz_tours/utils/constants.dart';
 import 'package:rz_tours/utils/helper.dart';
 import 'package:rz_tours/utils/static_data.dart';
 import 'package:rz_tours/widgets/bottom_bar.dart';
+import 'package:rz_tours/widgets/drawer.dart';
 import 'package:rz_tours/widgets/input_widget.dart';
 import 'package:rz_tours/widgets/Trips_card.dart';
 
@@ -13,6 +14,8 @@ class Trips_home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
+      drawer: DrawerWidget(),
       bottomNavigationBar: BottomBar(),
       body: SingleChildScrollView(
         child: SafeArea(
