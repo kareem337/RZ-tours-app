@@ -2,19 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:rz_tours/screens/Trips_home.dart';
 import 'package:rz_tours/utils/helper.dart';
 import 'package:rz_tours/utils/places.dart';
+import 'package:rz_tours/widgets/bottom_bar.dart';
+import 'package:rz_tours/widgets/drawer.dart';
 import 'package:rz_tours/widgets/horizontal_place_item.dart';
 import 'package:rz_tours/widgets/search_bar.dart';
 
-import 'filters.dart';
+import 'chat.dart';
 
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(Icons.home),
         title: Text("RZ Tours"),
       ),
+       drawer: DrawerWidget(),
+       bottomNavigationBar: BottomBar(),
       body: SafeArea(
         child: ListView(
           children: <Widget>[
@@ -195,7 +198,7 @@ class Home extends StatelessWidget {
               primary: Colors.blue
             ),
             onPressed: (){
-             Helper.nextScreen(context, Trips_home());
+             Helper.nextScreen(context, Chat());
             },
             child: Container(
               decoration: BoxDecoration(
