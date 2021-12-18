@@ -33,14 +33,14 @@ class _BottomBarState extends State<BottomBar> {
         /// Likes
         SalomonBottomBarItem(
           icon: Icon(Icons.favorite_border),
-          title: Text("Likes"),
+          title: Text("Abut Us"),
           selectedColor: Colors.orange,
         ),
 
         /// Search
         SalomonBottomBarItem(
           icon: Icon(Icons.search),
-          title: Text("Search"),
+          title: Text("Blog"),
           selectedColor: Colors.orange,
         ),
 

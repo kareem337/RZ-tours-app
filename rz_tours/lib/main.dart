@@ -3,6 +3,7 @@ import 'package:rz_tours/screens/cart.dart';
 import 'package:rz_tours/screens/chat.dart';
 import 'package:rz_tours/screens/home.dart';
 import 'package:rz_tours/screens/edit_profile.dart';
+import 'package:rz_tours/screens/products.dart';
 import 'package:rz_tours/screens/sign_in.dart';
 import 'package:rz_tours/utils/constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -31,30 +32,9 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
         textTheme: GoogleFonts.poppinsTextTheme(),
       ),
-     // initialRoute: "/",
-      onGenerateRoute: _onGenerateRoute,
       home: Home(),
     ),
     );
   }
 }
-Route<dynamic> _onGenerateRoute(RouteSettings settings) {
-  switch (settings.name) {
-    case "/":
-      return MaterialPageRoute(builder: (BuildContext context) {
-        return Trips_home();
-      });
-    case "/search-result":
-      return MaterialPageRoute(builder: (BuildContext context) {
-        return SearchResult();
-      });
-    case "/filters":
-      return MaterialPageRoute(builder: (BuildContext context) {
-        return Filters();
-      });
-    default:
-      return MaterialPageRoute(builder: (BuildContext context) {
-        return Home();
-      });
-  }
-}
+
