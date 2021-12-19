@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rz_tours/widgets/bottom_bar.dart';
+import 'package:rz_tours/widgets/custom_app_bar.dart';
 import 'package:rz_tours/widgets/drawer.dart';
 
 class Chat extends StatefulWidget {
@@ -13,48 +14,11 @@ class _ChatState extends State<Chat> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        automaticallyImplyLeading: false,
-        backgroundColor: Colors.amber,
-        flexibleSpace: SafeArea(
-          child: Container(
-            padding: EdgeInsets.only(right: 16),
-            child: Row(
-              children: <Widget>[
-                SizedBox(
-                  width: 2,
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text(
-                        "Admin",
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w600),
-                      ),
-                      SizedBox(
-                        height: 6,
-                      ),
-                      Text(
-                        "Online",
-                        style: TextStyle(
-                            color: Colors.grey.shade600, fontSize: 13),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
+                appBar: PreferredSize(
+        preferredSize: Size.fromHeight(50.0),
+        child: CustomAppBar('Admin'),
       ),
-      drawer: DrawerWidget(),
+     drawer: DrawerWidget(),
       body: Container(
         child: Align(
           alignment: Alignment.bottomLeft,

@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 
-class CartItem extends StatelessWidget {
+class CartItem extends StatefulWidget {
   late String image;
   late String name;
   late double price;
   CartItem(this.image, this.name, this.price);
+  
 
+  @override
+  _CartItemState createState() => _CartItemState();
+}
+int counter=1;
+class _CartItemState extends State<CartItem> {
+  
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -20,7 +27,7 @@ class CartItem extends StatelessWidget {
                 height: 200,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('assets/${this.image}'),
+                    image: AssetImage('assets/${this.widget.image}'),
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -38,7 +45,7 @@ class CartItem extends StatelessWidget {
                     Container(
                       width: 150.0,
                       child: Text(
-                        '${this.name}',
+                        '${this.widget.name}',
                         style: TextStyle(),
                       ),
                     ),
@@ -55,7 +62,7 @@ class CartItem extends StatelessWidget {
                   ],
                 ),
                 Text(
-                  '${this.price} L.E',
+                  '${this.widget.price} L.E',
                   style: TextStyle(),
                 ),
                 Container(
@@ -64,20 +71,33 @@ class CartItem extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          setState(() {
+                            if(counter>1)
+                            {
+                            counter--;
+                            }
+                          });
+                        },
                         icon: Icon(
                           Icons.remove,
                         ),
                       ),
                       Text(
-                        '1',
+                        '$counter',
                         style: TextStyle(
                           fontSize: 16.0,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          setState(() {
+                            counter++;
+                            
+                          });
+                          
+                        },
                         icon: Icon(
                           Icons.add,
                         ),

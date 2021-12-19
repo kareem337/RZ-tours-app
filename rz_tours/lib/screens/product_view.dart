@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:rz_tours/screens/home.dart';
+import 'package:rz_tours/models/cart_model.dart';
+import 'package:rz_tours/screens/cart_.dart';
+import 'package:rz_tours/utils/helper.dart';
 import 'package:rz_tours/widgets/app_bar.dart';
 import 'package:rz_tours/widgets/custom_app_bar.dart';
 import 'package:rz_tours/widgets/drawer.dart';
@@ -128,12 +130,16 @@ class CartScreen extends StatelessWidget {
                   height: 50,
                 ),
                 ElevatedButton(
-                    onPressed: () => Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Home())),
+                    onPressed: () {
+                       Helper.nextScreen(context, CartView());
+
+                    },
+                    
                     child: Text(
                       "Go To Payement",
                       style: TextStyle(
                         fontSize: 16,
+                        
                       ),
                     ))
               ],
