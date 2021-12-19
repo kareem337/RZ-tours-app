@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rz_tours/widgets/bottom_bar.dart';
 
 class Chat extends StatefulWidget {
   const Chat({Key? key}) : super(key: key);
@@ -65,6 +66,7 @@ class _ChatState extends State<Chat> {
           ),
         ),
       ),
+      bottomNavigationBar: BottomBar(),
       body: Container(
         child: Align(
           alignment: Alignment.bottomLeft,

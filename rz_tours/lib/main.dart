@@ -1,17 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:rz_tours/screens/product_view.dart';
-import 'package:rz_tours/screens/chat.dart';
 import 'package:rz_tours/screens/home.dart';
-import 'package:rz_tours/screens/edit_profile.dart';
-import 'package:rz_tours/screens/products.dart';
-import 'package:rz_tours/screens/sign_in.dart';
 import 'package:rz_tours/utils/constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:rz_tours/screens/filters.dart';
-import 'package:rz_tours/screens/Trips_home.dart';
-import 'package:rz_tours/screens/search_result.dart';
-import 'package:rz_tours/screens/sign_up.dart';
+
 
 void main() {
   runApp(MyApp());

@@ -50,7 +50,11 @@ class Trips_home extends StatelessWidget {
                       child: InputWidget(
                         height: 44.0,
                         hintText: "Search",
+<<<<<<< Updated upstream
                         prefixIcon: Icons.search
+=======
+                        prefixIcon: Icons.search,
+>>>>>>> Stashed changes
                       ),
                     ),
                     SizedBox(

@@ -8,10 +8,7 @@ import 'package:rz_tours/widgets/custom_app_bar.dart';
 import 'package:rz_tours/widgets/drawer.dart';
 import 'package:rz_tours/widgets/horizontal_place_item.dart';
 import 'package:rz_tours/widgets/search_bar.dart';
-import 'package:rz_tours/screens/home.dart';
-import 'package:rz_tours/screens/sign_in.dart';
-import 'package:rz_tours/widgets/button_bar.dart';
-import 'package:rz_tours/widgets/text_form_widget.dart';
+
 
 import 'chat.dart';
 
@@ -19,12 +16,18 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+<<<<<<< Updated upstream
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(50.0),
         child: CustomAppBar('Home Page'),
       ),
       drawer: DrawerWidget(),
       bottomNavigationBar: BottomBar(),
+=======
+      //appBar: CustomAppBar(),
+       drawer: DrawerWidget(),
+     bottomNavigationBar: BottomBar(),
+>>>>>>> Stashed changes
       body: SafeArea(
         child: ListView(
           children: <Widget>[
