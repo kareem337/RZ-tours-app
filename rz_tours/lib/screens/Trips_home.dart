@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rz_tours/screens/filters.dart';
 import 'package:rz_tours/utils/constants.dart';
@@ -51,7 +50,7 @@ class Trips_home extends StatelessWidget {
                       child: InputWidget(
                         height: 44.0,
                         hintText: "Search",
-                        prefixIcon: FlutterIcons.search1_ant,
+                        prefixIcon: Icons.search
                       ),
                     ),
                     SizedBox(
@@ -80,7 +79,7 @@ class Trips_home extends StatelessWidget {
                         child: Row(
                           children: [
                             Icon(
-                              FlutterIcons.ios_options_ion,
+                              Icons.settings,
                               color: Colors.white,
                             ),
                             SizedBox(

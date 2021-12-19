@@ -4,6 +4,7 @@ import 'package:rz_tours/utils/helper.dart';
 import 'package:rz_tours/utils/places.dart';
 import 'package:rz_tours/widgets/app_bar.dart';
 import 'package:rz_tours/widgets/bottom_bar.dart';
+import 'package:rz_tours/widgets/custom_app_bar.dart';
 import 'package:rz_tours/widgets/drawer.dart';
 import 'package:rz_tours/widgets/horizontal_place_item.dart';
 import 'package:rz_tours/widgets/search_bar.dart';

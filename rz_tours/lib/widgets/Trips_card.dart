@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rz_tours/models/Trips.dart';
 import 'package:rz_tours/screens/product_view.dart';
@@ -121,7 +120,7 @@ class TripCard extends StatelessWidget {
                 Row(
                   children: [
                     Icon(
-                      FlutterIcons.map_pin_fea,
+                      Icons.map,
                       size: 15.0,
                       color: Color.fromRGBO(255, 136, 0, 1),
                     ),
