@@ -15,7 +15,7 @@ class _CartViewState extends State<CartView> {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(50.0),
-        child: CustomAppBar('Home'),
+        child: CustomAppBar('Cart'),
       ),
       body: ListView(
         padding: const EdgeInsets.all(16.0),

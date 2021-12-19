@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rz_tours/screens/home.dart';
-import 'package:rz_tours/widgets/custom_app_bar.dart';
+import 'package:rz_tours/widgets/app_bar.dart';
 import 'package:rz_tours/widgets/drawer.dart';
 
 class CartScreen extends StatelessWidget {

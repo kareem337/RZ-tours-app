@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rz_tours/screens/Trips_home.dart';
 import 'package:rz_tours/utils/helper.dart';
 import 'package:rz_tours/utils/places.dart';
-import 'package:rz_tours/widgets/custom_app_bar.dart';
+import 'package:rz_tours/widgets/app_bar.dart';
 import 'package:rz_tours/widgets/bottom_bar.dart';
 import 'package:rz_tours/widgets/drawer.dart';
 import 'package:rz_tours/widgets/horizontal_place_item.dart';
@@ -20,7 +20,7 @@ class Home extends StatelessWidget {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(50.0),
-        child: CustomAppBar('Home'),
+        child: CustomAppBar('Home Page'),
       ),
       drawer: DrawerWidget(),
       bottomNavigationBar: BottomBar(),
