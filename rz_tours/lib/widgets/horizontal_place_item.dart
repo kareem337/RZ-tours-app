@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:rz_tours/screens/product_view.dart';
+import 'package:rz_tours/utils/helper.dart';
 
 
 class HorizontalPlaceItem extends StatelessWidget {
@@ -56,6 +58,7 @@ class HorizontalPlaceItem extends StatelessWidget {
           ),
         ),
         onTap: () {
+          Helper.nextScreen(context, CartScreen());
 
         },
       ),
