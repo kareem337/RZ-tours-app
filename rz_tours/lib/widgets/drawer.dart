@@ -73,14 +73,6 @@ class DrawerWidget extends StatelessWidget {
             onTap: () {Helper.nextScreen(context, Trips_home());},
           ),
           ListTile(
-            leading: const Icon(Icons.contact_support),
-            title: const Text(
-              'ContactUs',
-              style: TextStyle(fontSize: 24.0),
-            ),
-            onTap: () {Helper.nextScreen(context, Chat());},
-          ),
-          ListTile(
             leading: const Icon(Icons.info),
             title: const Text(
               'AboutUs',

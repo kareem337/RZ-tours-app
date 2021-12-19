@@ -55,7 +55,7 @@ class _EditProfileState extends State<EditProfile> {
                   controller: _firstName,
                   decoration: InputDecoration(
                       hintText: "Enter First Name",
-                      labelText: "First Name",
+                      labelText: "Kareem Yasser",
                       icon: Icon(Icons.person),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
@@ -74,7 +74,7 @@ class _EditProfileState extends State<EditProfile> {
                   controller: _lastName,
                   decoration: InputDecoration(
                       hintText: "Enter Last Name",
-                      labelText: "Last Name",
+                      labelText: "Yasser",
                       icon: Icon(Icons.person),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
@@ -96,7 +96,7 @@ class _EditProfileState extends State<EditProfile> {
                   controller: _email,
                   decoration: InputDecoration(
                       hintText: "Enter Email Address",
-                      labelText: "Email Address",
+                      labelText: "Kareem@gmail.com",
                       icon: Icon(Icons.email),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
@@ -118,7 +118,7 @@ class _EditProfileState extends State<EditProfile> {
                   controller: _password,
                   decoration: InputDecoration(
                       hintText: "one small letter & one capital & >6 characters ",
-                      labelText: "Password",
+                      labelText: "*********",
                       icon: Icon(Icons.lock),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
