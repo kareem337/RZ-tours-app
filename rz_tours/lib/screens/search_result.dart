@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rz_tours/utils/constants.dart';
 import 'package:rz_tours/utils/static_data.dart';
 import 'package:rz_tours/widgets/Trips_card.dart';
+import 'package:rz_tours/widgets/drawer.dart';
 
 class SearchResult extends StatelessWidget {
   @override
@@ -10,6 +11,7 @@ class SearchResult extends StatelessWidget {
       appBar: AppBar(
         title: Text("Search Results"),
       ),
+      drawer: DrawerWidget(),
       body: SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 16.0),

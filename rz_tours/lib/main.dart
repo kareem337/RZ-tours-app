@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rz_tours/screens/Trips_home.dart';
 import 'package:rz_tours/screens/home.dart';
 import 'package:rz_tours/screens/sign_in.dart';
 import 'package:rz_tours/utils/constants.dart';
@@ -26,7 +27,8 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
         textTheme: GoogleFonts.poppinsTextTheme(),
       ),
-      home: SignIn(),
+    
+     home: SignIn(),
     ),
     );
   }

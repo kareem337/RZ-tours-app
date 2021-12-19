@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rz_tours/models/Trips.dart';
+import 'package:rz_tours/screens/product_view.dart';
+import 'package:rz_tours/screens/search_result.dart';
 import 'package:rz_tours/utils/constants.dart';
+import 'package:rz_tours/utils/helper.dart';
 
 class TripCard extends StatelessWidget {
   final Trip trip;
@@ -13,20 +16,28 @@ class TripCard extends StatelessWidget {
       child: Column(
         children: [
           Expanded(
+            child:InkWell(
+            onTap: () {
+              Helper.nextScreen(context,CartScreen());
+            },
             child: Stack(
               clipBehavior: Clip.none,
+              
               children: [
                 Container(
+      
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(18.0),
                     image: DecorationImage(
                       fit: BoxFit.cover,
                       image: AssetImage(
                         trip.imagePath,
+                        
                       ),
                     ),
                   ),
                 ),
+            
                 Positioned(
                   top: 10.0,
                   right: 10.0,
@@ -39,11 +50,13 @@ class TripCard extends StatelessWidget {
                         shape: BoxShape.circle,
                         color: Colors.white,
                       ),
-                      child: Icon(
+                    child: Icon(
                         Icons.favorite,
                         color: this.trip.liked
                             ? Color.fromRGBO(255, 136, 0, 1)
                             : Color(0xFFC4C4C4),
+            
+                        
                       ),
                     ),
                   ),
@@ -64,9 +77,9 @@ class TripCard extends StatelessWidget {
                       child: Text(
                         this.trip.Trip_Types == Trips.IN_CAIRO
                             ? "In Cairo"
-                            : "Outside Cairo",
+                            : "Outside",
                         style: TextStyle(
-                          fontSize: 8.0,
+                          fontSize: 10.0,
                           color: Colors.white,
                         ),
                       ),
@@ -75,6 +88,7 @@ class TripCard extends StatelessWidget {
                 )
               ],
             ),
+          ),
           ),
           Container(
             padding: EdgeInsets.symmetric(vertical: 10.0),
