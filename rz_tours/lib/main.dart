@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rz_tours/screens/home.dart';
+import 'package:rz_tours/screens/sign_in.dart';
 import 'package:rz_tours/utils/constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
         textTheme: GoogleFonts.poppinsTextTheme(),
       ),
-      home: Home(),
+      home: SignIn(),
     ),
     );
   }

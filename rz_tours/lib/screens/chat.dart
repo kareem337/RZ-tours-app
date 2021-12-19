@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:rz_tours/widgets/bottom_bar.dart';
+import 'package:rz_tours/widgets/custom_app_bar.dart';
+import 'package:rz_tours/widgets/drawer.dart';
 
 class Chat extends StatefulWidget {
   const Chat({Key? key}) : super(key: key);
@@ -11,65 +14,11 @@ class _ChatState extends State<Chat> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        automaticallyImplyLeading: false,
-        backgroundColor: Colors.white,
-        flexibleSpace: SafeArea(
-          child: Container(
-            padding: EdgeInsets.only(right: 16),
-            child: Row(
-              children: <Widget>[
-                IconButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: Icon(
-                    Icons.arrow_back,
-                    color: Colors.black,
-                  ),
-                ),
-                SizedBox(
-                  width: 2,
-                ),
-                CircleAvatar(
-                  backgroundImage: NetworkImage(
-                      "<https://randomuser.me/api/portraits/men/5.jpg>"),
-                  maxRadius: 20,
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text(
-                        "Name",
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w600),
-                      ),
-                      SizedBox(
-                        height: 6,
-                      ),
-                      Text(
-                        "Online",
-                        style: TextStyle(
-                            color: Colors.grey.shade600, fontSize: 13),
-                      ),
-                    ],
-                  ),
-                ),
-                Icon(
-                  Icons.settings,
-                  color: Colors.black54,
-                ),
-              ],
-            ),
-          ),
-        ),
+                appBar: PreferredSize(
+        preferredSize: Size.fromHeight(50.0),
+        child: CustomAppBar('Admin'),
       ),
+     drawer: DrawerWidget(),
       body: Container(
         child: Align(
           alignment: Alignment.bottomLeft,
@@ -86,7 +35,7 @@ class _ChatState extends State<Chat> {
                     height: 30,
                     width: 30,
                     decoration: BoxDecoration(
-                      color: Colors.lightBlue,
+                      color: Colors.amber,
                       borderRadius: BorderRadius.circular(30),
                     ),
                     child: Icon(
@@ -119,7 +68,7 @@ class _ChatState extends State<Chat> {
                     color: Colors.white,
                     size: 18,
                   ),
-                  backgroundColor: Colors.blue,
+                  backgroundColor: Colors.amber,
                   elevation: 0,
                 ),
               ],

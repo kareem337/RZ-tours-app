@@ -21,15 +21,15 @@ class DrawerWidget extends StatelessWidget {
             accountEmail: Text(
               'kareem@gmail.com',
               style: TextStyle(
-                color: Colors.blue,
+                color: Colors.white,
               ),
             ),
             accountName: Text(
               'Kareem Yasser',
-              style: TextStyle(color: Colors.blue, fontSize: 24.0),
+              style: TextStyle(color: Colors.white, fontSize: 24.0),
             ),
             decoration: BoxDecoration(
-              color: Colors.black87,
+              color: Colors.amber,
             ),
           ),
           ListTile(
@@ -73,20 +73,20 @@ class DrawerWidget extends StatelessWidget {
             onTap: () {Helper.nextScreen(context, Trips_home());},
           ),
           ListTile(
-            leading: const Icon(Icons.mobile_friendly),
-            title: const Text(
-              'ContactUs',
-              style: TextStyle(fontSize: 24.0),
-            ),
-            onTap: () {Helper.nextScreen(context, Chat());},
-          ),
-          ListTile(
             leading: const Icon(Icons.info),
             title: const Text(
               'AboutUs',
               style: TextStyle(fontSize: 24.0),
             ),
             onTap: () {},
+          ),
+                    ListTile(
+            leading: const Icon(Icons.logout),
+            title: const Text(
+              'Log out',
+              style: TextStyle(fontSize: 24.0),
+            ),
+            onTap: () {Helper.nextScreen(context, Home());},
           ),
         ],
       ),

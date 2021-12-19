@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rz_tours/screens/forget_password.dart';
+import 'package:rz_tours/screens/sign_in.dart';
+import 'package:rz_tours/utils/helper.dart';
 import 'package:rz_tours/validations/validations_functions.dart';
+import 'package:rz_tours/widgets/custom_app_bar.dart';
 import 'package:rz_tours/widgets/drawer.dart';
 
 class SignUp extends StatefulWidget {
@@ -21,8 +24,10 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("RZ tours ")),
-        drawer: DrawerWidget(),
+                        appBar: PreferredSize(
+        preferredSize: Size.fromHeight(50.0),
+        child: CustomAppBar('Sign Up'),
+      ),
         body: ListView(
           children: [
             Form(
@@ -33,7 +38,7 @@ class _SignUpState extends State<SignUp> {
                 child: Column(
                   children: [
                     SizedBox(
-                      height: 150,
+                      height: 30,
                     ),
                     Text(
                       "RZ Tours",
@@ -130,8 +135,9 @@ class _SignUpState extends State<SignUp> {
                           // If the form is valid, display a snackbar. In the real world,
                           // you'd often call a server or save the information in a database.
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('Sign Up Succeffuly')),
+                            SnackBar(content: Text('Sign Up Succeffuly. PLease Sign In Now.')),
                           );
+                          Helper.nextScreen(context, SignIn());
                         }
                       },
                       child: Text(
@@ -145,7 +151,7 @@ class _SignUpState extends State<SignUp> {
                     SizedBox(height: 10),
                     Row(
                       children: [
-                        SizedBox(width: 40),
+                        SizedBox(width: 20),
                         Text(
                           "Already have an account?",
                           style: TextStyle(
@@ -153,7 +159,7 @@ class _SignUpState extends State<SignUp> {
                         ),
                         TextButton(
                           onPressed: () {
-                            // Respond to button press
+                             Helper.nextScreen(context, SignIn());
                           },
                           child: Text(
                             "LogIn",
