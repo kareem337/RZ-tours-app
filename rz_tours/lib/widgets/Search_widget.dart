@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class InputWidget extends StatelessWidget {
+class SearchWidget extends StatelessWidget {
   final String hintText;
   final IconData prefixIcon;
   final double height;
-  InputWidget({required this.hintText, required this.prefixIcon, this.height = 53.0});
+  SearchWidget({required this.hintText, required this.prefixIcon, this.height = 53.0});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,7 +24,7 @@ class InputWidget extends StatelessWidget {
               ? null
               : Icon(
                   this.prefixIcon,
-                  color: Color.fromRGBO(105, 108, 121, 1),
+                  color: Color.fromRGBO(252,196,38, 1),
                 ),
           enabledBorder: InputBorder.none,
           focusedBorder: InputBorder.none,

@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:rz_tours/screens/filters.dart';
+import 'package:rz_tours/screens/search_result.dart';
 import 'package:rz_tours/utils/constants.dart';
 import 'package:rz_tours/utils/helper.dart';
 import 'package:rz_tours/utils/static_data.dart';
-import 'package:rz_tours/widgets/bottom_bar.dart';
 import 'package:rz_tours/widgets/custom_app_bar.dart';
 import 'package:rz_tours/widgets/drawer.dart';
-import 'package:rz_tours/widgets/input_widget.dart';
+import 'package:rz_tours/widgets/Search_widget.dart';
 import 'package:rz_tours/widgets/Trips_card.dart';
 
 class Trips_home extends StatelessWidget {
@@ -50,17 +49,18 @@ class Trips_home extends StatelessWidget {
                 Row(
                   children: [
                     Expanded(
-                      child: InputWidget(
-                          height: 44.0,
-                          hintText: "Search",
-                          prefixIcon: Icons.search),
+                      child: SearchWidget(
+                        height: 44.0,
+                        hintText: "Search For your Next Trip",
+                        prefixIcon: Icons.search,
+                      ),
                     ),
                     SizedBox(
                       width: 10.0,
                     ),
                     Container(
                       height: ScreenUtil().setHeight(44.0),
-                      child: TextButton(
+                      child: ElevatedButton(
                         style: ButtonStyle(
                             shape: MaterialStateProperty.all(
                               RoundedRectangleBorder(
@@ -76,19 +76,19 @@ class Trips_home extends StatelessWidget {
                               ),
                             )),
                         onPressed: () {
-                          Helper.nextScreen(context, Filters());
+                          Helper.nextScreen(context,SearchResult());
                         },
                         child: Row(
                           children: [
                             Icon(
-                              Icons.settings,
+                              Icons.search,
                               color: Colors.white,
                             ),
                             SizedBox(
                               width: 10.0,
                             ),
                             Text(
-                              "Filters",
+                              "Search",
                               style: TextStyle(
                                 color: Colors.white,
                               ),
