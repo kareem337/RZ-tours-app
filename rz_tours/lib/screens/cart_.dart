@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:rz_tours/screens/home.dart';
+import 'package:rz_tours/utils/helper.dart';
 import 'package:rz_tours/widgets/custom_app_bar.dart';
 import 'package:rz_tours/widgets/cart.dart';
 
@@ -21,13 +23,6 @@ class _CartViewState extends State<CartView> {
         padding: const EdgeInsets.all(16.0),
         children: [
           CartItem('Tahrir museum.jpg', 'Egyptain Museum ', 10),
-          CartItem('Coptic Museum.jpg', 'Coptic Museum', 10),
-          CartItem('Abdeen.jpg', 'Abdeen', 10),
-          CartItem('El baron Palace.jpg', 'El Baron Palace', 10),
-          CartItem('Alex.jpg', 'Alex', 10),
-          CartItem('luxor.jpg', 'Luxor', 10),
-          CartItem('abu simple.jpg', 'Aswan', 10),
-          CartItem('dahab.jpg', 'Dahab', 10),
           SizedBox(height: 20.0),
           Divider(),
           Row(
@@ -41,7 +36,7 @@ class _CartViewState extends State<CartView> {
                 ),
               ),
               Text(
-                '\$',
+                '20 \$',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 16.0,
@@ -62,8 +57,13 @@ class _CartViewState extends State<CartView> {
           Spacer(),
           SizedBox(height: 10.0),
           MaterialButton(
-            onPressed: () {},
-            color: Colors.black,
+            onPressed: () {
+              Helper.nextScreen(context, Home());
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text('Purchased Successfully')),
+              );
+            },
+            color: Colors.amber,
             height: 50.0,
             minWidth: double.infinity,
             shape: RoundedRectangleBorder(

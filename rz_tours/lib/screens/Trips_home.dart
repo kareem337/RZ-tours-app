@@ -51,9 +51,10 @@ class Trips_home extends StatelessWidget {
                   children: [
                     Expanded(
                       child: InputWidget(
-                          height: 44.0,
-                          hintText: "Search",
-                          prefixIcon: Icons.search),
+                        height: 44.0,
+                        hintText: "Search",
+                        prefixIcon: Icons.search,
+                      ),
                     ),
                     SizedBox(
                       width: 10.0,
@@ -81,7 +82,7 @@ class Trips_home extends StatelessWidget {
                         child: Row(
                           children: [
                             Icon(
-                              Icons.settings,
+                              Icons.online_prediction_sharp,
                               color: Colors.white,
                             ),
                             SizedBox(

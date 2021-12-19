@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:rz_tours/screens/home.dart';
+import 'package:rz_tours/models/cart_model.dart';
+import 'package:rz_tours/screens/cart_.dart';
+import 'package:rz_tours/utils/helper.dart';
 import 'package:rz_tours/widgets/app_bar.dart';
 import 'package:rz_tours/widgets/custom_app_bar.dart';
 import 'package:rz_tours/widgets/drawer.dart';
@@ -39,8 +41,7 @@ class CartScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 CircleAvatar(
-                  backgroundImage: NetworkImage(
-                      "https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.egypttoday.com%2Fsiteimages%2FLarg%2F202104060425572557.jpg&imgrefurl=https%3A%2F%2Fwww.egypttoday.com%2FArticle%2F4%2F100589%2FEgyptian-Museum-in-Tahrir-is-able-to-thrive-as-new&tbnid=ktK8yDmndshgdM&vet=12ahUKEwjLrvXPpan0AhU3gc4BHY6pDR4QMygCegUIARDTAQ..i&docid=9bd6BauujduoxM&w=628&h=378&q=egyptian%20museum&ved=2ahUKEwjLrvXPpan0AhU3gc4BHY6pDR4QMygCegUIARDTAQ"),
+                  backgroundImage: AssetImage("assets/Trip-1.png"),
                   radius: 100,
                   // child: Image.network(
                   //   height: 150,
@@ -129,12 +130,16 @@ class CartScreen extends StatelessWidget {
                   height: 50,
                 ),
                 ElevatedButton(
-                    onPressed: () => Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Home())),
+                    onPressed: () {
+                       Helper.nextScreen(context, CartView());
+
+                    },
+                    
                     child: Text(
                       "Go To Payement",
                       style: TextStyle(
                         fontSize: 16,
+                        
                       ),
                     ))
               ],

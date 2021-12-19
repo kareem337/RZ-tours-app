@@ -27,135 +27,139 @@ class _EditProfileState extends State<EditProfile> {
       ),
       drawer: DrawerWidget(),
        body: SafeArea(
-         child: Form(
-          key: _editFormKey,
-          child: Container(
-            padding: EdgeInsets.all(10),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                InkWell(
-                  child: CircleAvatar(
-                    radius: 50,
-                    backgroundImage: NetworkImage(
-                        "https://pyxis.nymag.com/v1/imgs/6ca/c27/d480ad69b8be1bff0dc381baefb2d41ac0-30-tim-cook.2x.h473.w710.jpg"),
+         child: ListView(
+           children: [
+             SizedBox(height: 10,),
+             Form(
+            key: _editFormKey,
+            child: Container(
+              padding: EdgeInsets.all(10),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  InkWell(
+                    child: CircleAvatar(
+                      radius: 50,
+                      backgroundImage: NetworkImage(
+                          "https://pyxis.nymag.com/v1/imgs/6ca/c27/d480ad69b8be1bff0dc381baefb2d41ac0-30-tim-cook.2x.h473.w710.jpg"),
+                    ),
                   ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                TextFormField(
-                  validator: (value) {
-                    if (!isNull(value!)) return "Text Is Empty";
-                    if (!checkString(value)) return "Please Enter Letters";
-                    if (!isLength(value)) return "Please Enter 3 Letters Or More";
-                    return null;
-                  },
-                  controller: _firstName,
-                  decoration: InputDecoration(
-                      hintText: "Enter First Name",
-                      labelText: "Kareem Yasser",
-                      icon: Icon(Icons.person),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      )),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                TextFormField(
-                  validator: (value) {
-                    if (!isNull(value!)) return "Text Is Empty";
-                    if (!checkString(value)) return "Please Enter Letters";
-                    if (!isLength(value)) return "Please Enter 3 Letters Or More";
-                    return null;
-                  },
-                  controller: _lastName,
-                  decoration: InputDecoration(
-                      hintText: "Enter Last Name",
-                      labelText: "Yasser",
-                      icon: Icon(Icons.person),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      )),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                TextFormField(
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return "Please Enter Your E-mail";
-                    }
-                    if (!isEmail(value)) {
-                      return "Ivalid Email Please Re-Enter The Email ";
-                    }
-                    return null;
-                  },
-                  controller: _email,
-                  decoration: InputDecoration(
-                      hintText: "Enter Email Address",
-                      labelText: "Kareem@gmail.com",
-                      icon: Icon(Icons.email),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      )),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                TextFormField(
-                   validator: (value) {
-                      if (!isNull(value!)) {
-                        return "Password Is Empty";
+                  SizedBox(
+                    height: 20,
+                  ),
+                  TextFormField(
+                    validator: (value) {
+                      if (!isNull(value!)) return "Text Is Empty";
+                      if (!checkString(value)) return "Please Enter Letters";
+                      if (!isLength(value)) return "Please Enter 3 Letters Or More";
+                      return null;
+                    },
+                    controller: _firstName,
+                    decoration: InputDecoration(
+                        hintText: "Enter First Name",
+                        labelText: "Kareem Yasser",
+                        icon: Icon(Icons.person),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        )),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  TextFormField(
+                    validator: (value) {
+                      if (!isNull(value!)) return "Text Is Empty";
+                      if (!checkString(value)) return "Please Enter Letters";
+                      if (!isLength(value)) return "Please Enter 3 Letters Or More";
+                      return null;
+                    },
+                    controller: _lastName,
+                    decoration: InputDecoration(
+                        hintText: "Enter Last Name",
+                        labelText: "Yasser",
+                        icon: Icon(Icons.person),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        )),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  TextFormField(
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return "Please Enter Your E-mail";
                       }
-                      if (!isPassword(value)) {
-                        return "Invalid Password";
+                      if (!isEmail(value)) {
+                        return "Ivalid Email Please Re-Enter The Email ";
                       }
                       return null;
                     },
-                  controller: _password,
-                  decoration: InputDecoration(
-                      hintText: "one small letter & one capital & >6 characters ",
-                      labelText: "*********",
-                      icon: Icon(Icons.lock),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      )),
-                  obscureText: true,
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                ElevatedButton(
-                    onPressed: () {
-                      if (_editFormKey.currentState!.validate()) {
-                        // If the form is valid, display a snackbar. In the real world,
-                        // you'd often call a server or save the information in a database.
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('Edited Succeffuly')),
-                        );
-                      }
-                    },
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(
-                              Constants.amberColor,
-                            ),
-                      minimumSize: MaterialStateProperty.all(Size(100, 50))
-                    ), 
-                    
-                    child: Text(
-                      "Edit",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 22,
-                      ),
-                    ))
-              ],
+                    controller: _email,
+                    decoration: InputDecoration(
+                        hintText: "Enter Email Address",
+                        labelText: "Kareem@gmail.com",
+                        icon: Icon(Icons.email),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        )),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  TextFormField(
+                     validator: (value) {
+                        if (!isNull(value!)) {
+                          return "Password Is Empty";
+                        }
+                        if (!isPassword(value)) {
+                          return "Invalid Password";
+                        }
+                        return null;
+                      },
+                    controller: _password,
+                    decoration: InputDecoration(
+                        hintText: "one small letter & one capital & >6 characters ",
+                        labelText: "*********",
+                        icon: Icon(Icons.lock),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        )),
+                    obscureText: true,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  ElevatedButton(
+                      onPressed: () {
+                        if (_editFormKey.currentState!.validate()) {
+                          // If the form is valid, display a snackbar. In the real world,
+                          // you'd often call a server or save the information in a database.
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Edited Succeffuly')),
+                          );
+                        }
+                      },
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(
+                                Constants.amberColor,
+                              ),
+                        minimumSize: MaterialStateProperty.all(Size(100, 50))
+                      ), 
+                      
+                      child: Text(
+                        "Edit",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 22,
+                        ),
+                      ))
+                ],
+              ),
             ),
-          ),
-             ),
+               ),]
+         ),
        ),
     );
   }
