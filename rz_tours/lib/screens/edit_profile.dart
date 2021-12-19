@@ -117,7 +117,7 @@ class _EditProfileState extends State<EditProfile> {
                     },
                   controller: _password,
                   decoration: InputDecoration(
-                      hintText: "one small letter & one capital & >6 characters ",
+                      hintText: "one small letter & one capital & >5 characters ",
                       labelText: "*********",
                       icon: Icon(Icons.lock),
                       border: OutlineInputBorder(

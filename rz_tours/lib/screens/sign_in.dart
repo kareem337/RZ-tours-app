@@ -80,7 +80,7 @@ class _SignInState extends State<SignIn> {
                       border: OutlineInputBorder(),
                       labelText: 'Password',
                       hintText:
-                          "one small letter & one capital & >6 characters "),
+                          "one small letter & one capital & >5 characters "),
                 ),
                 SizedBox(
                   height: 10,
