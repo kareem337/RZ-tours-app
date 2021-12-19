@@ -13,7 +13,7 @@ class CartScreen extends StatelessWidget {
       appBar: PreferredSize(
         //bet7aded size lel appbar
         preferredSize: Size.fromHeight(50.0),
-        child: CustomAppBar('Products'),
+        child: CustomAppBar('Product'),
       ),
       drawer: DrawerWidget(),
       body: Container(

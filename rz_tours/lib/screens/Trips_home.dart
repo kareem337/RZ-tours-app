@@ -5,6 +5,7 @@ import 'package:rz_tours/utils/constants.dart';
 import 'package:rz_tours/utils/helper.dart';
 import 'package:rz_tours/utils/static_data.dart';
 import 'package:rz_tours/widgets/bottom_bar.dart';
+import 'package:rz_tours/widgets/custom_app_bar.dart';
 import 'package:rz_tours/widgets/drawer.dart';
 import 'package:rz_tours/widgets/input_widget.dart';
 import 'package:rz_tours/widgets/Trips_card.dart';
@@ -13,9 +14,11 @@ class Trips_home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(50.0),
+        child: CustomAppBar('Products'),
+      ),
       drawer: DrawerWidget(),
-      bottomNavigationBar: BottomBar(),
       body: SingleChildScrollView(
         child: SafeArea(
           child: Container(
@@ -48,14 +51,9 @@ class Trips_home extends StatelessWidget {
                   children: [
                     Expanded(
                       child: InputWidget(
-                        height: 44.0,
-                        hintText: "Search",
-<<<<<<< Updated upstream
-                        prefixIcon: Icons.search
-=======
-                        prefixIcon: Icons.search,
->>>>>>> Stashed changes
-                      ),
+                          height: 44.0,
+                          hintText: "Search",
+                          prefixIcon: Icons.search),
                     ),
                     SizedBox(
                       width: 10.0,
@@ -70,7 +68,7 @@ class Trips_home extends StatelessWidget {
                               ),
                             ),
                             backgroundColor: MaterialStateProperty.all(
-                              Constants.primaryColor,
+                              Constants.amberColor,
                             ),
                             padding: MaterialStateProperty.all(
                               EdgeInsets.symmetric(

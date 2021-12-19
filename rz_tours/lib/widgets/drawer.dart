@@ -21,12 +21,12 @@ class DrawerWidget extends StatelessWidget {
             accountEmail: Text(
               'kareem@gmail.com',
               style: TextStyle(
-                color: Colors.blue,
+                color: Colors.white,
               ),
             ),
             accountName: Text(
               'Kareem Yasser',
-              style: TextStyle(color: Colors.blue, fontSize: 24.0),
+              style: TextStyle(color: Colors.white, fontSize: 24.0),
             ),
             decoration: BoxDecoration(
               color: Colors.black87,
@@ -73,7 +73,7 @@ class DrawerWidget extends StatelessWidget {
             onTap: () {Helper.nextScreen(context, Trips_home());},
           ),
           ListTile(
-            leading: const Icon(Icons.mobile_friendly),
+            leading: const Icon(Icons.contact_support),
             title: const Text(
               'ContactUs',
               style: TextStyle(fontSize: 24.0),

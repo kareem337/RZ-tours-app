@@ -8,13 +8,15 @@ class CustomAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      title: Text(
-        this._title,
+    return SafeArea(
+      child: AppBar(
+        title: Text(
+          this._title,
+        ),
+        backgroundColor: Colors.amber,
+        elevation: 0.0,
+        centerTitle: true,
       ),
-      backgroundColor: Colors.amber,
-      elevation: 0.0,
-      centerTitle: true,
     );
   }
 }

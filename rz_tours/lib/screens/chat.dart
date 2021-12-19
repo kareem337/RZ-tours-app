@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rz_tours/widgets/bottom_bar.dart';
+import 'package:rz_tours/widgets/drawer.dart';
 
 class Chat extends StatefulWidget {
   const Chat({Key? key}) : super(key: key);
@@ -15,21 +16,12 @@ class _ChatState extends State<Chat> {
       appBar: AppBar(
         elevation: 0,
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.amber,
         flexibleSpace: SafeArea(
           child: Container(
             padding: EdgeInsets.only(right: 16),
             child: Row(
               children: <Widget>[
-                IconButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: Icon(
-                    Icons.arrow_back,
-                    color: Colors.black,
-                  ),
-                ),
                 SizedBox(
                   width: 2,
                 ),
@@ -42,7 +34,7 @@ class _ChatState extends State<Chat> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text(
-                        "Name",
+                        "Admin",
                         style: TextStyle(
                             fontSize: 16, fontWeight: FontWeight.w600),
                       ),
@@ -57,16 +49,12 @@ class _ChatState extends State<Chat> {
                     ],
                   ),
                 ),
-                Icon(
-                  Icons.settings,
-                  color: Colors.black54,
-                ),
               ],
             ),
           ),
         ),
       ),
-      bottomNavigationBar: BottomBar(),
+      drawer: DrawerWidget(),
       body: Container(
         child: Align(
           alignment: Alignment.bottomLeft,
@@ -83,7 +71,7 @@ class _ChatState extends State<Chat> {
                     height: 30,
                     width: 30,
                     decoration: BoxDecoration(
-                      color: Colors.lightBlue,
+                      color: Colors.amber,
                       borderRadius: BorderRadius.circular(30),
                     ),
                     child: Icon(
@@ -116,7 +104,7 @@ class _ChatState extends State<Chat> {
                     color: Colors.white,
                     size: 18,
                   ),
-                  backgroundColor: Colors.blue,
+                  backgroundColor: Colors.amber,
                   elevation: 0,
                 ),
               ],

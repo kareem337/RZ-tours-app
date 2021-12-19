@@ -3,6 +3,7 @@ import 'package:rz_tours/screens/Trips_home.dart';
 import 'package:rz_tours/screens/chat.dart';
 import 'package:rz_tours/screens/edit_profile.dart';
 import 'package:rz_tours/screens/home.dart';
+import 'package:rz_tours/screens/home_screen.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 class BottomBar extends StatefulWidget {
@@ -16,7 +17,7 @@ class _BottomBarState extends State<BottomBar> {
 
   int _index = 0;
   List<Widget> screens = [
-    Home(),
+    HomeScreen(),
     Chat(),
     Trips_home(),
     EditProfile(),
@@ -38,32 +39,32 @@ class _BottomBarState extends State<BottomBar> {
             SalomonBottomBarItem(
               icon: const Icon(Icons.home),
               title: Text("Home"),
-              selectedColor: Colors.blue,
+              selectedColor: Colors.amber,
             ),
 
-            /// Likes
+            /// Contact Us
             SalomonBottomBarItem(
-              icon: Icon(Icons.favorite_border),
+              icon: Icon(Icons.contact_support),
               title: Text("Contact Us"),
-              selectedColor: Colors.blue,
+              selectedColor: Colors.amber,
             ),
 
-            /// Search
+            /// About Us
             SalomonBottomBarItem(
-              icon: Icon(Icons.search),
+              icon: Icon(Icons.info),
               title: Text("About Us"),
-              selectedColor: Colors.blue,
+              selectedColor: Colors.amber,
             ),
 
             /// Profile
             SalomonBottomBarItem(
               icon: Icon(Icons.person),
               title: Text("Profile"),
-              selectedColor: Colors.blue,
+              selectedColor: Colors.amber,
             ),
           ],
         ),
-        body: screens[_index],
+        body: SafeArea(child:  screens[_index],)
         );
   }
 }
