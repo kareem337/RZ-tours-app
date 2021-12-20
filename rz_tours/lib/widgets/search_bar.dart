@@ -31,7 +31,7 @@ class SearchBar extends StatelessWidget {
             ),
             borderRadius: BorderRadius.circular(5.0),
           ),
-          hintText: "E.g: New York, United States",
+          hintText: "E.g: Egyptian Museum, Cairo",
           prefixIcon: Icon(
             Icons.location_on,
             color: Colors.blueGrey[300],
