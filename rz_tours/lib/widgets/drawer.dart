@@ -29,7 +29,7 @@ class DrawerWidget extends StatelessWidget {
               style: TextStyle(color: Colors.white, fontSize: 24.0),
             ),
             decoration: BoxDecoration(
-              color: Colors.black87,
+              color: Colors.amber,
             ),
           ),
           ListTile(
@@ -79,6 +79,14 @@ class DrawerWidget extends StatelessWidget {
               style: TextStyle(fontSize: 24.0),
             ),
             onTap: () {},
+          ),
+                    ListTile(
+            leading: const Icon(Icons.logout),
+            title: const Text(
+              'Log out',
+              style: TextStyle(fontSize: 24.0),
+            ),
+            onTap: () {Helper.nextScreen(context, Home());},
           ),
         ],
       ),

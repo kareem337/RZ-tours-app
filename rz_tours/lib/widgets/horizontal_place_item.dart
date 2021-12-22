@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:rz_tours/screens/product_view.dart';
+import 'package:rz_tours/utils/helper.dart';
 
 
 class HorizontalPlaceItem extends StatelessWidget {
@@ -34,7 +36,6 @@ class HorizontalPlaceItem extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     fontSize: 15.0,
                   ),
-                  maxLines: 2,
                   textAlign: TextAlign.left,
                 ),
               ),
@@ -48,7 +49,6 @@ class HorizontalPlaceItem extends StatelessWidget {
                     fontSize: 13.0,
                     color: Colors.blueGrey[300],
                   ),
-                  maxLines: 1,
                   textAlign: TextAlign.left,
                 ),
               ),
@@ -56,6 +56,7 @@ class HorizontalPlaceItem extends StatelessWidget {
           ),
         ),
         onTap: () {
+          Helper.nextScreen(context, CartScreen());
 
         },
       ),

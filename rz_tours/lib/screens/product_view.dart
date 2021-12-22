@@ -1,11 +1,33 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:rz_tours/screens/home.dart';
+import 'package:rz_tours/models/cart_model.dart';
+import 'package:rz_tours/screens/cart_.dart';
+import 'package:rz_tours/utils/helper.dart';
 import 'package:rz_tours/widgets/app_bar.dart';
 import 'package:rz_tours/widgets/custom_app_bar.dart';
 import 'package:rz_tours/widgets/drawer.dart';
 
-class CartScreen extends StatelessWidget {
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+
+class CartScreen extends StatefulWidget {
+  @override
+  _CartScreenState createState() => _CartScreenState();
+}
+
+class _CartScreenState extends State<CartScreen> {
+  TimeOfDay _time = TimeOfDay(hour: 7, minute: 15);
+
+  void _selectTime() async {
+    final TimeOfDay? newTime = await showTimePicker(
+      context: context,
+      initialTime: _time,
+    );
+    if (newTime != null) {
+      setState(() {
+        _time = newTime;
+      });
+    }}
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -98,10 +120,11 @@ class CartScreen extends StatelessWidget {
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                     )),
                     Expanded(
-                      child: Text(
-                        "11:00 AM",
-                        style: TextStyle(fontSize: 16, fontFamily: "italic"),
-                      ),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(primary: Colors.amber),
+              onPressed: _selectTime,
+              child: Text('SELECT TIME', style: TextStyle(color: Colors.white),),
+            ),
                     )
                   ],
                 ),
@@ -117,23 +140,41 @@ class CartScreen extends StatelessWidget {
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                     )),
                     Expanded(
-                      child: Text(
-                        "1/12/2021",
-                        style: TextStyle(fontSize: 16, fontFamily: "italic"),
-                      ),
-                    )
+                        child: ElevatedButton(
+                            onPressed: () {
+                              DatePicker.showDatePicker(context,
+                                  showTitleActions: true,
+                                  minTime: DateTime(2021, 12, 21),
+                                  maxTime: DateTime(2022, 2, 2),
+                                  onChanged: (date) {
+                                print('change $date');
+                              }, onConfirm: (date) {
+                                print('confirm $date');
+                              },
+                                  currentTime: DateTime.now());
+                                  //locale: LocaleType.zh);
+                            },
+                            style: ElevatedButton.styleFrom(primary: Colors.amber),
+                            child: Text(
+                              'SELECT DATE',
+                              style: TextStyle(color: Colors.white),
+                            )))
                   ],
                 ),
                 SizedBox(
                   height: 50,
                 ),
                 ElevatedButton(
-                    onPressed: () => Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Home())),
+                    onPressed: () {
+                      Helper.nextScreen(context, CartView());
+                    },
+                    style: ElevatedButton.styleFrom(primary: Colors.amber),
                     child: Text(
                       "Go To Payement",
                       style: TextStyle(
                         fontSize: 16,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold
                       ),
                     ))
               ],

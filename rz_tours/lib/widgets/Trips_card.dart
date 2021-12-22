@@ -2,13 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rz_tours/models/Trips.dart';
 import 'package:rz_tours/screens/product_view.dart';
-import 'package:rz_tours/screens/cart_.dart';
+import 'package:rz_tours/screens/search_result.dart';
 import 'package:rz_tours/utils/constants.dart';
 import 'package:rz_tours/utils/helper.dart';
 
-class TripCard extends StatelessWidget {
+class TripCard extends StatefulWidget {
   final Trip trip;
+
   TripCard({required this.trip});
+
+  @override
+  _TripCardState createState() => _TripCardState();
+}
+
+class _TripCardState extends State<TripCard> {
+  bool flag = false;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,25 +25,40 @@ class TripCard extends StatelessWidget {
       child: Column(
         children: [
           Expanded(
+            child:InkWell(
+            onTap: () {
+              Helper.nextScreen(context,CartScreen());
+            },
             child: Stack(
               clipBehavior: Clip.none,
+              
               children: [
                 Container(
+      
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(18.0),
                     image: DecorationImage(
                       fit: BoxFit.cover,
                       image: AssetImage(
-                        trip.imagePath,
+                        widget.trip.imagePath,
+                        
                       ),
                     ),
                   ),
                 ),
+            
                 Positioned(
                   top: 10.0,
                   right: 10.0,
                   child: InkWell(
-                    onTap: () { Helper.nextScreen(context, CartScreen());},
+                    onTap: () {
+                      setState(() {
+                        if(flag)
+                        flag=false;
+                        else flag = true;
+                      });
+                      
+                    },
                     child: Container(
                       width: 45.0,
                       height: 45.0,
@@ -42,11 +66,13 @@ class TripCard extends StatelessWidget {
                         shape: BoxShape.circle,
                         color: Colors.white,
                       ),
-                      child: Icon(
-                        Icons.visibility,
-                        color: this.trip.liked
+                    child: Icon(
+                        Icons.favorite,
+                        color: flag
                             ? Color.fromRGBO(255, 136, 0, 1)
-                            : Color(0xFFC4C4C4),
+                            : Colors.grey,
+            
+                        
                       ),
                     ),
                   ),
@@ -59,17 +85,17 @@ class TripCard extends StatelessWidget {
                     height: 45.0,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: this.trip.Trip_Types == Trips.IN_CAIRO
+                      color: this.widget.trip.Trip_Types == Trips.IN_CAIRO
                           ? Constants.primaryColor
                           : Color.fromRGBO(255, 136, 0, 1),
                     ),
                     child: Center(
                       child: Text(
-                        this.trip.Trip_Types == Trips.IN_CAIRO
+                        this.widget.trip.Trip_Types == Trips.IN_CAIRO
                             ? "In Cairo"
-                            : "Outside Cairo",
+                            : "Outside",
                         style: TextStyle(
-                          fontSize: 8.0,
+                          fontSize: 10.0,
                           color: Colors.white,
                         ),
                       ),
@@ -78,6 +104,7 @@ class TripCard extends StatelessWidget {
                 )
               ],
             ),
+          ),
           ),
           Container(
             padding: EdgeInsets.symmetric(vertical: 10.0),
@@ -89,14 +116,14 @@ class TripCard extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Text(
-                        trip.museum_name,
+                        widget.trip.museum_name,
                         style: TextStyle(
                           fontSize: 17.0,
                         ),
                       ),
                     ),
                     Text(
-                      trip.Trip_price,
+                      widget.trip.Trip_price,
                       style: TextStyle(
                         fontSize: 17.0,
                         color: Constants.primaryColor,
@@ -108,7 +135,7 @@ class TripCard extends StatelessWidget {
                   height: 5.0,
                 ),
                 Text(
-                  trip.Trip_description,
+                  widget.trip.Trip_description,
                   style: TextStyle(
                     fontSize: 13.0,
                     color: Color(0xFF343434),
@@ -120,7 +147,7 @@ class TripCard extends StatelessWidget {
                 Row(
                   children: [
                     Icon(
-                      Icons.map,
+                      Icons.search_outlined,
                       size: 15.0,
                       color: Color.fromRGBO(255, 136, 0, 1),
                     ),
@@ -128,7 +155,7 @@ class TripCard extends StatelessWidget {
                       width: 5.0,
                     ),
                     Text(
-                      trip.Location,
+                      widget.trip.Location,
                       style: TextStyle(
                         fontSize: 13.0,
                         color: Color(0xFF343434),
