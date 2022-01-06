@@ -4,12 +4,14 @@ import 'package:rz_tours/screens/search_result.dart';
 import 'package:rz_tours/utils/constants.dart';
 import 'package:rz_tours/utils/helper.dart';
 import 'package:rz_tours/utils/static_data.dart';
+import 'package:rz_tours/widgets/Tickets_card.dart';
 import 'package:rz_tours/widgets/custom_app_bar.dart';
 import 'package:rz_tours/widgets/drawer.dart';
 import 'package:rz_tours/widgets/Search_widget.dart';
 import 'package:rz_tours/widgets/Trips_card.dart';
 
 class Trips_home extends StatelessWidget {
+  String View ="Trips" ;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -115,12 +117,13 @@ class Trips_home extends StatelessWidget {
                           ),
                           borderRadius: BorderRadius.circular(8.0),
                         ),
-                        child: Text(
-                          "Full Trips",
-                          style: TextStyle(
-                            color: Color.fromRGBO(255, 136, 0, 1),
-                          ),
-                        ),
+                       child:TextButton(
+                        style: TextButton.styleFrom(primary: Colors.black),
+                        onPressed: () {
+                          View ="Trips";
+                        },
+                       child: Text('Trips Tickets'),
+                       ),
                       ),
                     ),
                     SizedBox(
@@ -137,12 +140,13 @@ class Trips_home extends StatelessWidget {
                           ),
                           borderRadius: BorderRadius.circular(8.0),
                         ),
-                        child: Text(
-                          "Musuam Tickets",
-                          style: TextStyle(
-                            color: Color.fromRGBO(255, 136, 0, 1),
-                          ),
-                        ),
+                        child:TextButton(
+                        style: TextButton.styleFrom(primary: Colors.black),
+                        onPressed: () {
+                          View ="Musume";
+                        },
+                       child: Text('Musume Tickets'),
+                       ),
                       ),
                     )
                   ],
@@ -172,6 +176,7 @@ class Trips_home extends StatelessWidget {
                 SizedBox(
                   height: 25.0,
                 ),
+                if(View =="Trips")
                 ListView.separated(
                   separatorBuilder: (BuildContext context, int index) {
                     return SizedBox(
@@ -184,6 +189,24 @@ class Trips_home extends StatelessWidget {
                   itemBuilder: (BuildContext context, int index) {
                     return TripCard(
                       trip: StaticData.SomeTrips[index],
+
+                    );
+                  },
+                )
+                else
+                 ListView.separated(
+                  separatorBuilder: (BuildContext context, int index) {
+                    return SizedBox(
+                      height: 15.0,
+                    );
+                  },
+                  itemCount: StaticData.SomeTickets.length,
+                  physics: NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemBuilder: (BuildContext context, int index) {
+                    return TicketsCard(
+                      tickets: StaticData.SomeTickets[index],
+
                     );
                   },
                 )

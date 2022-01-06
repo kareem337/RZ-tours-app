@@ -7,16 +7,17 @@ import 'package:rz_tours/screens/search_result.dart';
 import 'package:rz_tours/utils/constants.dart';
 import 'package:rz_tours/utils/helper.dart';
 
-class TripCard extends StatefulWidget {
-  final Trip trip;
+class TicketsCard extends StatefulWidget {
+  final Tickets tickets;
 
-  TripCard({required this.trip});
+  TicketsCard({required this.tickets});
 
   @override
-  _TripCardState createState() => _TripCardState();
+ _TicketsCardState createState() => _TicketsCardState();
 }
 
-class _TripCardState extends State<TripCard> {
+
+class _TicketsCardState extends State<TicketsCard> {
   bool flag = false;
 
   @override
@@ -41,7 +42,7 @@ class _TripCardState extends State<TripCard> {
                     image: DecorationImage(
                       fit: BoxFit.cover,
                       image: AssetImage(
-                        widget.trip.imagePath,
+                        widget.tickets.imagePath,
                         
                       ),
                     ),
@@ -86,15 +87,11 @@ class _TripCardState extends State<TripCard> {
                     height: 45.0,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: this.widget.trip.Trip_Types == Trips.IN_CAIRO
-                          ? Constants.primaryColor
-                          : Color.fromRGBO(255, 136, 0, 1),
+                       color: Color.fromRGBO(255, 136, 0, 1),
                     ),
                     child: Center(
                       child: Text(
-                        this.widget.trip.Trip_Types == Trips.IN_CAIRO
-                            ? "In Cairo"
-                            : "Outside",
+                        this.widget.tickets.Open_time,
                         style: TextStyle(
                           fontSize: 10.0,
                           color: Colors.white,
@@ -117,14 +114,14 @@ class _TripCardState extends State<TripCard> {
                   children: [
                     Expanded(
                       child: Text(
-                        widget.trip.museum_name,
+                        widget.tickets.museum_name,
                         style: TextStyle(
                           fontSize: 17.0,
                         ),
                       ),
                     ),
                     Text(
-                      widget.trip.Trip_price,
+                      widget.tickets.Ticket_price,
                       style: TextStyle(
                         fontSize: 17.0,
                         color: Constants.primaryColor,
@@ -136,7 +133,7 @@ class _TripCardState extends State<TripCard> {
                   height: 5.0,
                 ),
                 Text(
-                  widget.trip.Trip_description,
+                  widget.tickets.Ticket_price,
                   style: TextStyle(
                     fontSize: 13.0,
                     color: Color(0xFF343434),
@@ -156,7 +153,7 @@ class _TripCardState extends State<TripCard> {
                       width: 5.0,
                     ),
                     Text(
-                      widget.trip.Location,
+                      widget.tickets.Location,
                       style: TextStyle(
                         fontSize: 13.0,
                         color: Color(0xFF343434),
