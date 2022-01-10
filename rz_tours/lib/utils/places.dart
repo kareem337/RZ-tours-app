@@ -2,7 +2,7 @@ List places = [
   {
     "name": "Abdeen Palace",
     "img": "assets/Abdeen.jpg",
-    "location": "Giza, Egypt",
+    "location": "Cairo, Egypt",
 
   },
   {
