@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:rz_tours/models/cart_model.dart';
+import 'package:rz_tours/models/product_model.dart';
 
 class CartItem extends StatefulWidget {
-  late String image;
-  late String name;
-  late double price;
-  CartItem(this.image, this.name, this.price);
-  
+  final Cart carts;
+  int index;
+  CartItem(this.carts, this.index);
 
   @override
   _CartItemState createState() => _CartItemState();
 }
-int counter=1;
+
+int counter = 1;
+
 class _CartItemState extends State<CartItem> {
-  
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -27,7 +28,8 @@ class _CartItemState extends State<CartItem> {
                 height: 200,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('assets/${this.widget.image}'),
+                    //${this.widget.image}
+                    image: AssetImage('assets/Trip-1.png'),
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -45,7 +47,8 @@ class _CartItemState extends State<CartItem> {
                     Container(
                       width: 150.0,
                       child: Text(
-                        '${this.widget.name}',
+                        //${this.widget.name}
+                        'ahmed amr',
                         style: TextStyle(),
                       ),
                     ),
@@ -62,7 +65,8 @@ class _CartItemState extends State<CartItem> {
                   ],
                 ),
                 Text(
-                  '${this.widget.price} L.E',
+                  //${this.widget.price}
+                  '11 L.E',
                   style: TextStyle(),
                 ),
                 Container(
@@ -73,9 +77,8 @@ class _CartItemState extends State<CartItem> {
                       IconButton(
                         onPressed: () {
                           setState(() {
-                            if(counter>1)
-                            {
-                            counter--;
+                            if (counter > 1) {
+                              counter--;
                             }
                           });
                         },
@@ -94,9 +97,7 @@ class _CartItemState extends State<CartItem> {
                         onPressed: () {
                           setState(() {
                             counter++;
-                            
                           });
-                          
                         },
                         icon: Icon(
                           Icons.add,

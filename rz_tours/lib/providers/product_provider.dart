@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:rz_tours/models/product_model.dart';
-
+//admin side
 class ProductProvider extends ChangeNotifier {
   List<Products> _products = <Products>[];
   List<Products> get getProducts {

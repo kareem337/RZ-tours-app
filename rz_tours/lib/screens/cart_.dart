@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:rz_tours/providers/cart_provider.dart';
+import 'package:rz_tours/providers/product_provider.dart';
 import 'package:rz_tours/screens/home.dart';
 import 'package:rz_tours/utils/helper.dart';
 import 'package:rz_tours/widgets/custom_app_bar.dart';
@@ -19,67 +22,29 @@ class _CartViewState extends State<CartView> {
         preferredSize: Size.fromHeight(50.0),
         child: CustomAppBar('Cart'),
       ),
-      body: ListView(
-        padding: const EdgeInsets.all(16.0),
-        children: [
-          CartItem('Tahrir museum.jpg', 'Egyptain Museum ', 10),
-          SizedBox(height: 20.0),
-          Divider(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Text(
-                'Total',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16.0,
-                ),
-              ),
-              Text(
-                '20 \$',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16.0,
-                ),
-              ),
-            ],
-          ),
-          SizedBox(height: 4.0),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [],
-          ),
-          Divider(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [],
-          ),
-          Spacer(),
-          SizedBox(height: 10.0),
-          MaterialButton(
-            onPressed: () {
-              Helper.nextScreen(context, Home());
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text('Purchased Successfully')),
-              );
-            },
-            color: Colors.amber,
-            height: 50.0,
-            minWidth: double.infinity,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20.0),
-            ),
-            child: Text(
-              'PROCEED TO CHECKOUT',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 14.0,
-                fontWeight: FontWeight.w400,
-              ),
-            ),
-          ),
-        ],
+      body: Center(
+        child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Consumer<CartProvider>(
+                builder: (context, CartProvider data, chil) {
+              return data.getCarts.length != 0
+                  ? ListView.builder(
+                      itemCount: 1,
+                      itemBuilder: (context, index) {
+                        return CartItem(data.getCarts[index], index);
+                      },
+                    )
+                  : GestureDetector(
+                      onTap: () {},
+                      child: Center(
+                          child: Text(
+                        "Add Products",
+                        style: TextStyle(color: Colors.white),
+                      )),
+                    );
+            })),
       ),
+ 
     );
   }
 }
