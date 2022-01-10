@@ -21,7 +21,6 @@ class MyApp extends StatelessWidget {
           primaryColor: Constants.primaryColor,
           primarySwatch: Colors.grey,
           scaffoldBackgroundColor: Color.fromRGBO(247, 249, 255, 1),
-          visualDensity: VisualDensity.adaptivePlatformDensity,
           textTheme: GoogleFonts.poppinsTextTheme(),
         ),
         home: SignIn(),

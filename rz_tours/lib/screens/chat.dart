@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:rz_tours/widgets/bottom_bar.dart';
 import 'package:rz_tours/widgets/custom_app_bar.dart';
 import 'package:rz_tours/widgets/drawer.dart';
 

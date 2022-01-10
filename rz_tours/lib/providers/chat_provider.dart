@@ -1,22 +1,20 @@
-// import 'dart:html';
+import 'package:flutter/foundation.dart';
+import 'package:rz_tours/models/chat_model.dart';
 
-// import 'package:flutter/material.dart';
-// import 'package:rz_tours/models/chat_model.dart';
+class ChatProvider extends ChangeNotifier
+{
+  List <Chat> _messages = <Chat>[];
 
-// class ChatsProvider extends ChangeNotifier {
-//   List<Chats> _chats = <Chats>[];
-//   List<Chats> get getChats {
-//     return _chats;
-//   }
+  List<Chat> get getNotes 
+  {
+    return _messages;
+  }
 
-//   void SendMessage(int _SenderId, int _RecieverId, String _Message) {
-//     Chats chat = new Chats(_SenderId, _RecieverId, _Message);
-//     _chats.add(chat);
-//     notifyListeners();
-//   }
+  void sendMessage (String msg)
+  {
+    Chat message = new Chat(msg);
+    _messages.add(message);
+    notifyListeners();
 
-//   void DeleteMessage(int index) {
-//     _chats.removeAt(index);
-//     notifyListeners();
-//   }
-// }
+  }
+}

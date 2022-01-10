@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "595699512034",
+    "project_id": "rz-tours-ca0eb",
+    "storage_bucket": "rz-tours-ca0eb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:595699512034:android:6c936a29028a33cd6924bb",
+        "android_client_info": {
+          "package_name": "com.example.rz_tours"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "595699512034-f99vhisnovhimp98irirjfish6jeifpf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjtu8kVQ9JYPDCdSPxbBjCxBXwxwCvZJY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "595699512034-f99vhisnovhimp98irirjfish6jeifpf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
