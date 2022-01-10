@@ -51,8 +51,9 @@ class Trips_home extends StatelessWidget {
                     Expanded(
                       child: SearchWidget(
                         height: 44.0,
-                        hintText: "Search For your Next Trip",
-                        prefixIcon: Icons.search,
+                        hintText: "Search",
+                        prefixIcon: Icons.search
+
                       ),
                     ),
                     SizedBox(

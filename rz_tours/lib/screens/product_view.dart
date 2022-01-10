@@ -60,6 +60,7 @@ class _CartScreenState extends State<CartScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+      
                 CircleAvatar(
                   backgroundImage: AssetImage("assets/Trip-1.png"),
                   radius: 100,
