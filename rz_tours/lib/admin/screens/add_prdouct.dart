@@ -17,7 +17,7 @@ abstract class AddProduct extends StatefulWidget {
         TextField(
           decoration: InputDecoration(
             border: OutlineInputBorder(),
-            hintText: 'Product Name',
+            hintText: 'Trip Name',
           ),
         ),
         SizedBox(
@@ -26,7 +26,7 @@ abstract class AddProduct extends StatefulWidget {
         TextField(
           decoration: InputDecoration(
             border: OutlineInputBorder(),
-            hintText: 'Product Price',
+            hintText: 'Trip Price',
           ),
         ),
         SizedBox(
@@ -35,7 +35,7 @@ abstract class AddProduct extends StatefulWidget {
         TextField(
           decoration: InputDecoration(
             border: OutlineInputBorder(),
-            hintText: 'Prdouct Description',
+            hintText: 'Trip Description',
           ),
         ),
         SizedBox(
@@ -44,7 +44,7 @@ abstract class AddProduct extends StatefulWidget {
         TextField(
           decoration: InputDecoration(
             border: OutlineInputBorder(),
-            hintText: 'Product Location',
+            hintText: 'Trip Location',
           ),
         ),
         SizedBox(
@@ -53,7 +53,13 @@ abstract class AddProduct extends StatefulWidget {
         TextField(
           decoration: InputDecoration(
             border: OutlineInputBorder(),
-            hintText: 'Product Category',
+            hintText: 'Trip Category',
+          ),
+        ),
+        TextField(
+          decoration: InputDecoration(
+            border: OutlineInputBorder(),
+            hintText: 'Trip Image',
           ),
         ),
       ],

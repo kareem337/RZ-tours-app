@@ -5,14 +5,14 @@ class CartItem extends StatefulWidget {
   late String name;
   late double price;
   CartItem(this.image, this.name, this.price);
-  
 
   @override
   _CartItemState createState() => _CartItemState();
 }
-int counter=1;
+
+int counter = 1;
+
 class _CartItemState extends State<CartItem> {
-  
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -73,9 +73,8 @@ class _CartItemState extends State<CartItem> {
                       IconButton(
                         onPressed: () {
                           setState(() {
-                            if(counter>1)
-                            {
-                            counter--;
+                            if (counter > 1) {
+                              counter--;
                             }
                           });
                         },
@@ -94,9 +93,7 @@ class _CartItemState extends State<CartItem> {
                         onPressed: () {
                           setState(() {
                             counter++;
-                            
                           });
-                          
                         },
                         icon: Icon(
                           Icons.add,
