@@ -18,13 +18,13 @@ class ProductProvider extends ChangeNotifier {
     return _Tickets;
   }
 
-  void AddProduct(String _name, String _description, int _price,
-      String _ProductImage, String _date, int _quantity) {
-    Products p = new Products(
-        _name, _description, _price, _ProductImage, _date, _quantity);
-    _products.add(p);
-    notifyListeners();
-  }
+  // void AddProduct(String _name, String _description, int _price,
+  //     String _ProductImage, String _date, int _quantity) {
+  //   Products p = new Products(
+  //       _name, _description, _price, _ProductImage, _date, _quantity);
+  //   _products.add(p);
+  //   notifyListeners();
+  // }
 
   void RemoveProduct(int index) {
     _products.removeAt(index);
