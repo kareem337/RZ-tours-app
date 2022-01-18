@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 import 'package:rz_tours/screens/search_result.dart';
 import 'package:rz_tours/utils/constants.dart';
 import 'package:rz_tours/utils/helper.dart';
@@ -12,6 +13,8 @@ import 'package:rz_tours/widgets/Trips_card.dart';
 
 class Trips_home extends StatelessWidget {
   String View ="Trips" ;
+
+  get fontSize15 => null;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -176,7 +179,7 @@ class Trips_home extends StatelessWidget {
                 SizedBox(
                   height: 25.0,
                 ),
-                if(View =="Trips")
+                
                 ListView.separated(
                   separatorBuilder: (BuildContext context, int index) {
                     return SizedBox(
@@ -189,32 +192,47 @@ class Trips_home extends StatelessWidget {
                   itemBuilder: (BuildContext context, int index) {
                     return TripCard(
                       trip: StaticData.SomeTrips[index],
-
                     );
                   },
-                )
-                else
-                 ListView.separated(
-                  separatorBuilder: (BuildContext context, int index) {
-                    return SizedBox(
-                      height: 15.0,
-                    );
-                  },
-                  itemCount: StaticData.SomeTickets.length,
-                  physics: NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemBuilder: (BuildContext context, int index) {
-                    return TicketsCard(
-                      tickets: StaticData.SomeTickets[index],
-
-                    );
-                  },
-                )
+                ),
+                // Expanded(
+                // child: Consumer<ProductProviders>(
+                //   builder: (context, ProductProviders data, child) {
+                //     return data.getProduct.length != 0
+                //         ? ListView.separated(
+                //           separatorBuilder: (BuildContext context, int index){
+                //             return SizedBox(
+                //       height: 15.0,
+                //     );
+                //     },
+                //             itemCount: data.getProduct.length,
+                //             itemBuilder: (context, index) {
+                //               return TripCard(data.getProduct[index], index);
+                //             },
+                //           )
+                //           : Center(
+                //             child: Text(
+                //               'No Available Products',
+                //               style: TextStyle(
+                //                 color: Colors.red,
+                //                 fontSize: fontSize15,
+                //               ),
+                //             ),
+                //           );
+                         
+                //   }
+                // ),
+                // )
               ],
+                
             ),
           ),
         ),
       ),
     );
   }
+}
+
+class ProductProviders {
+  get getProduct => null;
 }
