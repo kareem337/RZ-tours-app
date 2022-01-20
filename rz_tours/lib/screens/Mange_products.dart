@@ -31,7 +31,7 @@ class _ManageProductsState extends State<ManageProducts> {
        
        trips.add(Trip(
        //Trip_id:snapshot.id;
-       museum_name: data[museum_name],
+       Trip_name: data[museum_name],
        Trip_description: data[Trip_description],
        Location: data[Location],
        Trip_price: data[Trip_price],
@@ -100,7 +100,7 @@ class _ManageProductsState extends State<ManageProducts> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
                                   Text(
-                                    trips[index].museum_name,
+                                    trips[index].Trip_name,
                                     style:
                                         TextStyle(fontWeight: FontWeight.bold),
                                   ),
