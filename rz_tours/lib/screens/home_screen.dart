@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:rz_tours/models/product_model.dart';
+import 'package:rz_tours/providers/Trips_provider.dart';
 import 'package:rz_tours/screens/Trips_home.dart';
+import 'package:rz_tours/screens/products.dart';
 import 'package:rz_tours/utils/helper.dart';
 import 'package:rz_tours/utils/places.dart';
 import 'package:rz_tours/widgets/custom_app_bar.dart';
@@ -11,6 +15,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold( 
           appBar: PreferredSize(
         preferredSize: Size.fromHeight(50.0),
@@ -76,13 +81,18 @@ class HomeScreen extends StatelessWidget {
     );
   }
   cards(BuildContext context) {
+        return Consumer<TripsProvider>(builder: (context, trips, child){
     return Container(
       child: Column(
         children: [
           ElevatedButton(
             style: ElevatedButton.styleFrom(primary: Colors.amber),
             onPressed: () {
+              Provider.of<TripsProvider>(context, listen: false).fetchTrips();
+              //trips.fetchTrips();
+              print("pressed");
               Helper.nextScreen(context, Trips_home());
+              
             },
             child: Container(
               decoration: BoxDecoration(
@@ -114,7 +124,7 @@ class HomeScreen extends StatelessWidget {
           ElevatedButton(
             style: ElevatedButton.styleFrom(primary: Colors.amber),
             onPressed: () {
-              Helper.nextScreen(context, Trips_home());
+              Helper.nextScreen(context, Product());
             },
             child: Container(
               decoration: BoxDecoration(
@@ -206,6 +216,6 @@ class HomeScreen extends StatelessWidget {
           )
         ],
       ),
-    );
-  }
+    );}
+        );}
 }

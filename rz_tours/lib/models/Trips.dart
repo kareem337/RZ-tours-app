@@ -1,16 +1,17 @@
 enum Trips { IN_CAIRO, OUT_OF_CAIRO, NA }
 
 class Trip {
-  final String museum_name;
-  final String Trip_description;
-  final String Location;
-  final String Trip_price;
-  final String imagePath;
-  final Trips Trip_Types;
-  final bool liked;
+   String Trip_name;
+   String Trip_description;
+   String Location;
+   int Trip_price;
+
+   String imagePath;
+   Trips Trip_Types;
+   bool liked;
 
   Trip({
-    required this.museum_name,
+    required this.Trip_name,
     required this.Trip_description,
     required this.Location,
     required this.Trip_price,
@@ -18,4 +19,6 @@ class Trip {
     required this.liked,
     required this.Trip_Types,
   });
+
+  
 }

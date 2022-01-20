@@ -10,7 +10,7 @@ class Store {
   addTrip(Trip product) {
    
     _firestore.collection(Trips_table).add({
-      museum_name: product.museum_name,
+      museum_name: product.Trip_name,
       Trip_description: product.Trip_description,
       Location: product.Location,
       Trip_price: product.Trip_price,
