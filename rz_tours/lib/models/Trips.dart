@@ -1,4 +1,4 @@
-enum Trips { IN_CAIRO, OUT_OF_CAIRO }
+enum Trips { IN_CAIRO, OUT_OF_CAIRO, NA }
 
 class Trip {
   final String museum_name;
