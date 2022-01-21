@@ -16,7 +16,7 @@ import 'package:rz_tours/widgets/Trips_card.dart';
 
 class Trips_home extends StatelessWidget {
   String View = "Trips";
-  final _store= TripsData();
+  final _store = TripsData();
 
   get fontSize15 => null;
   @override
@@ -29,12 +29,10 @@ class Trips_home extends StatelessWidget {
         ),
         drawer: DrawerWidget(),
         body: trips.basketItems.length == 0
-            ? 
-                 Center(
-                  child:Text("NO DATA TO SHOW"),
-                )
-              
-            
+            ? Center(
+                child: Text("NO DATA TO SHOW"),
+              )
+
             // Center(
             //     child: Text(
             //       '${trips.basketItems.length}',
@@ -221,8 +219,8 @@ class Trips_home extends StatelessWidget {
                             ),
                             if (View == "Trips")
                               FutureBuilder(
-                                  future://_store.fetch2(),
-                                  trips.fetchTrips(),
+                                  future: //_store.fetch2(),
+                                      trips.fetchTrips(),
                                   builder: (context, snapshot) {
                                     return ListView.separated(
                                       separatorBuilder:
@@ -239,7 +237,7 @@ class Trips_home extends StatelessWidget {
                                         print(trips.basketItems.length);
                                         //var temp = snapshot.data!.docs[index].data() as dynamic;
                                         return TripCard(
-                                          trips.basketItems[index].Trip_name,
+                                            trips.basketItems[index].Trip_name,
                                             trips.basketItems[index].Trip_price,
                                             trips.basketItems[index]
                                                 .Trip_description,
@@ -286,8 +284,44 @@ class Trips_home extends StatelessWidget {
       );
     });
   }
-}
 
 // class ProductProviders {
 //   get getProduct => null;
 // }
+}
+
+class Search extends SearchDelegate {
+  @override
+  List<Widget>? buildActions(BuildContext context) {
+    // TODO: implement buildActions
+    return [
+      IconButton(
+        onPressed: () {},
+        icon: Icon(Icons.clear),
+      )
+    ];
+  }
+
+  @override
+  Widget? buildLeading(BuildContext context) {
+    // TODO: implement buildLeading
+    return IconButton(
+      onPressed: () {},
+      icon: Icon(Icons.arrow_back),
+    );
+  }
+
+  @override
+  Widget buildResults(BuildContext context) {
+    // TODO: implement buildResults
+
+    throw UnimplementedError();
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    // TODO: implement buildSuggestions
+    return Text("Body Search");
+    throw UnimplementedError();
+  }
+}
