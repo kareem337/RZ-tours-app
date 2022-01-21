@@ -33,15 +33,15 @@ class HomeMobile extends StatelessWidget {
                             alignment: WrapAlignment.center,
                           ),
                           SizedBox(height: 20),
-                            Card(child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Container(height:300, child: SimpleLineChart()),
-                            )),
+                            // Card(child: Padding(
+                            //   padding: const EdgeInsets.all(8.0),
+                            //   child: Container(height:300, child: SimpleLineChart()),
+                            // )),
                            SizedBox(height: 20),
-                             Card(child: Padding(
-                               padding: const EdgeInsets.all(8.0),
-                               child: Container(height:300, child: GroupedBarChart()),
-                             )),
+                            //  Card(child: Padding(
+                            //    padding: const EdgeInsets.all(8.0),
+                            //    child: Container(height:300, child: GroupedBarChart()),
+                            //  )),
                              Card(child: Padding(
                                padding: const EdgeInsets.all(8.0),
                               //  child: Container(height:300, child: SingleChildScrollView(

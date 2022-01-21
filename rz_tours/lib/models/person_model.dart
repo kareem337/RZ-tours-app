@@ -1,20 +1,16 @@
-class Person
-{
-  late String _firstName;
-  late String _lastName;
-  late String _email;
-  late String _password;
-  late int _number;
-  late String _gender;
-  late int _id;
-  late String _image;
+class Person {
+  String firstName = "";
+  String lastName = "";
+  String email = "";
+  String password = "";
+  int user_type = 1;
+  Person({
+    required this.firstName,
+    required this.lastName,
+    required this.email,
+    required this.password,
+    required this.user_type
+  });
 
-  Person(this._firstName, this._lastName, this._email, this._password,
-      this._number, this._gender, this._id, this._image);
-
-login()
-{
-
-}
-
+  //login() {}
 }
