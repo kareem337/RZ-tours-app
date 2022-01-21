@@ -28,23 +28,7 @@ class Trips_home extends StatelessWidget {
           child: CustomAppBar('Products'),
         ),
         drawer: DrawerWidget(),
-        body: trips.basketItems.length == 0
-            ? 
-                 Center(
-                  child:Text("NO DATA TO SHOW"),
-                )
-              
-            
-            // Center(
-            //     child: Text(
-            //       '${trips.basketItems.length}',
-            //       style: TextStyle(
-            //         fontSize: 20.0,
-            //         fontWeight: FontWeight.w400,
-            //       ),
-            //     ),
-            //   )
-            : StreamBuilder(
+        body: StreamBuilder(
                 stream:
                     //tripsStream.loadTrips(),
                     FirebaseFirestore.instance
