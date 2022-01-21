@@ -9,7 +9,7 @@ class TripsProvider with ChangeNotifier {
   }
 
   fetchTrips() {
-    var tt = TripsData().fetchdata();
+    var tt = TripsData().fetchvideo();
     _tr = tt;
     notifyListeners();
   }
