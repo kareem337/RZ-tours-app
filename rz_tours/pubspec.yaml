@@ -22,7 +22,7 @@ environment:
 
 dependencies: 
   provider: ^6.0.1
-  #firebase_core: ^1.10.6
+  firebase_core: ^1.10.6
   firebase_auth: ^3.3.5
   cloud_firestore: ^3.1.5
   flutter:
@@ -32,6 +32,10 @@ dependencies:
   salomon_bottom_bar: ^3.1.0
   charts_flutter: ^0.12.0
   responsive_builder: ^0.4.1
+  image_picker: ^0.8.4+4
+  path: ^1.8.0
+  firebase_storage: ^10.2.5
+  
   
   
 
