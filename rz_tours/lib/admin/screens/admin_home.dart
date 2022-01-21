@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:rz_tours/admin/screens/add_prdouct.dart';
-import 'package:rz_tours/utils/constants.dart';
 
 class AdminHome extends StatelessWidget {
   static String id = 'AdminHome';
@@ -23,15 +22,19 @@ class AdminHome extends StatelessWidget {
               onPressed: () {
                 Navigator.pushNamed(context, AddProduct.id);
               },
-              child: Text('Add Product'),
+              child: Text('Add Trip'),
             ),
             RaisedButton(
               onPressed: () {},
-              child: Text('Edit Product'),
+              child: Text('Edit Trip'),
             ),
             RaisedButton(
               onPressed: () {},
-              child: Text('View Orders'),
+              child: Text('View Trips'),
+            ),
+            RaisedButton(
+              onPressed: () {},
+              child: Text('Delete Trips'),
             )
           ],
         ));

@@ -1,8 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:rz_tours/models/person_model.dart';
+import 'package:rz_tours/screens/Admin_Home.dart';
 import 'package:rz_tours/screens/forget_password.dart';
 import 'package:rz_tours/screens/home.dart';
 import 'package:rz_tours/screens/sign_up.dart';
+import 'package:rz_tours/services/authentication.dart';
 import 'package:rz_tours/utils/helper.dart';
 import 'package:rz_tours/validations/validations_functions.dart';
 import 'package:rz_tours/widgets/custom_app_bar.dart';
@@ -19,15 +24,16 @@ class _SignInState extends State<SignIn> {
   final _formKey = GlobalKey<FormState>();
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
+  final FirebaseAuth auth = FirebaseAuth.instance;
 
   Widget build(BuildContext context) {
     return Scaffold(
-                appBar: PreferredSize(
+      appBar: PreferredSize(
         preferredSize: Size.fromHeight(50.0),
         child: CustomAppBar('Sign In'),
       ),
-      body: ListView(
-        children: [Form(
+      body: ListView(children: [
+        Form(
           key: _formKey,
           child: Container(
             alignment: Alignment.center,
@@ -109,14 +115,22 @@ class _SignInState extends State<SignIn> {
                     print("Login Pressed");
                     print("The Email is: ${_emailController.text}");
                     // Respond to button press
+
                     if (_formKey.currentState!.validate()) {
                       // If the form is valid, display a snackbar. In the real world,
                       // you'd often call a server or save the information in a database.
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text('Logged In Succeffuly')),
-                        
-                      );
-                      Helper.nextScreen(context, Home());
+
+                      Authentication().Signin(
+                          email: _emailController.text,
+                          password: _passwordController.text);
+                      if (FirebaseFirestore.instance
+                              .collection('User_Details')
+                              .doc('User_Type') ==
+                          1) {
+                        Helper.nextScreen(context, Home());
+                      } else {
+                        Helper.nextScreen(context, Admin_HomeScreen());
+                      }
                     }
                   },
                   child: Text(
@@ -133,11 +147,12 @@ class _SignInState extends State<SignIn> {
                     SizedBox(width: 20),
                     Text(
                       "Don't have an account?",
-                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                     TextButton(
                       onPressed: () {
-                         Helper.nextScreen(context, SignUp());
+                        Helper.nextScreen(context, SignUp());
                       },
                       child: Text(
                         "Sign Up",
@@ -153,8 +168,8 @@ class _SignInState extends State<SignIn> {
               ],
             ),
           ),
-        ),]
-      ),
+        ),
+      ]),
     );
   }
 }
@@ -180,3 +195,71 @@ alignment: Alignment.center,
 margin: EdgeInsets.only(bottom:400) ,
 
  */
+
+// class GetData extends StatelessWidget {
+//   const GetData({ Key? key }) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return return StreamBuilder<QuerySnapshot>(
+//       stream: snapshot,
+//       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+//         if (snapshot.hasError) {
+//           return Text('Something went wrong');
+//         }
+
+//         if (snapshot.connectionState == ConnectionState.waiting) {
+//           return Text("Loading");
+//         }
+
+//         return Scaffold(
+//           body: ListView(
+//             children: snapshot.data!.docs.map((DocumentSnapshot document) {
+//               Map<String, dynamic> data =
+//                   document.data()! as Map<String, dynamic>;
+//               return Column(
+//                 // title: Text(data['First_Name']),
+//                 // subtitle: Text(data['Last_Name']),
+//                 children: [
+//                   TextFormField(
+//                     initialValue: data['First_Name'],
+//                     onChanged: (value) {
+//                       fn = value;
+//                     },
+//                   ),
+//                   SizedBox(
+//                     height: 50,
+//                   ),
+//                   TextFormField(
+//                     initialValue: data['Last_Name'],
+//                     onChanged: (value) {
+//                       ln = value;
+//                     },
+//                   ),
+//                   SizedBox(
+//                     height: 50,
+//                   ),
+//                   TextFormField(
+//                     initialValue: user?.email,
+//                     onChanged: (value) {
+//                       //ln = value;
+//                     },
+//                   ),
+//                   ElevatedButton(
+//                       onPressed: () {
+//                         applyChanges();
+//                       },
+//                       child: Text("Edit Profile"))
+//                 ],
+//               );
+//             }).toList(),
+//           ),
+//         );
+//       },
+//     );
+
+//     //print(userr);
+//   }
+// }
+//   }
+// }

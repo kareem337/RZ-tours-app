@@ -1,13 +1,13 @@
 
 
 class Tickets {
-  late String museum_name;
-  late String museum_description;
-  late String Location;
-  late String Ticket_price;
-  late String imagePath;
-  late bool liked;
-  late String Open_time;
+   String museum_name;
+   String museum_description;
+   String Location;
+   String Ticket_price;
+   String imagePath;
+   bool liked;
+   String Open_time;
 
   Tickets({
     required this.museum_name,

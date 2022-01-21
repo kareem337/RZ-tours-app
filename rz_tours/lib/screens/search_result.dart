@@ -55,9 +55,10 @@ class SearchResult extends StatelessWidget {
                 physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 itemBuilder: (BuildContext context, int index) {
-                  return TripCard(
-                    trip: StaticData.SomeTrips[index],
-                  );
+                  return Text("shoof page search result");
+                  // return TripCard(
+                  //   trip: StaticData.SomeTrips[index],
+                  // );
                 },
               )
             ],

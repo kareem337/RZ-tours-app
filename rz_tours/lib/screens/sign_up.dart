@@ -1,7 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:rz_tours/models/person_model.dart';
 import 'package:rz_tours/screens/forget_password.dart';
 import 'package:rz_tours/screens/sign_in.dart';
+import 'package:rz_tours/services/authentication.dart';
 import 'package:rz_tours/utils/helper.dart';
 import 'package:rz_tours/validations/validations_functions.dart';
 import 'package:rz_tours/widgets/custom_app_bar.dart';
@@ -24,10 +27,10 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-                        appBar: PreferredSize(
-        preferredSize: Size.fromHeight(50.0),
-        child: CustomAppBar('Sign Up'),
-      ),
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(50.0),
+          child: CustomAppBar('Sign Up'),
+        ),
         body: ListView(
           children: [
             Form(
@@ -128,15 +131,22 @@ class _SignUpState extends State<SignUp> {
                     SizedBox(height: 15),
                     ElevatedButton(
                       onPressed: () {
-                        print("Login Pressed");
+                        print("Signup Pressed");
                         print("The Email is: ${_emailController.text}");
                         // Respond to button press
                         if (_formKey.currentState!.validate()) {
                           // If the form is valid, display a snackbar. In the real world,
                           // you'd often call a server or save the information in a database.
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('Sign Up Succeffuly. PLease Sign In Now.')),
-                          );
+                          var userrr = FirebaseAuth.instance.currentUser;
+                          var cuid = userrr?.uid;
+                          Authentication().Signup(Person(
+                              firstName: _firstNameController.text,
+                              lastName: _LastNameController.text,
+                              email: _emailController.text,
+                              password: _passwordController.text,
+                              user_type: 1
+                              ));
+
                           Helper.nextScreen(context, SignIn());
                         }
                       },
@@ -159,7 +169,7 @@ class _SignUpState extends State<SignUp> {
                         ),
                         TextButton(
                           onPressed: () {
-                             Helper.nextScreen(context, SignIn());
+                            Helper.nextScreen(context, SignIn());
                           },
                           child: Text(
                             "LogIn",

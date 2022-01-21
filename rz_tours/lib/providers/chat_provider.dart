@@ -1,20 +1,21 @@
 import 'package:flutter/foundation.dart';
-import 'package:rz_tours/models/chat_model.dart';
+import 'package:rz_tours/models/chat.dart';
 
 class ChatProvider extends ChangeNotifier
 {
-  List <Chat> _messages = <Chat>[];
+  List <ChatModel> _messages = <ChatModel>[];
 
-  List<Chat> get getNotes 
+  List<ChatModel> get getNotes 
   {
     return _messages;
   }
 
-  void sendMessage (String msg)
+  void sendMessage (String msg,String uid,String recId)
   {
-    Chat message = new Chat(msg);
+    ChatModel message = new ChatModel(msg,recId,uid);
     _messages.add(message);
     notifyListeners();
 
   }
 }
+

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:rz_tours/screens/Trips_home.dart';
 import 'package:rz_tours/screens/chat.dart';
 import 'package:rz_tours/screens/home.dart';
+import 'package:rz_tours/screens/sign_in.dart';
+import 'package:rz_tours/services/authentication.dart';
 import 'package:rz_tours/utils/helper.dart';
 
 class DrawerWidget extends StatelessWidget {
@@ -38,7 +40,9 @@ class DrawerWidget extends StatelessWidget {
               'Home',
               style: TextStyle(fontSize: 24.0),
             ),
-            onTap: () {Helper.nextScreen(context, Home());},
+            onTap: () {
+              Helper.nextScreen(context, Home());
+            },
           ),
           ListTile(
             leading: const Icon(Icons.apartment),
@@ -46,7 +50,9 @@ class DrawerWidget extends StatelessWidget {
               'Hotels',
               style: TextStyle(fontSize: 24.0),
             ),
-            onTap: () {Helper.nextScreen(context, Trips_home());},
+            onTap: () {
+              Helper.nextScreen(context, Trips_home());
+            },
           ),
           ListTile(
             leading: const Icon(Icons.flight),
@@ -54,7 +60,9 @@ class DrawerWidget extends StatelessWidget {
               'Trips',
               style: TextStyle(fontSize: 24.0),
             ),
-            onTap: () {Helper.nextScreen(context, Trips_home());},
+            onTap: () {
+              Helper.nextScreen(context, Trips_home());
+            },
           ),
           ListTile(
             leading: const Icon(Icons.directions_boat),
@@ -62,7 +70,9 @@ class DrawerWidget extends StatelessWidget {
               'Cruises',
               style: TextStyle(fontSize: 24.0),
             ),
-            onTap: () {Helper.nextScreen(context, Trips_home());},
+            onTap: () {
+              Helper.nextScreen(context, Trips_home());
+            },
           ),
           ListTile(
             leading: const Icon(Icons.shopping_cart),
@@ -70,7 +80,9 @@ class DrawerWidget extends StatelessWidget {
               'Packages',
               style: TextStyle(fontSize: 24.0),
             ),
-            onTap: () {Helper.nextScreen(context, Trips_home());},
+            onTap: () {
+              Helper.nextScreen(context, Trips_home());
+            },
           ),
           ListTile(
             leading: const Icon(Icons.info),
@@ -80,13 +92,17 @@ class DrawerWidget extends StatelessWidget {
             ),
             onTap: () {},
           ),
-                    ListTile(
+          ListTile(
             leading: const Icon(Icons.logout),
             title: const Text(
               'Log out',
               style: TextStyle(fontSize: 24.0),
             ),
-            onTap: () {Helper.nextScreen(context, Home());},
+            onTap: () {
+              Authentication().signOut();
+              Helper.nextScreen(context, SignIn());
+              ;
+            },
           ),
         ],
       ),

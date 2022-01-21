@@ -1,10 +1,11 @@
 class Products {
-  late String _name;
-  late String _description;
-  late int _price;
-  late String _ProductImage;
-  late String _date;
-  late int _quantity;
-  Products(this._name, this._description, this._price, this._ProductImage,
-      this._date, this._quantity);
+  String name = "";
+  String description = "";
+  double price = 0.0;
+  String productImage = "";
+  String date = "";
+  int quantity = 0;
+
+  Products(this.name, this.description, this.price, this.productImage,
+      this.date, this.quantity);
 }
