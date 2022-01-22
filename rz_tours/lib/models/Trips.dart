@@ -18,5 +18,8 @@ class Trip {
     required this.imagePath,
     required this.liked,
     required this.Trip_Types,
+    required String tripid,
   });
+
+  get tripid => null;
 }

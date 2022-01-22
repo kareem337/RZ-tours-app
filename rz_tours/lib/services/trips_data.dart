@@ -44,4 +44,6 @@ class TripsData {
     // Trip_Types: Trips.OUT_OF_CAIRO
     // ));
   }
+
+  fetchvideo() {}
 }

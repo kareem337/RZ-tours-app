@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rz_tours/admin/screens/Google_maps.dart';
 import 'package:rz_tours/screens/Trips_home.dart';
 import 'package:rz_tours/screens/chat.dart';
 import 'package:rz_tours/screens/home.dart';
@@ -91,6 +92,17 @@ class DrawerWidget extends StatelessWidget {
               style: TextStyle(fontSize: 24.0),
             ),
             onTap: () {},
+          ),
+          ListTile(
+            leading: const Icon(Icons.location_on_outlined),
+            title: const Text(
+              'Google Maps',
+              style: TextStyle(fontSize: 24.0),
+            ),
+            onTap: () {
+              Helper.nextScreen(context, Maps());
+              ;
+            },
           ),
           ListTile(
             leading: const Icon(Icons.logout),

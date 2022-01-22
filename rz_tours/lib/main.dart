@@ -1,6 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-
 import 'package:provider/provider.dart';
 import 'package:rz_tours/providers/Trips_provider.dart';
 import 'package:rz_tours/providers/cart_provider.dart';
