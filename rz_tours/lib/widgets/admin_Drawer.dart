@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rz_tours/screens/Add_Product_page.dart';
 import 'package:rz_tours/screens/Admin_Home.dart';
+import 'package:rz_tours/screens/Mange_products.dart';
 import 'package:rz_tours/screens/Trips_home.dart';
 import 'package:rz_tours/screens/sign_in.dart';
 import 'package:rz_tours/services/authentication.dart';
@@ -33,8 +34,10 @@ class MobileDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(Icons.people_sharp),
-            title: Text('Users'),
-            onTap: () {},
+            title: Text('Prducts'),
+            onTap: () {
+              Helper.nextScreen(context, ManageProducts());
+            },
           ),
           ListTile(
             leading: Icon(Icons.person),

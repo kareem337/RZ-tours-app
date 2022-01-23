@@ -56,7 +56,7 @@ class HorizontalPlaceItem extends StatelessWidget {
           ),
         ),
         onTap: () {
-          Helper.nextScreen(context, CartScreen());
+          //Helper.nextScreen(context, CartScreen());
 
         },
       ),

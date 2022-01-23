@@ -16,7 +16,6 @@ import 'package:rz_tours/widgets/Trips_card.dart';
 
 class Trips_home extends StatelessWidget {
   String View = "Trips";
-  final _store= TripsData();
 
   get fontSize15 => null;
   @override
@@ -29,21 +28,15 @@ class Trips_home extends StatelessWidget {
         ),
         drawer: DrawerWidget(),
         body: trips.basketItems.length == 0
-            ? 
-                 Center(
-                  child:Text("NO DATA TO SHOW"),
-                )
-              
-            
-            // Center(
-            //     child: Text(
-            //       '${trips.basketItems.length}',
-            //       style: TextStyle(
-            //         fontSize: 20.0,
-            //         fontWeight: FontWeight.w400,
-            //       ),
-            //     ),
-            //   )
+            ? Center(
+                child: Text(
+                  'THERE ARE NO ITEMS IN YOUR CART',
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              )
             : StreamBuilder(
                 stream:
                     //tripsStream.loadTrips(),
@@ -220,67 +213,93 @@ class Trips_home extends StatelessWidget {
                               height: 25.0,
                             ),
                             if (View == "Trips")
-                              FutureBuilder(
-                                  future://_store.fetch2(),
-                                  trips.fetchTrips(),
-                                  builder: (context, snapshot) {
-                                    return ListView.separated(
-                                      separatorBuilder:
-                                          (BuildContext context, int index) {
-                                        return SizedBox(
-                                          height: 15.0,
-                                        );
-                                      },
-                                      itemCount: trips.basketItems.length,
-                                      physics: NeverScrollableScrollPhysics(),
-                                      shrinkWrap: true,
-                                      itemBuilder:
-                                          (BuildContext context, int index) {
-                                        print(trips.basketItems.length);
-                                        //var temp = snapshot.data!.docs[index].data() as dynamic;
-                                        return TripCard(
-                                          trips.basketItems[index].Trip_name,
-                                            trips.basketItems[index].Trip_price,
-                                            trips.basketItems[index]
-                                                .Trip_description,
-                                            trips.basketItems[index].Location);
-                                      },
-                                    );
-                                  })
-                            //         else
-                            //           ListView.separated(
-                            //             separatorBuilder:
-                            //                 (BuildContext context, int index) {
-                            //               return SizedBox(
-                            //                 height: 15.0,
-                            //               );
-                            //             },
-                            //             itemCount: 2,
-                            //             physics: NeverScrollableScrollPhysics(),
-                            //             shrinkWrap: true,
-                            //             itemBuilder: (BuildContext context, int index) {
-                            //               return TicketsCard(
-                            //                 tickets: StaticData.SomeTickets[index],
-                            //               );
-                            //             },
-                            //           )
-
-                            //         ,ListView.separated(
-                            //   separatorBuilder: (BuildContext context, int index) {
-                            //     return SizedBox(
-                            //       height: 15.0,
-                            //     );
-                            //   },
-                            //   itemCount: StaticData.SomeTrips.length,
-                            //   physics: NeverScrollableScrollPhysics(),
-                            //   shrinkWrap: true,
-                            //   itemBuilder: (BuildContext context, int index) {
-                            //     return TripCard(trips.basketItems[index].Trip_name, trips.basketItems[index].Trip_price, trips.basketItems[index].Trip_description,trips.basketItems[index].Location);  },
-                            // ),
+                              ListView.separated(
+                                separatorBuilder:
+                                    (BuildContext context, int index) {
+                                  return SizedBox(
+                                    height: 15.0,
+                                  );
+                                },
+                                itemCount: trips.basketItems.length,
+                                physics: NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                itemBuilder: (BuildContext context, int index) {
+                                  //var temp = snapshot.data!.docs[index].data() as dynamic;
+                                  return TripCard(
+                                      trips.basketItems.Trip_Name,
+                                      trips.basketItems.Trip_price,
+                                      trips.basketItems.Trip_description,
+                                      trips.basketItems.Location);
+                                },
+                              )
+                            else
+                              ListView.separated(
+                                separatorBuilder:
+                                    (BuildContext context, int index) {
+                                  return SizedBox(
+                                    height: 15.0,
+                                  );
+                                },
+                                itemCount: 2,
+                                physics: NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return TicketsCard(
+                                    tickets: StaticData.SomeTickets[index],
+                                  );
+                                },
+                              )
                           ],
                         ),
                       ),
                     ),
+
+                    //     ListView.separated(
+                    //       separatorBuilder: (BuildContext context, int index) {
+                    //         return SizedBox(
+                    //           height: 15.0,
+                    //         );
+                    //       },
+                    //       itemCount: StaticData.SomeTrips.length,
+                    //       physics: NeverScrollableScrollPhysics(),
+                    //       shrinkWrap: true,
+                    //       itemBuilder: (BuildContext context, int index) {
+                    //         return TripCard(
+                    //           trip: StaticData.SomeTrips[index],
+                    //         );
+                    //       },
+                    //     ),
+                    //     // Expanded(
+                    //     // child: Consumer<ProductProviders>(
+                    //     //   builder: (context, ProductProviders data, child) {
+                    //     //     return data.getProduct.length != 0
+                    //     //         ? ListView.separated(
+                    //     //           separatorBuilder: (BuildContext context, int index){
+                    //     //             return SizedBox(
+                    //     //       height: 15.0,
+                    //     //     );
+                    //     //     },
+                    //     //             itemCount: data.getProduct.length,
+                    //     //             itemBuilder: (context, index) {
+                    //     //               return TripCard(data.getProduct[index], index);
+                    //     //             },
+                    //     //           )
+                    //     //           : Center(
+                    //     //             child: Text(
+                    //     //               'No Available Products',
+                    //     //               style: TextStyle(
+                    //     //                 color: Colors.red,
+                    //     //                 fontSize: fontSize15,
+                    //     //               ),
+                    //     //             ),
+                    //     //           );
+
+                    //     //   }
+                    //     // ),
+                    //     // )
+                    //   ],
+
+                    // ),
                   );
                 }),
       );

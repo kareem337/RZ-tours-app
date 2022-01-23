@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:rz_tours/widgets/Form_textformfield.dart';
 import 'package:rz_tours/widgets/Product_Form_Widget.dart';
 
 class Add_product extends StatefulWidget {
-  static String id="Addprouct";
+  static String id = "Addprouct";
   const Add_product({Key? key}) : super(key: key);
 
   @override
@@ -14,7 +15,6 @@ class _Add_productState extends State<Add_product> {
   final controller = TextEditingController();
   String category = 'Category1';
 
-
   @override
   void dispose() {
     controller.dispose();
@@ -24,11 +24,9 @@ class _Add_productState extends State<Add_product> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Add Museum'),
-      ),
-      body: 
-             Form_page()
-    );
+        appBar: AppBar(
+          title: const Text('Add Museum'),
+        ),
+        body: Form_page());
   }
 }

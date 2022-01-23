@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:rz_tours/models/Trips.dart';
 import 'package:rz_tours/providers/Trips_provider.dart';
 
-class TripsData {
+class cartData {
   var t = TripsProvider();
   Stream<QuerySnapshot> loadTrips() {
     return FirebaseFirestore.instance.collection('Products').snapshots();

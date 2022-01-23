@@ -30,9 +30,9 @@ class _CartScreenState extends State<CartScreen> {
   }
 
   final List<Products> items = [
-    //Products(name: 'Abdeen Palace ', price: 100.0, productImage:"Abdeen.jpg"),
-    //Products(name: 'Alexandria ', price: 200.0, productImage:"Abdeen.jpg"),
-   // Products(name: 'Dahab ', price: 300.0, productImage:"dahab.jpg"),
+    //Products(name: 'Abdeen Palace ', price: 100.0, productImage: "Abdeen.jpg"),
+    //Products(name: 'Alexandria ', price: 200.0, productImage: "Abdeen.jpg"),
+    //Products(name: 'Dahab ', price: 300.0, productImage: "dahab.jpg"),
   ];
   @override
   Widget build(BuildContext context) {
