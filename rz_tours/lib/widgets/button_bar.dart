@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rz_tours/models/chat_model.dart';
 import 'package:rz_tours/screens/chat.dart';
 import 'package:rz_tours/screens/cart_.dart';
 

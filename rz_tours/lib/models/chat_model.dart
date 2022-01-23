@@ -1,6 +1,6 @@
-class Chat {
+class ChatModel {
   String msg;
 
 
-  Chat(this.msg);
+  ChatModel(this.msg);
 }

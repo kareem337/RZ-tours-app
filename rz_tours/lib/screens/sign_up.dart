@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rz_tours/models/person_model.dart';
 import 'package:rz_tours/screens/forget_password.dart';
+import 'package:rz_tours/screens/home.dart';
 import 'package:rz_tours/screens/sign_in.dart';
 import 'package:rz_tours/services/authentication.dart';
 import 'package:rz_tours/utils/helper.dart';
@@ -130,7 +131,7 @@ class _SignUpState extends State<SignUp> {
                     ),
                     SizedBox(height: 15),
                     ElevatedButton(
-                      onPressed: () {
+                      onPressed: () async {
                         print("Signup Pressed");
                         print("The Email is: ${_emailController.text}");
                         // Respond to button press
@@ -139,15 +140,27 @@ class _SignUpState extends State<SignUp> {
                           // you'd often call a server or save the information in a database.
                           var userrr = FirebaseAuth.instance.currentUser;
                           var cuid = userrr?.uid;
-                          Authentication().Signup(Person(
-                              firstName: _firstNameController.text,
-                              lastName: _LastNameController.text,
-                              email: _emailController.text,
-                              password: _passwordController.text,
-                              user_type: 1
-                              ));
-
-                          Helper.nextScreen(context, SignIn());
+                          await Authentication().Signup(
+                              _firstNameController.text,
+                              _LastNameController.text,
+                              _emailController.text,
+                              _passwordController.text);
+                          final list = await FirebaseAuth.instance
+                              .fetchSignInMethodsForEmail(
+                                  _emailController.text);
+                          if (list.isNotEmpty) {
+                            Helper.nextScreen(context, SignUp());
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                  content: Text(
+                                      'Failed To SignUp Email Already in use')),
+                            );
+                          } else {
+                            Helper.nextScreen(context, Home());
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text('SignedUp Successfuly')),
+                            );
+                          }
                         }
                       },
                       child: Text(

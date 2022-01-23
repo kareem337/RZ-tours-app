@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rz_tours/models/chat_model.dart';
 import 'package:rz_tours/screens/Trips_home.dart';
 import 'package:rz_tours/screens/chat.dart';
 import 'package:rz_tours/screens/edit_profile.dart';
@@ -8,21 +9,21 @@ import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 class BottomBar extends StatefulWidget {
   const BottomBar({Key? key}) : super(key: key);
-
+  //final int indexx;
+  //BottomBar(this.chat, this.indexx);
   @override
   _BottomBarState createState() => _BottomBarState();
 }
 
 class _BottomBarState extends State<BottomBar> {
+  late int _index = 0;
 
-  int _index = 0;
   List<Widget> screens = [
     HomeScreen(),
     Chat(),
     Trips_home(),
     EditProfile(),
   ];
-
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +65,8 @@ class _BottomBarState extends State<BottomBar> {
             ),
           ],
         ),
-        body: SafeArea(child:  screens[_index],)
-        );
+        body: SafeArea(
+          child: screens[_index],
+        ));
   }
 }
