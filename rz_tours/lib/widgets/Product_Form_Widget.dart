@@ -6,7 +6,6 @@ import 'package:rz_tours/utils/Auth.dart';
 import 'package:rz_tours/utils/Store.dart';
 import 'package:rz_tours/widgets/Custom_textfield.dart';
 import 'package:rz_tours/widgets/Form_textformfield.dart';
-import 'package:image_picker/image_picker.dart';
 
 class Form_page extends StatefulWidget {
   //const Form_page({ Key? key}) : super(key: key);
