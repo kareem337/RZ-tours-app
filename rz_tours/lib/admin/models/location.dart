@@ -1,5 +1,8 @@
-import 'dart:core';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/services.dart' show rootBundle;
+
 part 'location.g.dart';
 
 @JsonSerializable()
@@ -8,7 +11,6 @@ class LatLng {
     required this.lat,
     required this.lng,
   });
-
   factory LatLng.fromJson(Map<String, dynamic> json) => _$LatLngFromJson(json);
   Map<String, dynamic> toJson() => _$LatLngToJson(this);
   final double lat;
@@ -43,7 +45,6 @@ class Office {
     required this.phone,
     required this.region,
   });
-
   factory Office.fromJson(Map<String, dynamic> json) => _$OfficeFromJson(json);
   Map<String, dynamic> toJson() => _$OfficeToJson(this);
   final String address;
@@ -62,10 +63,24 @@ class Locations {
     required this.offices,
     required this.regions,
   });
-
   factory Locations.fromJson(Map<String, dynamic> json) =>
       _$LocationsFromJson(json);
   Map<String, dynamic> toJson() => _$LocationsToJson(this);
   final List<Office> offices;
   final List<Region> regions;
+}
+
+Future<Locations?> getGoogleOffices() async {
+  const googleLocationsURL = "https://about.google/static/data/locations.json";
+  try {
+    final response = await http.get(Uri.parse(googleLocationsURL));
+    if (response.statusCode == 200) {
+      return Locations.fromJson(json.decode(response.body));
+    }
+  } catch (e) {
+    print(e);
+  }
+  return Locations.fromJson(
+    json.decode(await rootBundle.loadString('assets/locations.json')),
+  );
 }

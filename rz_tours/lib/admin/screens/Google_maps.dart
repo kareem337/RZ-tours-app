@@ -2,17 +2,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:rz_tours/widgets/custom_app_bar.dart';
+import 'package:rz_tours/admin/models/location.dart' as location;
 
-class Maps extends StatefulWidget {
+class GoogleMaps extends StatefulWidget {
+  const GoogleMaps({Key? key}) : super(key: key);
+
   @override
-  State<Maps> createState() => _Maps();
+  _GoogleMapsState createState() => _GoogleMapsState();
 }
 
-class _Maps extends State<Maps> {
+class _GoogleMapsState extends State<GoogleMaps> {
   late GoogleMapController mapController;
-
-  final LatLng _center = const LatLng(45.521563, -122.677433);
-
+  final LatLng _center = const LatLng(30.0502, 31.2378);
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
   }
@@ -23,14 +24,19 @@ class _Maps extends State<Maps> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Maps'),
-          backgroundColor: Colors.green[700],
-        ),
+            title: Text("RZ-Tours Location"), backgroundColor: Colors.amber),
         body: GoogleMap(
           onMapCreated: _onMapCreated,
-          initialCameraPosition: CameraPosition(
-            target: _center,
-            zoom: 11.0,
+          initialCameraPosition: CameraPosition(target: _center, zoom: 30.0),
+          markers: Set<Marker>.of(
+            <Marker>[
+              Marker(
+                draggable: true,
+                markerId: MarkerId("1"),
+                position: _center,
+                icon: BitmapDescriptor.defaultMarker,
+              )
+            ],
           ),
         ),
       ),

@@ -110,7 +110,7 @@ class DrawerWidget extends StatelessWidget {
               style: TextStyle(fontSize: 24.0),
             ),
             onTap: () {
-              Helper.nextScreen(context, Maps());
+              Helper.nextScreen(context, GoogleMaps());
               ;
             },
           ),
