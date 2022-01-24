@@ -1,0 +1,1 @@
+  datetime_picker_formfield: ^2.0.0
