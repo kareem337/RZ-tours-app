@@ -5,6 +5,7 @@ import 'package:rz_tours/screens/chat.dart';
 import 'package:rz_tours/screens/edit_profile.dart';
 import 'package:rz_tours/screens/home.dart';
 import 'package:rz_tours/screens/home_screen.dart';
+import 'package:rz_tours/widgets/About_us.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 class BottomBar extends StatefulWidget {
@@ -21,7 +22,7 @@ class _BottomBarState extends State<BottomBar> {
   List<Widget> screens = [
     HomeScreen(),
     Chat(),
-    Trips_home(),
+    Aboutus(),
     EditProfile(),
   ];
 
