@@ -140,11 +140,6 @@ class _SignUpState extends State<SignUp> {
                           // you'd often call a server or save the information in a database.
                           var userrr = FirebaseAuth.instance.currentUser;
                           var cuid = userrr?.uid;
-                          await Authentication().Signup(
-                              _firstNameController.text,
-                              _LastNameController.text,
-                              _emailController.text,
-                              _passwordController.text);
                           final list = await FirebaseAuth.instance
                               .fetchSignInMethodsForEmail(
                                   _emailController.text);
@@ -156,6 +151,11 @@ class _SignUpState extends State<SignUp> {
                                       'Failed To SignUp Email Already in use')),
                             );
                           } else {
+                            await Authentication().Signup(
+                                _firstNameController.text,
+                                _LastNameController.text,
+                                _emailController.text,
+                                _passwordController.text);
                             Helper.nextScreen(context, Home());
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(content: Text('SignedUp Successfuly')),

@@ -97,10 +97,10 @@ class _ChatState extends State<Chat> {
                       onPressed: () {
                         Provider.of<ChatProvider>(context, listen: false)
                             .sendMessage(_chat.text,
-                                '9wZsCqKcVKXKNVeR0z8eTrxxgJ52', uid!);
+                                '9LPygOsvvEXiOSHbgHnZ7MfoR6a2', uid!);
                         Authentication().SendMessage(
                             mess: _chat.text.trim(),
-                            recId: '9wZsCqKcVKXKNVeR0z8eTrxxgJ52');
+                            recId: '9LPygOsvvEXiOSHbgHnZ7MfoR6a2');
                         // FireStoreServices().SendMessage(
                         //     mess: _chat.text.trim(),
                         //     recId: 'KmZ2KfdcM2fEGJCvTBFty7XRK422');

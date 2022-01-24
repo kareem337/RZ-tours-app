@@ -2,7 +2,7 @@
     package="com.example.rz_tours">
    <application
         android:label="rz_tours"
-        android:icon="@mipmap/launcher_icon">
+        android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
@@ -17,8 +17,6 @@
             <meta-data
               android:name="io.flutter.embedding.android.NormalTheme"
               android:resource="@style/NormalTheme"
-              android:name="com.google.android.geo.API-KEY"
-              android:value="AIzaSyAegk69cl9lhXb9OdNMcDJGXIuiH0uS6TY"
               />
               <!--new added-->
             <meta-data

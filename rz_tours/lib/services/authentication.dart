@@ -15,7 +15,6 @@ class Authentication {
       var uid = currentUser!.uid;
       if (currentUser != null && !currentUser.emailVerified) {
         await currentUser.sendEmailVerification();
-        print("LoggedIn");
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
@@ -31,7 +30,7 @@ class Authentication {
     try {
       CollectionReference user_details =
           FirebaseFirestore.instance.collection('User_Details');
-      UserCredential userCredential = await FirebaseAuth.instance
+      await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: pass);
       var currentUser = FirebaseAuth.instance.currentUser;
       var uid = currentUser!.uid;
