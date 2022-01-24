@@ -5,6 +5,7 @@ import 'package:rz_tours/models/person_model.dart';
 import 'package:rz_tours/screens/home.dart';
 import 'package:rz_tours/utils/helper.dart';
 
+
 class Authentication {
   Future<String?> Signin(
       {required String email, required String password}) async {
@@ -26,7 +27,7 @@ class Authentication {
   }
 
   Future<Object?> Signup(
-      String first, String last, String email, String pass) async {
+      String first, String last, String email, String pass, String imagePath) async {
     try {
       CollectionReference user_details =
           FirebaseFirestore.instance.collection('User_Details');
@@ -39,7 +40,9 @@ class Authentication {
         'First_Name': first,
         'Last_Name': last,
         'User_Id': uid,
-        'User_Type': 1
+        'User_Type': 1,
+        'Imagepath':""
+
       });
       // userData.add(Person(_firstName:fn, _lastName:ln, _email:email, _password:password ,_id:uid));
       return "Signed In Successfully";
@@ -70,10 +73,18 @@ class Authentication {
       return e.code;
     }
   }
+  Future loadimage() async
+    {
+       var currentUser = FirebaseAuth.instance.currentUser;
+    var uid = currentUser!.uid;
+var user_img = await FirebaseFirestore.instance.collection("User_Details").doc(uid).get().then((DocumentSnapshot ds){
+  return ds['Imagepath'];
+});
+    return user_img;}
 
-  late FirebaseAuth _firebaseAuth;
+   //FirebaseAuth _firebaseAuth;
 
   Future<void> signuutt() async {
-    await _firebaseAuth.signOut();
+     await FirebaseAuth.instance.signOut();
   }
 }

@@ -1,10 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:rz_tours/models/Trips.dart';
 import 'package:rz_tours/utils/Store.dart';
 import 'package:rz_tours/utils/constants.dart';
 import 'package:rz_tours/widgets/admin_Drawer.dart';
+import 'package:rz_tours/widgets/card_widget.dart';
 import 'package:rz_tours/widgets/manage_product_menu.dart';
+import 'package:rz_tours/widgets/Edit_form_widget.dart';
 
 class ManageProducts extends StatefulWidget {
   static String id = 'ManageProducts';
@@ -14,7 +17,17 @@ class ManageProducts extends StatefulWidget {
 
 class _ManageProductsState extends State<ManageProducts> {
   final _store = Store();
+  final formKey = GlobalKey<FormState>();
+  String _Museum_Name = "";
+  editfrom from = editfrom();
+  Card_widgets card = Card_widgets();
 
+  final controller = TextEditingController();
+  final Namecontroller = TextEditingController();
+  final Locationcontroller = TextEditingController();
+  final Disccontroller = TextEditingController();
+  final Imagecontroller = TextEditingController();
+  final pricecontroller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,7 +55,7 @@ class _ManageProductsState extends State<ManageProducts> {
 
               trips.add(
                 Trip(
-                  tripid: id,
+                  tid: id,
                   Trip_name: data[museum_name],
                   Trip_description: data[Trip_description],
                   Location: data[Location],
@@ -50,7 +63,7 @@ class _ManageProductsState extends State<ManageProducts> {
                   imagePath: data[imagePath],
                   liked: false,
                   Trip_Types: Trips.OUT_OF_CAIRO,
-                  //T_Quantity: null
+                  pl: data[pl]
                 ),
               );
             }
@@ -73,19 +86,123 @@ class _ManageProductsState extends State<ManageProducts> {
                         items: [
                           MyPopupMenuItem(
                             onClick: () {
-                              Navigator.pushNamed(
-                                  context, "EditProduct", //edit product page
-                                  arguments: trips[index]);
+                              //  Navigator.pushNamed(context, "editpage", arguments: trips[index].tripid);
+                              // Helper.nextScreen(context,  Edit_Form_page());
+                              showDialog(
+                                  context: context,
+                                  builder: (context) => Dialog(
+                                        child: Container(
+                                          color: Colors.white54,
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Form(
+                                              child: ListView(
+                                                shrinkWrap: true,
+                                                children: [
+                                                  from.buildTextField(
+                                                      Namecontroller, "Name"),
+                                                  SizedBox(height: 20),
+                                                  from.buildTextField(
+                                                      Locationcontroller,
+                                                      "Location"),
+                                                  SizedBox(height: 20),
+                                                  from.buildTextField(
+                                                      Disccontroller,
+                                                      "Discripion"),
+                                                  SizedBox(height: 20),
+                                                  IconButton(
+                                                    icon: Icon(
+                                                        Icons.update_rounded),
+                                                    onPressed: () {
+                                                      //print(_Museum_Name);
+                                                      // ignore: unnecessary_statements
+                                                      snapshot.data!.docs[index]
+                                                          .reference
+                                                          .update({
+                                                        museum_name:
+                                                            Namecontroller.text,
+                                                        Location:
+                                                            Locationcontroller
+                                                                .text,
+                                                        Trip_description:
+                                                            Disccontroller.text,
+                                                      });
+                                                      Navigator.of(context,
+                                                              rootNavigator: true)
+                                                          .pop("Done");
+                                                    },
+                                                  ) //child: Text("edit")),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ));
                             },
                             child: Text('Edit'),
                           ),
                           MyPopupMenuItem(
                             onClick: () {
-                              _store.deleteProduct(trips[index].tripid);
+                              _store.deleteProduct(trips[index].tid);
                               Navigator.pop(context);
                             },
                             child: Text('Delete'),
                           ),
+                          MyPopupMenuItem(
+                              onClick: () {
+                                showDialog(
+                                    context: context,
+                                    builder: (context) => Dialog(
+                                            child: SingleChildScrollView(
+                                          child: Container(
+                                            child: Center(
+                                              child: Card(
+                                                child: InkWell(
+                                                  splashColor:
+                                                      Colors.blue.withAlpha(30),
+                                                  onTap: () {},
+                                                  child: Column(
+                                                    children: [
+                                                      Container(
+                                                        width: 150,
+                                                        height: 150,
+                                                        child: ClipRRect(
+                                                          child:
+                                                              Positioned.fill(
+                                                            child: Image(
+                                                              fit: BoxFit.fill,
+                                                              //image: AssetImage(trips[index].imagePath),
+                                                              image: NetworkImage(
+                                                                  trips[index]
+                                                                      .imagePath),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      Container(
+                                                          child: Column(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceEvenly,
+                                                        children: [
+                                                          Text(
+                                                              'Name: ${trips[index].Trip_name}'),
+                                                          Text(
+                                                              'Description: ${trips[index].Trip_description}'),
+                                                          Text(
+                                                              'Trip Type: ${trips[index].Trip_Types}')
+                                                        ],
+                                                      ))
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        )));
+                                //card.Card_widget();
+                              },
+                              child: Text('View')),
                         ]);
                   },
                   child: Stack(
@@ -93,7 +210,8 @@ class _ManageProductsState extends State<ManageProducts> {
                       Positioned.fill(
                         child: Image(
                           fit: BoxFit.fill,
-                          image: AssetImage(trips[index].imagePath),
+                          //image: AssetImage(trips[index].imagePath),
+                          image: NetworkImage(trips[index].imagePath),
                         ),
                       ),
                       Positioned(
@@ -110,10 +228,19 @@ class _ManageProductsState extends State<ManageProducts> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
-                                  Text(
-                                    trips[index].Trip_name,
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
+                                  Row(
+                                    children: [
+                                      Flexible(
+                                        child: Text(
+                                          trips[index].Trip_name,
+                                          maxLines: 1,
+                                          softWrap: false,
+                                          overflow: TextOverflow.fade,
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                   Text('\$ ${trips[index].Trip_price}')
                                 ],
@@ -121,7 +248,7 @@ class _ManageProductsState extends State<ManageProducts> {
                             ),
                           ),
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),
@@ -129,7 +256,7 @@ class _ManageProductsState extends State<ManageProducts> {
               itemCount: trips.length,
             );
           } else {
-            return Center(child: Text('Loading...'));
+            return Center(child: CircularProgressIndicator());
           }
         },
       ),

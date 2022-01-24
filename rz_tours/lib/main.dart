@@ -4,20 +4,19 @@ import 'package:provider/provider.dart';
 import 'package:rz_tours/providers/Trips_provider.dart';
 import 'package:rz_tours/providers/cart_provider.dart';
 import 'package:rz_tours/providers/chat_provider.dart';
-import 'package:rz_tours/providers/product_provider.dart';
-import 'package:rz_tours/screens/sign_in.dart';
+import 'package:rz_tours/screens/Admin_Home.dart';
 import 'package:rz_tours/screens/home.dart';
+import 'package:rz_tours/screens/sign_in.dart';
 import 'package:rz_tours/utils/constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(MyApp());
-  final data = rootBundle.load('assets/busStops.txt');
+ //final data = rootBundle.load('assets/busStops.txt');
 }
 
 //
@@ -29,7 +28,6 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => Cart()),
-        ChangeNotifierProvider(create: (context) => ProductProvider()),
         ChangeNotifierProvider(create: (context) => TripsProvider()),
         ChangeNotifierProvider(create: (context) => ChatProvider()),
       ],
@@ -37,7 +35,7 @@ class MyApp extends StatelessWidget {
         designSize: Size(375, 812),
         builder: () => MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'Flutter Demo',
+          title: 'RZ tours',
           theme: ThemeData(
             primaryColor: Constants.primaryColor,
             primarySwatch: Colors.grey,
@@ -45,7 +43,7 @@ class MyApp extends StatelessWidget {
             visualDensity: VisualDensity.adaptivePlatformDensity,
             textTheme: GoogleFonts.poppinsTextTheme(),
           ),
-          home: Home(),
+          home: SignIn(),
         ),
       ),
     );

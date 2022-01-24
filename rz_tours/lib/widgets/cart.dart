@@ -3,10 +3,12 @@ import 'package:provider/provider.dart';
 import 'package:rz_tours/providers/cart_provider.dart';
 
 class CartItem extends StatefulWidget {
-  String image;
+  
   String name;
-  double price;
-  CartItem(this.image, this.name, this.price);
+  int price;
+  int quantity;
+  String image;
+  CartItem( this.name, this.price,this.quantity,this.image);
 
   @override
   _CartItemState createState() => _CartItemState();
@@ -25,16 +27,16 @@ class _CartItemState extends State<CartItem> {
             Column(
               //crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  width: MediaQuery.of(context).size.width / 3,
-                  height: 200,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('assets/${this.widget.image}'),
-                      fit: BoxFit.fill,
+                 Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(18.0),
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: //AssetImage('assets/luxor.jpg'), 
+                        NetworkImage(this.widget.image)
+                      ),
                     ),
                   ),
-                ),
               ],
             ),
             SizedBox(width: 12.0),
@@ -52,60 +54,17 @@ class _CartItemState extends State<CartItem> {
                           style: TextStyle(),
                         ),
                       ),
-                      Column(
-                        children: [
-                          // IconButton(
-                          //   onPressed: () {
-                          //     },
-                          //   icon: Icon(
-                          //     Icons.delete_outlined,
-                          //   ),
-                          // ),
-                        ],
-                      ),
                     ],
                   ),
                   Text(
                     '${this.widget.price} L.E',
                     style: TextStyle(),
                   ),
-                  Container(
-                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            setState(() {
-                              if (counter > 1) {
-                                counter--;
-                              }
-                            });
-                          },
-                          icon: Icon(
-                            Icons.remove,
-                          ),
-                        ),
-                        Text(
-                          '$counter',
-                          style: TextStyle(
-                            fontSize: 16.0,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                        IconButton(
-                          onPressed: () {
-                            setState(() {
-                              counter++;
-                            });
-                          },
-                          icon: Icon(
-                            Icons.add,
-                          ),
-                        ),
-                      ],
-                    ),
+                                    Text(
+                    'Tickets: ${this.widget.quantity}',
+                    style: TextStyle(),
                   ),
+
                 ],
               ),
             ),

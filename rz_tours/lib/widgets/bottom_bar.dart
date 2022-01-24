@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:rz_tours/models/chat_model.dart';
 import 'package:rz_tours/screens/Trips_home.dart';
 import 'package:rz_tours/screens/chat.dart';
 import 'package:rz_tours/screens/edit_profile.dart';

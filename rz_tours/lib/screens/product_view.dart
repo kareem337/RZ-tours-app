@@ -1,50 +1,56 @@
-import 'package:flutter/cupertino.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:rz_tours/models/product_model.dart';
+import 'package:rz_tours/models/user_cart.dart';
 import 'package:rz_tours/providers/cart_provider.dart';
 import 'package:rz_tours/screens/cart_.dart';
+import 'package:rz_tours/utils/constants.dart';
 import 'package:rz_tours/utils/helper.dart';
-import 'package:rz_tours/widgets/custom_app_bar.dart';
-import 'package:rz_tours/widgets/drawer.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
+import 'package:intl/intl.dart';
 
 class CartScreen extends StatefulWidget {
+  final String name;
+  final String pl;
+  final String description;
+  final int price;
+  String imagePath2;
+  CartScreen(this.name, this.price, this.description, this.pl,this.imagePath2);
+
   @override
   _CartScreenState createState() => _CartScreenState();
 }
 
 class _CartScreenState extends State<CartScreen> {
-  TimeOfDay _time = TimeOfDay(hour: 7, minute: 15);
-
-  void _selectTime() async {
-    final TimeOfDay? newTime = await showTimePicker(
-      context: context,
-      initialTime: _time,
-    );
-    if (newTime != null) {
-      setState(() {
-        _time = newTime;
-      });
-    }
-  }
-
-  final List<Products> items = [
-    //Products(name: 'Abdeen Palace ', price: 100.0, productImage: "Abdeen.jpg"),
-    //Products(name: 'Alexandria ', price: 200.0, productImage: "Abdeen.jpg"),
-    //Products(name: 'Dahab ', price: 300.0, productImage: "dahab.jpg"),
-  ];
+  TimeOfDay _time = TimeOfDay(hour: 12, minute: 00);
+  late DateTime date;
+  final format = DateFormat("yyyy-MM-dd HH:mm");
+  late DateTime dt;
+  late Timestamp myTimeStamp;
+int quantity=1;
+final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Consumer<Cart>(builder: (context, cart, child) {
       return Scaffold(
-        appBar: PreferredSize(
-          //bet7aded size lel appbar
-          preferredSize: Size.fromHeight(50.0),
-          child: CustomAppBar('Product'),
+        appBar: AppBar(
+        title: Text(
+          "Products",
         ),
-        drawer: DrawerWidget(),
+        backgroundColor: Colors.amber,
+        elevation: 0.0,
+        centerTitle: true,
+        actions: <Widget>[
+    IconButton(
+      icon: Icon(
+        Icons.shopping_cart,
+        color: Colors.black,
+      ),
+      onPressed: () {
+        Helper.nextScreen(context, CartView());
+      },
+        
+        )]),
         body: Container(
           padding: EdgeInsets.all(20),
           margin: EdgeInsets.all(20),
@@ -52,7 +58,7 @@ class _CartScreenState extends State<CartScreen> {
             children: [
               Center(
                 child: Text(
-                  "Egyptian Museum",
+                  widget.name,
                   style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.w600,
@@ -67,13 +73,27 @@ class _CartScreenState extends State<CartScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  CircleAvatar(
-                    backgroundImage: AssetImage("assets/Trip-1.png"),
-                    radius: 100,
-                    // child: Image.network(
-                    //   height: 150,
-                    //   width: 100,
-                    // ),
+                  // CircleAvatar(
+                  //   backgroundImage: NetworkImage(widget.imagePath2),
+                  //   radius: 100,
+                  //   // child: Image.network(
+                  //   //   height: 150,
+                  //   //   width: 100,
+                  //   // ),
+                  // ),
+                  Container(
+                height: 220.0,
+                         width: 240.0,
+                    decoration: BoxDecoration(
+                      
+                      borderRadius: BorderRadius.circular(18.0),
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        
+                        image: //AssetImage('assets/luxor.jpg'), 
+                        NetworkImage(widget.imagePath2)
+                      ),
+                    ),
                   ),
                   SizedBox(
                     height: 50,
@@ -89,8 +109,8 @@ class _CartScreenState extends State<CartScreen> {
                       ),
                       Expanded(
                         child: Text(
-                          "Egyptian Musuem",
-                          style: TextStyle(fontSize: 16, fontFamily: "italic"),
+                          widget.name,
+                          style: TextStyle(fontSize: 20, fontFamily: "italic"),
                         ),
                       )
                     ],
@@ -109,8 +129,8 @@ class _CartScreenState extends State<CartScreen> {
                       ),
                       Expanded(
                         child: Text(
-                          "NasrCity,Cairo International Stadium",
-                          style: TextStyle(fontSize: 16, fontFamily: "italic"),
+                          widget.pl,
+                          style: TextStyle(fontSize: 20, fontFamily: "italic"),
                         ),
                       ),
                     ],
@@ -121,20 +141,16 @@ class _CartScreenState extends State<CartScreen> {
                   Row(
                     children: [
                       Expanded(
-                          child: Text(
-                        "Time:",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 20),
-                      )),
+                        child: Text(
+                          "Ticket Price:",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 20),
+                        ),
+                      ),
                       Expanded(
-                        child: ElevatedButton(
-                          style:
-                              ElevatedButton.styleFrom(primary: Colors.amber),
-                          onPressed: _selectTime,
-                          child: Text(
-                            'SELECT TIME',
-                            style: TextStyle(color: Colors.white),
-                          ),
+                        child: Text(
+                          "${widget.price.toString()} LE",
+                          style: TextStyle(fontSize: 20, fontFamily: "italic"),
                         ),
                       )
                     ],
@@ -142,47 +158,100 @@ class _CartScreenState extends State<CartScreen> {
                   SizedBox(
                     height: 50,
                   ),
+
                   Row(
-                    children: [
-                      Expanded(
-                          child: Text(
-                        "Date:",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 20),
-                      )),
-                      Expanded(
-                          child: ElevatedButton(
-                              onPressed: () {
-                                DatePicker.showDatePicker(context,
-                                    showTitleActions: true,
-                                    minTime: DateTime(2021, 12, 21),
-                                    maxTime: DateTime(2022, 2, 2),
-                                    onChanged: (date) {
-                                  print('change $date');
-                                }, onConfirm: (date) {
-                                  print('confirm $date');
-                                }, currentTime: DateTime.now());
-                                //locale: LocaleType.zh);
-                              },
-                              style: ElevatedButton.styleFrom(
-                                  primary: Colors.amber),
-                              child: Text(
-                                'SELECT DATE',
-                                style: TextStyle(color: Colors.white),
-                              )))
-                    ],
-                  ),
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        IconButton(
+                          onPressed: () {
+                            setState(() {
+                              if (quantity > 1) {
+                                quantity--;
+                              }
+                            });
+                          },
+                          icon: Icon(
+                            Icons.remove,
+                          ),
+                        ),
+                        Text(
+                          '$quantity',
+                          style: TextStyle(
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        IconButton(
+                          onPressed: () {
+                            setState(() {
+                              quantity++;
+                            });
+                          },
+                          icon: Icon(
+                            Icons.add,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 50,),
+                  Column(children: <Widget>[
+                    Text(
+                      "Pick Date And Time",
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    ),
+                    Form(
+                      key: _formKey,
+                      child: DateTimeField(
+                        
+                        validator: (value) {
+                          if ((value.toString().isEmpty) ||
+                              (DateTime.tryParse(value.toString()) == null)) {
+                             return "Please pick Date and Time";
+                          }
+                          return null;
+                        },
+                        format: format,
+                        onShowPicker: (context, currentValue) async {
+                          final date = await showDatePicker(
+                              context: context,
+                              firstDate: DateTime.now(),
+                              initialDate: currentValue ?? DateTime.now(),
+                              lastDate:
+                                  DateTime.now().add(Duration(hours: 24 * 30)));
+                          if (date != null) {
+                            final time = await showTimePicker(
+                              context: context,
+                              initialTime: TimeOfDay.fromDateTime(
+                                  currentValue ?? DateTime.now()),
+                            );
+                    
+                            dt = DateTimeField.combine(date, time);
+                            return dt;
+                          } else {
+                            return currentValue;
+                          }
+                        },
+                      ),
+                    ),
+                  ]),
                   SizedBox(
                     height: 50,
                   ),
                   ElevatedButton(
                       onPressed: () {
-                        Helper.nextScreen(context, CartView());
-                        cart.add(items[1]);
+                        if (_formKey.currentState!.validate())
+                        {
+                        cart.addNames(UserCart(widget.name, widget.price, dt,quantity,widget.imagePath2));
+                        cart.add(UserCart(widget.name, widget.price, dt,quantity,widget.imagePath2));
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Added To Cart')));
+                        }
+                        //Helper.nextScreen(context, CartView());
                       },
                       style: ElevatedButton.styleFrom(primary: Colors.amber),
                       child: Text(
-                        "Go To Payement",
+                        "Add To Cart",
                         style: TextStyle(
                             fontSize: 16,
                             color: Colors.white,

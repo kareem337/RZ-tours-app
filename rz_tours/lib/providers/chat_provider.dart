@@ -5,7 +5,7 @@ class ChatProvider extends ChangeNotifier
 {
   List <ChatModel> _messages = <ChatModel>[];
 
-  List<ChatModel> get getNotes 
+  List<ChatModel> get getMsgs 
   {
     return _messages;
   }

@@ -6,6 +6,8 @@ import 'package:provider/provider.dart';
 import 'package:rz_tours/models/chat.dart';
 import 'package:rz_tours/providers/chat_provider.dart';
 import 'package:rz_tours/services/authentication.dart';
+import 'package:rz_tours/widgets/custom_app_bar.dart';
+import 'package:rz_tours/widgets/drawer.dart';
 
 TextEditingController _chat = TextEditingController();
 
@@ -27,9 +29,11 @@ class _ChatState extends State<Chat> {
         .where('sender_id', isEqualTo: uid)
         .snapshots();
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Chat "),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(50.0),
+        child: CustomAppBar('Chat'),
       ),
+      drawer: DrawerWidget(),
       body: Container(
         child: Align(
           alignment: Alignment.bottomLeft,
@@ -37,16 +41,16 @@ class _ChatState extends State<Chat> {
             children: [
               Consumer<ChatProvider>(
                 builder: (context, ChatProvider data, child) {
-                  print(data.getNotes);
-                  return data.getNotes.length != 0
+                  print(data.getMsgs);
+                  return data.getMsgs.length != 0
                       ? Container(
                           height: 150,
                           child: ListView.builder(
-                            itemCount: data.getNotes.length,
+                            itemCount: data.getMsgs.length,
                             itemBuilder: (context, index) {
-                              print(data.getNotes[index].msg);
+                              print(data.getMsgs[index].msg);
                               return MessageContainer(
-                                  data.getNotes[index], index);
+                                  data.getMsgs[index], index);
                             },
                           ),
                         )

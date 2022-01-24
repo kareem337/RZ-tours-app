@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:rz_tours/models/product_model.dart';
 import 'package:rz_tours/providers/Trips_provider.dart';
 import 'package:rz_tours/screens/Trips_home.dart';
-import 'package:rz_tours/screens/products.dart';
-import 'package:rz_tours/services/trips_data.dart';
+import 'package:rz_tours/screens/cart_.dart';
 import 'package:rz_tours/utils/helper.dart';
-import 'package:rz_tours/utils/places.dart';
-import 'package:rz_tours/widgets/custom_app_bar.dart';
 import 'package:rz_tours/widgets/drawer.dart';
 import 'package:rz_tours/widgets/horizontal_place_item.dart';
-import 'package:rz_tours/widgets/search_bar.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -18,10 +13,24 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(50.0),
-          child: CustomAppBar('Home Page'),
+        appBar: AppBar(
+        title: Text(
+          "Products",
         ),
+        backgroundColor: Colors.amber,
+        elevation: 0.0,
+        centerTitle: true,
+        actions: <Widget>[
+    IconButton(
+      icon: Icon(
+        Icons.shopping_cart,
+        color: Colors.black,
+      ),
+      onPressed: () {
+        Helper.nextScreen(context, CartView());
+      },
+        
+        )]),
         drawer: DrawerWidget(),
         body: SafeArea(
           child: ListView(
@@ -30,16 +39,14 @@ class HomeScreen extends StatelessWidget {
                 padding: EdgeInsets.all(20.0),
                 child: Text(
                   "Explore the beauty of \nEgypt",
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 30.0,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.all(20.0),
-                child: SearchBar(),
-              ),
+              
               Padding(
                 padding: EdgeInsets.all(10.0),
                 child: Text(
@@ -62,25 +69,74 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               buildHorizontalList(context),
-              cards(context),
+              SizedBox(height: 15,),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Text(
+                      "Rz tours Offers variety of services where you will get the best experience in visiting museums. We will serve you from the day you will book the ticket to the moment you exit the museum. We hope you to have a great experience with us.",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 18,
+                        letterSpacing: 0.6,
+                        wordSpacing: 0.6,
+                      ),
+                    ),
+              ),
+              TextButton(
+                      onPressed: () {
+                        Helper.nextScreen(context, Trips_home());
+                      },
+                      child: Text(
+                        "View Museums >>>",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30,
+                        ),
+                      ),
+                    )
+              //cards(context),
             ],
           ),
         ));
   }
 
   buildHorizontalList(BuildContext context) {
+    return Consumer<TripsProvider>(builder: (context, trips, child){
     return Container(
       padding: EdgeInsets.only(top: 10.0, left: 20.0),
       height: 270.0,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: places.length,
-        itemBuilder: (BuildContext context, int index) {
-          Map place = places.reversed.toList()[index];
-          return HorizontalPlaceItem(place: place);
-        },
-      ),
-    );
+      child:  FutureBuilder(
+                                  future: //_store.fetch2(),
+                                      trips.fetchTrips(),
+                                  builder: (context, snapshot) {
+                                    return ListView.separated(
+                                      separatorBuilder:
+                                          (BuildContext context, int index) {
+                                        return SizedBox(
+                                          height: 15.0,
+                                        );
+                                      },
+                                      itemCount: trips.basketItems.length,
+                                      //physics: NeverScrollableScrollPhysics(),
+                                      //shrinkWrap: true,
+                                      scrollDirection: Axis.horizontal,
+                                      itemBuilder:
+                                          (BuildContext context, int index) {
+                                        
+                                        return HorizontalPlaceItem(
+                                          trips.basketItems[index].Trip_name,
+                                          trips.basketItems[index].Location,
+                                          trips.basketItems[index].imagePath,
+                                           trips.basketItems[index].Trip_price,
+                                          trips.basketItems[index].Trip_description,
+                                          trips.basketItems[index].pl
+                                        );
+                                      },
+                                    );
+                                  })
+    );});
   }
 
   cards(BuildContext context) {
@@ -93,7 +149,7 @@ class HomeScreen extends StatelessWidget {
               onPressed: () {
                 Provider.of<TripsProvider>(context, listen: false).fetchTrips();
                 //trips.fetchTrips();
-                print("pressed");
+
                 Helper.nextScreen(context, Trips_home());
               },
               child: Container(
@@ -126,7 +182,8 @@ class HomeScreen extends StatelessWidget {
             ElevatedButton(
               style: ElevatedButton.styleFrom(primary: Colors.amber),
               onPressed: () {
-                Helper.nextScreen(context, Product());
+                Provider.of<TripsProvider>(context, listen: false).fetchTrips();
+                Helper.nextScreen(context, Trips_home());
               },
               child: Container(
                 decoration: BoxDecoration(
@@ -158,6 +215,7 @@ class HomeScreen extends StatelessWidget {
             ElevatedButton(
               style: ElevatedButton.styleFrom(primary: Colors.amber),
               onPressed: () {
+                Provider.of<TripsProvider>(context, listen: false).fetchTrips();
                 Helper.nextScreen(context, Trips_home());
               },
               child: Container(

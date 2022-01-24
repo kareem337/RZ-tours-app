@@ -3,46 +3,44 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:rz_tours/providers/Trips_provider.dart';
-import 'package:rz_tours/screens/search_result.dart';
+import 'package:rz_tours/screens/cart_.dart';
 import 'package:rz_tours/services/trips_data.dart';
 import 'package:rz_tours/utils/constants.dart';
 import 'package:rz_tours/utils/helper.dart';
-import 'package:rz_tours/utils/static_data.dart';
-import 'package:rz_tours/widgets/Tickets_card.dart';
 import 'package:rz_tours/widgets/custom_app_bar.dart';
-import 'package:rz_tours/widgets/drawer.dart';
 import 'package:rz_tours/widgets/Search_widget.dart';
 import 'package:rz_tours/widgets/Trips_card.dart';
 
 class Trips_home extends StatelessWidget {
   String View = "Trips";
-
+  final _store = TripsData();
   get fontSize15 => null;
   @override
   Widget build(BuildContext context) {
     return Consumer<TripsProvider>(builder: (context, trips, child) {
       return Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(50.0),
-          child: CustomAppBar('Products'),
+        appBar: AppBar(
+        title: Text(
+          "Products",
         ),
-        drawer: DrawerWidget(),
-        body: trips.basketItems.length == 0
-            ? Center(
-                child: Text(
-                  'THERE ARE NO ITEMS IN YOUR CART',
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-              )
-            : StreamBuilder(
-                stream:
-                    //tripsStream.loadTrips(),
-                    FirebaseFirestore.instance
-                        .collection('Products')
-                        .snapshots(),
+        backgroundColor: Colors.amber,
+        elevation: 0.0,
+        centerTitle: true,
+        actions: <Widget>[
+    IconButton(
+      icon: Icon(
+        Icons.shopping_cart,
+        color: Colors.black,
+      ),
+      onPressed: () {
+        Helper.nextScreen(context, CartView());
+      },
+        
+        )]),
+        body:  StreamBuilder(
+                stream: FirebaseFirestore.instance
+                    .collection('Muesums')
+                    .snapshots(),
                 builder: (BuildContext context,
                     AsyncSnapshot<QuerySnapshot> snapshot) {
                   if (!snapshot.hasData) {
@@ -62,79 +60,20 @@ class Trips_home extends StatelessWidget {
                             SizedBox(
                               height: 20.0,
                             ),
-                            RichText(
-                              text: TextSpan(
-                                children: [
-                                  TextSpan(
-                                    text: "Find Your Next Trip\n",
-                                    style: TextStyle(
-                                      fontSize: 22.0,
-                                      height: 1.3,
-                                      color: Color.fromRGBO(22, 27, 40, 70),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
+                            Text(
+                      "Choose Your Next Visit",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 18,
+                        letterSpacing: 0.6,
+                        wordSpacing: 0.6,
+                      ),
+                    ),
                             SizedBox(
                               height: 20.0,
                             ),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: SearchWidget(
-                                    height: 44.0,
-                                    hintText: "Search For your Next Trip",
-                                    prefixIcon: Icons.search,
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 10.0,
-                                ),
-                                Container(
-                                  height: ScreenUtil().setHeight(44.0),
-                                  child: ElevatedButton(
-                                    style: ButtonStyle(
-                                        shape: MaterialStateProperty.all(
-                                          RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                        ),
-                                        backgroundColor:
-                                            MaterialStateProperty.all(
-                                          Constants.amberColor,
-                                        ),
-                                        padding: MaterialStateProperty.all(
-                                          EdgeInsets.symmetric(
-                                            horizontal: 15.0,
-                                          ),
-                                        )),
-                                    onPressed: () {
-                                      Helper.nextScreen(
-                                          context, SearchResult());
-                                    },
-                                    child: Row(
-                                      children: [
-                                        Icon(
-                                          Icons.search,
-                                          color: Colors.white,
-                                        ),
-                                        SizedBox(
-                                          width: 10.0,
-                                        ),
-                                        Text(
-                                          "Search",
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
+                           
                             SizedBox(
                               height: 20.0,
                             ),
@@ -157,7 +96,7 @@ class Trips_home extends StatelessWidget {
                                       onPressed: () {
                                         View = "Trips";
                                       },
-                                      child: Text('Trips Tickets'),
+                                      child: Text('Cairo Museums'),
                                     ),
                                   ),
                                 ),
@@ -181,7 +120,7 @@ class Trips_home extends StatelessWidget {
                                       onPressed: () {
                                         View = "Musume";
                                       },
-                                      child: Text('Musume Tickets'),
+                                      child: Text('Giza Museums'),
                                     ),
                                   ),
                                 )
@@ -213,100 +152,43 @@ class Trips_home extends StatelessWidget {
                               height: 25.0,
                             ),
                             if (View == "Trips")
-                              ListView.separated(
-                                separatorBuilder:
-                                    (BuildContext context, int index) {
-                                  return SizedBox(
-                                    height: 15.0,
-                                  );
-                                },
-                                itemCount: trips.basketItems.length,
-                                physics: NeverScrollableScrollPhysics(),
-                                shrinkWrap: true,
-                                itemBuilder: (BuildContext context, int index) {
-                                  //var temp = snapshot.data!.docs[index].data() as dynamic;
-                                  return TripCard(
-                                      trips.basketItems.Trip_Name,
-                                      trips.basketItems.Trip_price,
-                                      trips.basketItems.Trip_description,
-                                      trips.basketItems.Location);
-                                },
-                              )
-                            else
-                              ListView.separated(
-                                separatorBuilder:
-                                    (BuildContext context, int index) {
-                                  return SizedBox(
-                                    height: 15.0,
-                                  );
-                                },
-                                itemCount: 2,
-                                physics: NeverScrollableScrollPhysics(),
-                                shrinkWrap: true,
-                                itemBuilder: (BuildContext context, int index) {
-                                  return TicketsCard(
-                                    tickets: StaticData.SomeTickets[index],
-                                  );
-                                },
-                              )
+                              FutureBuilder(
+                                  future: //_store.fetch2(),
+                                      trips.fetchTrips(),
+                                  builder: (context, snapshot) {
+                                    return ListView.separated(
+                                      separatorBuilder:
+                                          (BuildContext context, int index) {
+                                        return SizedBox(
+                                          height: 15.0,
+                                        );
+                                      },
+                                      itemCount: trips.basketItems.length,
+                                      physics: NeverScrollableScrollPhysics(),
+                                      shrinkWrap: true,
+                                      itemBuilder:
+                                          (BuildContext context, int index) {
+                                        
+                                        return TripCard(
+                                          trips.basketItems[index].Trip_name,
+                                          trips.basketItems[index].Trip_price,
+                                          trips.basketItems[index]
+                                              .Trip_description,
+                                          trips.basketItems[index].Location,
+                                          trips.basketItems[index].tid,
+                                          trips.basketItems[index].pl,
+                                          trips.basketItems[index].imagePath
+                                        );
+                                      },
+                                    );
+                                  })
                           ],
                         ),
                       ),
                     ),
-
-                    //     ListView.separated(
-                    //       separatorBuilder: (BuildContext context, int index) {
-                    //         return SizedBox(
-                    //           height: 15.0,
-                    //         );
-                    //       },
-                    //       itemCount: StaticData.SomeTrips.length,
-                    //       physics: NeverScrollableScrollPhysics(),
-                    //       shrinkWrap: true,
-                    //       itemBuilder: (BuildContext context, int index) {
-                    //         return TripCard(
-                    //           trip: StaticData.SomeTrips[index],
-                    //         );
-                    //       },
-                    //     ),
-                    //     // Expanded(
-                    //     // child: Consumer<ProductProviders>(
-                    //     //   builder: (context, ProductProviders data, child) {
-                    //     //     return data.getProduct.length != 0
-                    //     //         ? ListView.separated(
-                    //     //           separatorBuilder: (BuildContext context, int index){
-                    //     //             return SizedBox(
-                    //     //       height: 15.0,
-                    //     //     );
-                    //     //     },
-                    //     //             itemCount: data.getProduct.length,
-                    //     //             itemBuilder: (context, index) {
-                    //     //               return TripCard(data.getProduct[index], index);
-                    //     //             },
-                    //     //           )
-                    //     //           : Center(
-                    //     //             child: Text(
-                    //     //               'No Available Products',
-                    //     //               style: TextStyle(
-                    //     //                 color: Colors.red,
-                    //     //                 fontSize: fontSize15,
-                    //     //               ),
-                    //     //             ),
-                    //     //           );
-
-                    //     //   }
-                    //     // ),
-                    //     // )
-                    //   ],
-
-                    // ),
                   );
                 }),
       );
     });
   }
 }
-
-// class ProductProviders {
-//   get getProduct => null;
-// }

@@ -1,49 +1,60 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:rz_tours/models/Trips.dart';
+import 'package:rz_tours/models/user_cart.dart';
+import 'package:rz_tours/utils/constants.dart';
 
 class TripsData {
-  List<Trip> trips = [];
+  List<Trip> _tripDataList = [];
 
   Stream<QuerySnapshot> loadTrips() {
-    return FirebaseFirestore.instance.collection('Products').snapshots();
+    return FirebaseFirestore.instance.collection(museum).snapshots();
   }
 
-  fetchdata() //async
-  {
-    // DocumentSnapshot documentSnapshot = await FirebaseFirestore.instance.collection('my_contact').doc('details').get();
-    //  CollectionReference documentSnapshot = FirebaseFirestore.instance.collection('Products');
+  fetchvideo() async {
+    var snapshot =
+        await FirebaseFirestore.instance.collection(museum).get();
 
-    FirebaseFirestore.instance
-        .collection("Products")
-        .get()
-        .then((querySnapshot) {
-      querySnapshot.docs.forEach((result) {
-        //print(result.data());
+    for (var doc in snapshot.docs) {
+      var data = doc.data();
+      String tripID = doc.reference.id;
+      _tripDataList.add(Trip(
+          tid: tripID,
+          Trip_name: data[museum_name],
+          Trip_description: data[Trip_description],
+          Location: data[Location],
+          Trip_price: data[Trip_price],
+          imagePath: data[imagePath],
+          pl:data[pl],
+          liked: false,
+          Trip_Types: Trips.OUT_OF_CAIRO));
+    }
+    return _tripDataList;
+  }
 
-        trips.add(Trip(
-            Trip_name: result['name'],
-            Trip_description: result['Trip_description'],
-            Location: result['Location'],
-            Trip_price: result['Trip_price'],
-            imagePath: result['imagePath'],
-            liked: false,
-            Trip_Types: Trips.OUT_OF_CAIRO,
-            tripid: ''));
-      });
-      return trips;
+  bookOrder(UserCart order) async {
+    DateTime currentDate = DateTime.now();
+    CollectionReference order_details =
+        FirebaseFirestore.instance.collection(Orders_table);
+    var currentUser = FirebaseAuth.instance.currentUser;
+    var uid = currentUser!.uid;
+var user_name = await FirebaseFirestore.instance.collection("User_Details").doc(uid).get().then((DocumentSnapshot ds){
+  return ds['First_Name'];
+});
+final result = await order_details.doc(uid).get();
+var current_user= result.data();
+    order_details.add({
+      Order_name: order.name,
+      Total_price: order.price,
+      User_ID: uid,
+      Date:order.dateTime,
+      Quantity:order.quantity,
+      Ordered_placed_date: currentDate,
+      User_name:user_name,
+     // imagePath:order.image
     });
 
-    // trips.add(Trip(
-    // Trip_name: documentSnapshot['name'],
-    // Trip_description: documentSnapshot['Trip_description'],
-    // Location: documentSnapshot['Location'],
-    // Trip_price: documentSnapshot['Trip_price'],
-    // imagePath: documentSnapshot['imagePath'],
-    // liked:false,
-    // Trip_Types: Trips.OUT_OF_CAIRO
-    // ));
+    return "Ordered Successfully";
   }
-
-  fetchvideo() {}
 }

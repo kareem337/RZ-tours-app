@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:rz_tours/widgets/ADD_Form.dart';
 import 'package:rz_tours/widgets/Form_textformfield.dart';
-import 'package:rz_tours/widgets/Product_Form_Widget.dart';
-
 class Add_product extends StatefulWidget {
   static String id = "Addprouct";
   const Add_product({Key? key}) : super(key: key);

@@ -1,12 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/src/provider.dart';
-import 'package:rz_tours/admin/screens/admin_home.dart';
-import 'package:rz_tours/models/person_model.dart';
 import 'package:rz_tours/screens/Admin_Home.dart';
-import 'package:rz_tours/screens/chat.dart';
 import 'package:rz_tours/screens/forget_password.dart';
 import 'package:rz_tours/screens/home.dart';
 import 'package:rz_tours/screens/sign_up.dart';
@@ -114,6 +109,7 @@ class _SignInState extends State<SignIn> {
                 ]),
                 SizedBox(height: 15),
                 ElevatedButton(
+                  style: ElevatedButton.styleFrom(primary: Colors.amber),
                   onPressed: () async {
                     print("Login Pressed");
                     print("The Email is: ${_emailController.text}");
@@ -156,7 +152,7 @@ class _SignInState extends State<SignIn> {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(content: Text('Failed To LogIn')),
                             );
-                            return Helper.nextScreen(context, SignIn());
+                            //return Helper.nextScreen(context, SignIn());
                           }
                         });
                       }
@@ -175,11 +171,11 @@ class _SignInState extends State<SignIn> {
                 SizedBox(height: 10),
                 Row(
                   children: [
-                    SizedBox(width: 20),
+                    SizedBox(width: 40),
                     Text(
                       "Don't have an account?",
                       style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
                     ),
                     TextButton(
                       onPressed: () {
@@ -190,7 +186,7 @@ class _SignInState extends State<SignIn> {
                         style: TextStyle(
                           color: Colors.blue,
                           fontWeight: FontWeight.bold,
-                          fontSize: 20,
+                          fontSize: 17,
                         ),
                       ),
                     )

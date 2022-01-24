@@ -8,6 +8,7 @@ import 'package:rz_tours/screens/rz_map.dart';
 import 'package:rz_tours/screens/sign_in.dart';
 import 'package:rz_tours/services/authentication.dart';
 import 'package:rz_tours/utils/helper.dart';
+import 'package:rz_tours/widgets/About_us.dart';
 
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({Key? key}) : super(key: key);
@@ -43,7 +44,7 @@ class DrawerWidget extends StatelessWidget {
                 UserAccountsDrawerHeader(
                   currentAccountPicture: CircleAvatar(
                     backgroundImage: NetworkImage(
-                        'https://images.unsplash.com/photo-1485290334039-a3c69043e517?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTYyOTU3NDE0MQ&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=300'),
+                        data['Imagepath']),
                   ),
                   accountEmail: Text(
                     "${user?.email}",
@@ -70,50 +71,32 @@ class DrawerWidget extends StatelessWidget {
                 ListTile(
                   leading: const Icon(Icons.apartment),
                   title: const Text(
-                    'Hotels',
+                    'Museums',
                     style: TextStyle(fontSize: 24.0),
                   ),
                   onTap: () {
                     Helper.nextScreen(context, Trips_home());
                   },
                 ),
-                ListTile(
-                  leading: const Icon(Icons.flight),
-                  title: const Text(
-                    'Trips',
-                    style: TextStyle(fontSize: 24.0),
-                  ),
-                  onTap: () {
-                    Helper.nextScreen(context, Trips_home());
-                  },
-                ),
-                ListTile(
-                  leading: const Icon(Icons.directions_boat),
-                  title: const Text(
-                    'Cruises',
-                    style: TextStyle(fontSize: 24.0),
-                  ),
-                  onTap: () {
-                    Helper.nextScreen(context, Trips_home());
-                  },
-                ),
-                ListTile(
-                  leading: const Icon(Icons.shopping_cart),
-                  title: const Text(
-                    'Packages',
-                    style: TextStyle(fontSize: 24.0),
-                  ),
-                  onTap: () {
-                    Helper.nextScreen(context, Trips_home());
-                  },
-                ),
+               
                 ListTile(
                   leading: const Icon(Icons.info),
                   title: const Text(
                     'AboutUs',
                     style: TextStyle(fontSize: 24.0),
                   ),
-                  onTap: () {},
+                  onTap: () {Helper.nextScreen(context, Aboutus());},
+                ),
+                ListTile(
+                  leading: const Icon(Icons.map_outlined),
+                  title: const Text(
+                    'RzMap',
+                    style: TextStyle(fontSize: 24.0),
+                  ),
+                  onTap: () {
+                    //Helper.nextScreen(context, RzMap());
+                    
+                  },
                 ),
                 ListTile(
                   leading: const Icon(Icons.logout),
@@ -127,17 +110,7 @@ class DrawerWidget extends StatelessWidget {
                     ;
                   },
                 ),
-                ListTile(
-                  leading: const Icon(Icons.map_outlined),
-                  title: const Text(
-                    'RzMap',
-                    style: TextStyle(fontSize: 24.0),
-                  ),
-                  onTap: () {
-                    Helper.nextScreen(context, RzMap());
-                    ;
-                  },
-                ),
+                
               ],
             );
           }).toList(),

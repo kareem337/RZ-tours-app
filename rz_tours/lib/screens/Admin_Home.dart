@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:rz_tours/screens/homeMobile.dart';
-import 'package:rz_tours/widgets/admin_Drawer.dart';
+import 'package:rz_tours/screens/Admin_Dashborad.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-
+//
 class Admin_HomeScreen extends StatefulWidget {
   @override
   _Admin_HomeScreen createState() => _Admin_HomeScreen();
@@ -55,12 +54,14 @@ List cards = [
   }
 ];
 
+
 class _Admin_HomeScreen extends State<Admin_HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return ScreenTypeLayout(
-      mobile: HomeMobile(),
-      //       watch: Container(color: Colors.purple)
-    );
+    return  ScreenTypeLayout(
+                mobile: HomeMobile(),
+         //       watch: Container(color: Colors.purple)
+              );
+  
   }
 }

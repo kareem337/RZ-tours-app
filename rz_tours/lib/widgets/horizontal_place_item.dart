@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:rz_tours/screens/product_view.dart';
+import 'package:rz_tours/screens/products.dart';
 import 'package:rz_tours/utils/helper.dart';
 
 
 class HorizontalPlaceItem extends StatelessWidget {
-  final Map place ;
-
-  HorizontalPlaceItem({required this.place});
+   final String name;
+  final String location;
+  final String imagePath;
+  final int price;
+  final String descrition;
+  final String pl;
+  HorizontalPlaceItem(this.name,this.location,this.imagePath,this.price,this.descrition,this.pl);
 
   @override
   Widget build(BuildContext context) {
@@ -16,22 +21,27 @@ class HorizontalPlaceItem extends StatelessWidget {
         child: Container(
           height: 250.0,
           width: 140.0,
-          child: Column(
+          child: ListView(
             children: <Widget>[
-              ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: Image.asset(
-                  "${place["img"]}",
-                  height: 178.0,
-                  width: 140.0,
-                  fit: BoxFit.cover,
-                ),
-              ),
+              Container(
+                height: 178.0,
+                         width: 140.0,
+                    decoration: BoxDecoration(
+                      
+                      borderRadius: BorderRadius.circular(18.0),
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        
+                        image: //AssetImage('assets/luxor.jpg'), 
+                        NetworkImage(imagePath)
+                      ),
+                    ),
+                  ),
               SizedBox(height: 7.0),
               Container(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  "${place["name"]}",
+                  name,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 15.0,
@@ -43,7 +53,7 @@ class HorizontalPlaceItem extends StatelessWidget {
               Container(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  "${place["location"]}",
+                  location,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 13.0,
@@ -56,7 +66,7 @@ class HorizontalPlaceItem extends StatelessWidget {
           ),
         ),
         onTap: () {
-          //Helper.nextScreen(context, CartScreen());
+          Helper.nextScreen(context,CartScreen(name,price,descrition,pl,imagePath));
 
         },
       ),

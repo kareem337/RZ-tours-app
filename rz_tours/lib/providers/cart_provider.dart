@@ -1,21 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:rz_tours/models/product_model.dart';
+import 'package:rz_tours/models/user_cart.dart';
+import 'package:rz_tours/services/trips_data.dart';
 
-class Cart extends ChangeNotifier {
-  List<Products> _items = [];
-  double _totalPrice = 0.0;
+class Cart extends ChangeNotifier{
+  List<UserCart> _items = [];
 
+  List<String> names=[];
+  int _totalPrice = 0;
 
-
-
-  void add(Products item) {
-    _items.add(item);
-    _totalPrice += item.price;
+  void addNames(UserCart item) {
+    names.add(item.name);
     notifyListeners();
   }
 
-  void remove(Products item) {
-    _totalPrice -= item.price;
+
+  void add(UserCart item) {
+    _items.add(item);
+    _totalPrice += item.price*item.quantity;
+    notifyListeners();
+  }
+
+  void remove(UserCart item) {
+    _totalPrice -= item.price*item.quantity;
     _items.remove(item);
     notifyListeners();
   }
@@ -30,11 +36,17 @@ class Cart extends ChangeNotifier {
     return _items.length;
   }
 
-  double get totalPrice {
+  int get totalPrice {
     return _totalPrice;
   }
 
-  List<Products> get basketItems {
+  List<UserCart> get basketItems {
     return _items;
+  }
+
+  bookOrder (UserCart order) async
+  {
+    await TripsData().bookOrder(order);
+    notifyListeners();
   }
 }

@@ -1,22 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:rz_tours/models/Museum_tickets.dart';
-import 'package:rz_tours/models/Trips.dart';
 import 'package:rz_tours/screens/product_view.dart';
-import 'package:rz_tours/screens/search_result.dart';
 import 'package:rz_tours/utils/constants.dart';
 import 'package:rz_tours/utils/helper.dart';
 
 class TripCard extends StatefulWidget {
-  //final Trip trip;
   final String name;
   final String description;
   final String location;
   final int price;
- // final String image;
-
- // TripCard({required this.trip});
-  TripCard( this.name, this.price, this.description, this.location);
+  final String tid;
+  String pl;
+  String image;
+  TripCard(this.name, this.price, this.description, this.location, this.tid,this.pl,this.image);
 
   @override
   _TripCardState createState() => _TripCardState();
@@ -32,86 +28,57 @@ class _TripCardState extends State<TripCard> {
       child: Column(
         children: [
           Expanded(
-            child:InkWell(
-            onTap: () {
-              Helper.nextScreen(context,CartScreen());
-            },
-            child: Stack(
-              clipBehavior: Clip.none,
-              
-              children: [
-                Container(
-      
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(18.0),
-                    image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: AssetImage(
-                        'assets/Abdeen.jpg'
-                        
+            child: InkWell(
+              onTap: () {
+                 Helper.nextScreen(context,CartScreen(widget.name,widget.price,widget.description,widget.pl,widget.image));
+                 print("MY IMAGE :"+widget.image);
+
+              },
+              child: Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(18.0),
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: //AssetImage('assets/luxor.jpg'), 
+                        NetworkImage(widget.image)
                       ),
                     ),
                   ),
-                ),
-            
-                Positioned(
-                  top: 10.0,
-                  right: 10.0,
-                  child: InkWell(
-                    onTap: () {
-                      setState(() {
-                        if(flag)
-                        flag=false;
-                        else flag = true;
-                      });
-                      
-                    },
-                    child: Container(
-                      width: 45.0,
-                      height: 45.0,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.white,
-                      ),
-                    child: Icon(
-                        Icons.favorite,
-                        color: flag
-                            ? Color.fromRGBO(255, 136, 0, 1)
-                            : Colors.grey,
-            
-                        
+
+                  Positioned(
+                    top: 10.0,
+                    right: 10.0,
+                    child: InkWell(
+                      onTap: () {
+                        setState(() {
+                          if (flag)
+                            flag = false;
+                          else
+                            flag = true;
+                        });
+                      },
+                      child: Container(
+                        width: 45.0,
+                        height: 45.0,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.white,
+                        ),
+                        child: Icon(
+                          Icons.favorite,
+                          color: flag
+                              ? Color.fromRGBO(255, 136, 0, 1)
+                              : Colors.grey,
+                        ),
                       ),
                     ),
                   ),
-                ),
-                // Positioned(
-                //   bottom: -15.0,
-                //   left: 10.0,
-                //   child: Container(
-                //     width: 45.0,
-                //     height: 45.0,
-                //     decoration: BoxDecoration(
-                //       shape: BoxShape.circle,
-                //       color: this.widget.trip.Trip_Types == Trips.IN_CAIRO
-                //           ? Constants.primaryColor
-                //           : Color.fromRGBO(255, 136, 0, 1),
-                //     ),
-                //     child: Center(
-                //       child: Text(
-                //         this.widget.trip.Trip_Types == Trips.IN_CAIRO
-                //             ? "In Cairo"
-                //             : "Outside",
-                //         style: TextStyle(
-                //           fontSize: 10.0,
-                //           color: Colors.white,
-                //         ),
-                //       ),
-                //     ),
-                //   ),
-                // )
-              ],
+                ],
+              ),
             ),
-          ),
           ),
           Container(
             padding: EdgeInsets.symmetric(vertical: 10.0),
@@ -123,7 +90,7 @@ class _TripCardState extends State<TripCard> {
                   children: [
                     Expanded(
                       child: Text(
-                       widget.name,
+                        widget.name,
                         style: TextStyle(
                           fontSize: 17.0,
                         ),

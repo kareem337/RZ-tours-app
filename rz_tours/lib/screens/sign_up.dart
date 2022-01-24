@@ -131,6 +131,7 @@ class _SignUpState extends State<SignUp> {
                     ),
                     SizedBox(height: 15),
                     ElevatedButton(
+                      style: ElevatedButton.styleFrom(primary: Colors.amber),
                       onPressed: () async {
                         print("Signup Pressed");
                         print("The Email is: ${_emailController.text}");
@@ -155,7 +156,8 @@ class _SignUpState extends State<SignUp> {
                                 _firstNameController.text,
                                 _LastNameController.text,
                                 _emailController.text,
-                                _passwordController.text);
+                                _passwordController.text,
+                                "");
                             Helper.nextScreen(context, Home());
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(content: Text('SignedUp Successfuly')),
@@ -174,11 +176,11 @@ class _SignUpState extends State<SignUp> {
                     SizedBox(height: 10),
                     Row(
                       children: [
-                        SizedBox(width: 20),
+                        SizedBox(width:25),
                         Text(
                           "Already have an account?",
                           style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
+                              fontSize: 17, fontWeight: FontWeight.bold),
                         ),
                         TextButton(
                           onPressed: () {

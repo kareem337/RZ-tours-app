@@ -4,6 +4,6 @@ class UserCart {
   int price = 0;
   DateTime dateTime;
   int quantity;
-  
-  UserCart(this.name, this.price, this.dateTime, this.quantity);
+  String image;
+  UserCart(this.name, this.price, this.dateTime, this.quantity,this.image);
 }
