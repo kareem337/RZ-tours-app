@@ -2,8 +2,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/src/provider.dart';
+import 'package:rz_tours/admin/screens/admin_home.dart';
 import 'package:rz_tours/models/person_model.dart';
 import 'package:rz_tours/screens/Admin_Home.dart';
+import 'package:rz_tours/screens/chat.dart';
 import 'package:rz_tours/screens/forget_password.dart';
 import 'package:rz_tours/screens/home.dart';
 import 'package:rz_tours/screens/sign_up.dart';
@@ -111,26 +114,54 @@ class _SignInState extends State<SignIn> {
                 ]),
                 SizedBox(height: 15),
                 ElevatedButton(
-                  onPressed: () {
+                  onPressed: () async {
                     print("Login Pressed");
                     print("The Email is: ${_emailController.text}");
                     // Respond to button press
-
-                    if (_formKey.currentState!.validate()) {
-                      // If the form is valid, display a snackbar. In the real world,
-                      // you'd often call a server or save the information in a database.
-
-                      Authentication().Signin(
+                    try {
+                      await Authentication().Signin(
                           email: _emailController.text,
                           password: _passwordController.text);
-                      if (FirebaseFirestore.instance
-                              .collection('User_Details')
-                              .doc('User_Type') ==
-                          1) {
-                        Helper.nextScreen(context, Home());
-                      } else {
-                        Helper.nextScreen(context, Admin_HomeScreen());
+                      if (_formKey.currentState!.validate()) {
+                        Authentication().Signin(
+                            email: _emailController.text.trim(),
+                            password: _passwordController.text.trim());
+                        final FirebaseAuth auth = FirebaseAuth.instance;
+                        final User? user = auth.currentUser;
+                        final userid = user?.uid;
+                        print("The userIdis=: ${userid}");
+                        await FirebaseFirestore.instance
+                            .collection('User_Details')
+                            .doc(userid)
+                            .get()
+                            .then((DocumentSnapshot documentSnapshot) {
+                          if (documentSnapshot.exists) {
+                            if (documentSnapshot['User_Type'] == 1) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                    content:
+                                        Text('LoggedIn Successfully')),
+                              );
+                              return Helper.nextScreen(context, Home());
+                            } else if (documentSnapshot['User_Type'] == 2) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                    content:
+                                        Text('LoggedIn Successfully')),
+                              );
+                              return Helper.nextScreen(
+                                  context, Admin_HomeScreen());
+                            }
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text('Failed To LogIn')),
+                            );
+                            return Helper.nextScreen(context, SignIn());
+                          }
+                        });
                       }
+                    } catch (e) {
+                      print(e);
                     }
                   },
                   child: Text(
@@ -178,7 +209,6 @@ void not() {
   print("notifications");
 }
 
-
 /*
 alignment: Alignment.center,
 margin: EdgeInsets.only(bottom:400) ,
@@ -186,7 +216,6 @@ alignment: Alignment.center,
 margin: EdgeInsets.only(bottom:400) ,
 
  */
-
 
 /*
 alignment: Alignment.center,
@@ -263,3 +292,11 @@ margin: EdgeInsets.only(bottom:400) ,
 // }
 //   }
 // }
+
+fetch() async {
+  final User? auth = await FirebaseAuth.instance.currentUser;
+  final user = auth?.uid;
+  final result =
+      FirebaseFirestore.instance.collection('User_Details').doc(user).id;
+  print("Docs: ${result}");
+}

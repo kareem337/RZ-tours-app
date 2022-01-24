@@ -51,12 +51,7 @@ class _ChatState extends State<Chat> {
                           ),
                         )
                       : GestureDetector(
-                          child: Center(
-                              child: ElevatedButton(
-                                  onPressed: () {
-                                    print("object");
-                                  },
-                                  child: Text("doos"))),
+                          child: Center(child: Text("No Chat To Show")),
                         );
                 },
               ),
@@ -102,10 +97,10 @@ class _ChatState extends State<Chat> {
                       onPressed: () {
                         Provider.of<ChatProvider>(context, listen: false)
                             .sendMessage(_chat.text,
-                                'KmZ2KfdcM2fEGJCvTBFty7XRK422', uid!);
+                                '9LPygOsvvEXiOSHbgHnZ7MfoR6a2', uid!);
                         Authentication().SendMessage(
                             mess: _chat.text.trim(),
-                            recId: 'KmZ2KfdcM2fEGJCvTBFty7XRK422');
+                            recId: '9LPygOsvvEXiOSHbgHnZ7MfoR6a2');
                         // FireStoreServices().SendMessage(
                         //     mess: _chat.text.trim(),
                         //     recId: 'KmZ2KfdcM2fEGJCvTBFty7XRK422');
@@ -139,10 +134,15 @@ class MessageContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+        margin: EdgeInsets.all(20),
         color: Colors.red,
-        child: Text(
-          "${chat.msg}",
-          style: TextStyle(color: Colors.white),
+        child: SizedBox(
+          height: 20,
+          width: 5,
+          child: Text(
+            "${chat.msg}",
+            style: TextStyle(color: Colors.white),
+          ),
         ));
   }
 }

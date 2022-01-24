@@ -1,6 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:rz_tours/models/person_model.dart';
+import 'package:rz_tours/screens/home.dart';
+import 'package:rz_tours/utils/helper.dart';
 
 class Authentication {
   Future<String?> Signin(
@@ -12,7 +15,6 @@ class Authentication {
       var uid = currentUser!.uid;
       if (currentUser != null && !currentUser.emailVerified) {
         await currentUser.sendEmailVerification();
-        print("LoggedIn");
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
@@ -23,18 +25,19 @@ class Authentication {
     }
   }
 
-  Future<Object?> Signup(Person newUser) async {
+  Future<Object?> Signup(
+      String first, String last, String email, String pass) async {
     try {
       CollectionReference user_details =
           FirebaseFirestore.instance.collection('User_Details');
-      UserCredential userCredential = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(
-              email: newUser.email, password: newUser.password);
+      await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(email: email, password: pass);
       var currentUser = FirebaseAuth.instance.currentUser;
       var uid = currentUser!.uid;
-      user_details.add({
-        'First_Name': newUser.firstName,
-        'Last_Name': newUser.lastName,
+
+      FirebaseFirestore.instance.collection('User_Details').doc(uid).set({
+        'First_Name': first,
+        'Last_Name': last,
         'User_Id': uid,
         'User_Type': 1
       });
@@ -70,7 +73,7 @@ class Authentication {
 
   late FirebaseAuth _firebaseAuth;
 
-  Future<void> signOut() async {
+  Future<void> signuutt() async {
     await _firebaseAuth.signOut();
   }
 }
