@@ -3,12 +3,11 @@ import 'package:provider/provider.dart';
 import 'package:rz_tours/providers/cart_provider.dart';
 
 class CartItem extends StatefulWidget {
-  
   String name;
   int price;
   int quantity;
   String image;
-  CartItem( this.name, this.price,this.quantity,this.image);
+  CartItem(this.name, this.price, this.quantity, this.image);
 
   @override
   _CartItemState createState() => _CartItemState();
@@ -27,16 +26,15 @@ class _CartItemState extends State<CartItem> {
             Column(
               //crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                 Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(18.0),
-                      image: DecorationImage(
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(18.0),
+                    image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: //AssetImage('assets/luxor.jpg'), 
-                        NetworkImage(this.widget.image)
-                      ),
-                    ),
+                        image: //AssetImage('assets/luxor.jpg'),
+                            NetworkImage(this.widget.image)),
                   ),
+                ),
               ],
             ),
             SizedBox(width: 12.0),
@@ -60,11 +58,10 @@ class _CartItemState extends State<CartItem> {
                     '${this.widget.price} L.E',
                     style: TextStyle(),
                   ),
-                                    Text(
+                  Text(
                     'Tickets: ${this.widget.quantity}',
                     style: TextStyle(),
                   ),
-
                 ],
               ),
             ),

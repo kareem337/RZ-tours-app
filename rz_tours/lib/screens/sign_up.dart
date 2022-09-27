@@ -176,7 +176,7 @@ class _SignUpState extends State<SignUp> {
                     SizedBox(height: 10),
                     Row(
                       children: [
-                        SizedBox(width:25),
+                        SizedBox(width: 25),
                         Text(
                           "Already have an account?",
                           style: TextStyle(
