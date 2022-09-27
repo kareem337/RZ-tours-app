@@ -8,8 +8,6 @@ import 'package:rz_tours/screens/sign_in.dart';
 import 'package:rz_tours/services/authentication.dart';
 import 'package:rz_tours/utils/helper.dart';
 import 'package:rz_tours/validations/validations_functions.dart';
-import 'package:rz_tours/widgets/custom_app_bar.dart';
-import 'package:rz_tours/widgets/drawer.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -28,9 +26,11 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(50.0),
-          child: CustomAppBar('Sign Up'),
+                appBar: AppBar(
+          title: Text('SignUp'),
+          backgroundColor: Colors.amber,
+          elevation: 0.0,
+          centerTitle: true,
         ),
         body: ListView(
           children: [

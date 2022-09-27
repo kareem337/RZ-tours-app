@@ -11,8 +11,13 @@ class TripCard extends StatefulWidget {
   final int price;
   final String tid;
   String pl;
+<<<<<<< Updated upstream
   String image;
   TripCard(this.name, this.price, this.description, this.location, this.tid,this.pl,this.image);
+=======
+
+  TripCard(this.name, this.price, this.description, this.location, this.tid,this.pl);
+>>>>>>> Stashed changes
 
   @override
   _TripCardState createState() => _TripCardState();
@@ -30,8 +35,12 @@ class _TripCardState extends State<TripCard> {
           Expanded(
             child: InkWell(
               onTap: () {
+<<<<<<< Updated upstream
                  Helper.nextScreen(context,CartScreen(widget.name,widget.price,widget.description,widget.pl,widget.image));
                  print("MY IMAGE :"+widget.image);
+=======
+                 Helper.nextScreen(context,CartScreen(widget.name,widget.price,widget.description,widget.pl));
+>>>>>>> Stashed changes
 
               },
               child: Stack(
@@ -42,8 +51,12 @@ class _TripCardState extends State<TripCard> {
                       borderRadius: BorderRadius.circular(18.0),
                       image: DecorationImage(
                         fit: BoxFit.cover,
+<<<<<<< Updated upstream
                         image: //AssetImage('assets/luxor.jpg'), 
                         NetworkImage(widget.image)
+=======
+                        image: AssetImage('assets/Abdeen.jpg'),
+>>>>>>> Stashed changes
                       ),
                     ),
                   ),

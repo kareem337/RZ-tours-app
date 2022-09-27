@@ -14,8 +14,12 @@ class Store {
   String? imageURL;
 
   addTrip(Trip product) {
+<<<<<<< Updated upstream
     print(product.imagePath);
     _firestore.collection(museum).add({
+=======
+    _firestore.collection(Muesums_table).add({
+>>>>>>> Stashed changes
       museum_name: product.Trip_name,
       Trip_description: product.Trip_description,
       Location: product.Location,
@@ -29,26 +33,62 @@ class Store {
     return _firestore.collection("Orders").snapshots();
   }
   Stream<QuerySnapshot> loadTrips() {
+<<<<<<< Updated upstream
     return _firestore.collection(museum).snapshots();
+=======
+    return _firestore.collection(Muesums_table).snapshots();
+    // List<Trip> trips=[];
+    //   await for (var snapshot in _firestore.collection(Trips_table).snapshots()){
+
+    //   for(var doc in snapshot.docs)
+    //   {
+    //     var data =doc.data();
+    //     trips.add(Trip(
+    //     museum_name: data[museum_name],
+    //     Trip_description: data[Trip_description],
+    //     Location: data[Location],
+    //     Trip_price: data[Trip_price],
+    //     imagePath: data[imagePath],
+    //     liked:false,
+    //     Trip_Types: Trips.OUT_OF_CAIRO
+    //     ),
+    //     );
+
+    //   }
+
+    //   }
+    //   return trips;
+    // }
+>>>>>>> Stashed changes
   }
 
   fecthdata() async {
     List<Trip> trips = [];
+<<<<<<< Updated upstream
     await for (var snapshot
         in _firestore.collection(museum).snapshots()) {
+=======
+    await for (var snapshot in _firestore.collection(Muesums_table).snapshots()) {
+>>>>>>> Stashed changes
       for (var doc in snapshot.docs) {
         var data = doc.data();
         trips.add(
           Trip(
+              tid: data[tid],
               Trip_name: data[museum_name],
               Trip_description: data[Trip_description],
               Location: data[Location],
               Trip_price: data[Trip_price],
               imagePath: data[imagePath],
+              pl: data[pl],
               liked: false,
               Trip_Types: Trips.OUT_OF_CAIRO,
+<<<<<<< Updated upstream
               tid: '',
               pl: data[pl]),
+=======
+             ),
+>>>>>>> Stashed changes
         );
       }
       return trips;
@@ -59,6 +99,7 @@ class Store {
     _firestore.collection(museum).doc(trip_Id).delete();
   }
 
+<<<<<<< Updated upstream
   editProduct(data, tripId) {
     _firestore.collection(museum).doc(tripId).update(data);
   }
@@ -92,5 +133,9 @@ class Store {
     final TaskSnapshot downloadUrl = (await uploadTask);
     url = await downloadUrl.ref.getDownloadURL();
     return url;
+=======
+  deleteProduct(trip_Id) {
+    _firestore.collection(Muesums_table).doc(trip_Id).delete();
+>>>>>>> Stashed changes
   }
 }

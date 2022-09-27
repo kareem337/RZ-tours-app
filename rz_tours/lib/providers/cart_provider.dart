@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:rz_tours/models/user_cart.dart';
 import 'package:rz_tours/services/trips_data.dart';
 
+<<<<<<< Updated upstream
 class Cart extends ChangeNotifier{
   List<UserCart> _items = [];
 
+=======
+class Cart extends ChangeNotifier {
+  List<UserCart> _items = [];
+>>>>>>> Stashed changes
   List<String> names=[];
   int _totalPrice = 0;
 
@@ -44,9 +49,15 @@ class Cart extends ChangeNotifier{
     return _items;
   }
 
+<<<<<<< Updated upstream
   bookOrder (UserCart order) async
   {
     await TripsData().bookOrder(order);
+=======
+  bookOrder (UserCart order)
+  {
+    TripsData().bookOrder(order);
+>>>>>>> Stashed changes
     notifyListeners();
   }
 }

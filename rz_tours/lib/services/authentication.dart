@@ -30,9 +30,16 @@ class Authentication {
       String first, String last, String email, String pass, String imagePath) async {
     try {
       CollectionReference user_details =
+<<<<<<< Updated upstream
           FirebaseFirestore.instance.collection('User_Details');
       await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: pass);
+=======
+          FirebaseFirestore.instance.collection('User details');
+      UserCredential userCredential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
+              email: newUser.email, password: newUser.password);
+>>>>>>> Stashed changes
       var currentUser = FirebaseAuth.instance.currentUser;
       var uid = currentUser!.uid;
 

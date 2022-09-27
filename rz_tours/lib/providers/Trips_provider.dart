@@ -10,7 +10,11 @@ class TripsProvider with ChangeNotifier {
   }
 
   fetchTrips() async {
+<<<<<<< Updated upstream
     List<Trip> tt = await TripsData().fetchvideo();
+=======
+    List<Trip> tt = await TripsData().fetchMuseum();
+>>>>>>> Stashed changes
     _tr = tt;
     notifyListeners();
   }

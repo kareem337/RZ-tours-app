@@ -49,9 +49,13 @@ class _CartViewState extends State<CartView> {
                                   CartItem(
                                       cart.basketItems[index].name,
                                       cart.basketItems[index].price,
+<<<<<<< Updated upstream
                                       cart.basketItems[index].quantity,
                                       cart.basketItems[index].image,
                                       ),
+=======
+                                      cart.basketItems[index].quantity),
+>>>>>>> Stashed changes
                                   Expanded(
                                     child: IconButton(
                                         onPressed: () {
@@ -80,8 +84,11 @@ class _CartViewState extends State<CartView> {
                                   cart.totalPrice,
                                   cart.basketItems[i].dateTime,
                                   cart.basketItems[i].quantity,
+<<<<<<< Updated upstream
                                   cart.basketItems[i].image
                                   
+=======
+>>>>>>> Stashed changes
                                   ));
                             }
                             cart.removeAll();

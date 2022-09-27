@@ -8,7 +8,6 @@ import 'package:rz_tours/screens/sign_up.dart';
 import 'package:rz_tours/services/authentication.dart';
 import 'package:rz_tours/utils/helper.dart';
 import 'package:rz_tours/validations/validations_functions.dart';
-import 'package:rz_tours/widgets/custom_app_bar.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -26,9 +25,11 @@ class _SignInState extends State<SignIn> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(50.0),
-        child: CustomAppBar('Sign In'),
+      appBar: AppBar(
+        title: Text('Sign In'),
+        backgroundColor: Colors.amber,
+        elevation: 0.0,
+        centerTitle: true,
       ),
       body: ListView(children: [
         Form(
@@ -93,11 +94,11 @@ class _SignInState extends State<SignIn> {
                   SizedBox(width: 220),
                   InkWell(
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ForgetPassword(),
-                          ));
+                      // Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //       builder: (context) => ForgetPassword(),
+                      //     ));
                     },
                     child: Text(
                       "Forget Password?",
@@ -118,6 +119,7 @@ class _SignInState extends State<SignIn> {
                       await Authentication().Signin(
                           email: _emailController.text,
                           password: _passwordController.text);
+<<<<<<< Updated upstream
                       if (_formKey.currentState!.validate()) {
                         Authentication().Signin(
                             email: _emailController.text.trim(),
@@ -155,6 +157,15 @@ class _SignInState extends State<SignIn> {
                             //return Helper.nextScreen(context, SignIn());
                           }
                         });
+=======
+                      if (FirebaseFirestore.instance
+                              .collection('User_Details')
+                              .doc('User_Type') ==
+                          1) {
+                        Helper.nextScreen(context, Home());
+                      } else {
+                        Helper.nextScreen(context, Home());
+>>>>>>> Stashed changes
                       }
                     } catch (e) {
                       print(e);

@@ -44,7 +44,7 @@ class MobileDrawer extends StatelessWidget {
             leading: Icon(Icons.people_sharp),
             title: Text('Museums'),
             onTap: () {
-              Helper.nextScreen(context, ManageProducts());
+              //Helper.nextScreen(context, ManageProducts());
             },
           ),
           ListTile(

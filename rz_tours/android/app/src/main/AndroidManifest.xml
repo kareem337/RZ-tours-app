@@ -1,7 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.rz_tours">
    <application
+<<<<<<< Updated upstream
         android:label="Razzaz Tours"
+=======
+        android:label="rz_tours"
+>>>>>>> Stashed changes
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

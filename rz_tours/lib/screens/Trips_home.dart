@@ -14,6 +14,10 @@ import 'package:rz_tours/widgets/Trips_card.dart';
 class Trips_home extends StatelessWidget {
   String View = "Trips";
   final _store = TripsData();
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
   get fontSize15 => null;
   @override
   Widget build(BuildContext context) {
@@ -23,6 +27,7 @@ class Trips_home extends StatelessWidget {
         title: Text(
           "Products",
         ),
+<<<<<<< Updated upstream
         backgroundColor: Colors.amber,
         elevation: 0.0,
         centerTitle: true,
@@ -40,6 +45,15 @@ class Trips_home extends StatelessWidget {
         body:  StreamBuilder(
                 stream: FirebaseFirestore.instance
                     .collection('Muesums')
+=======
+        body: trips.basketItems.length == 0
+            ? Center(
+                child: CircularProgressIndicator(),
+              )
+            : StreamBuilder(
+                stream: FirebaseFirestore.instance
+                    .collection('Products')
+>>>>>>> Stashed changes
                     .snapshots(),
                 builder: (BuildContext context,
                     AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -168,7 +182,11 @@ class Trips_home extends StatelessWidget {
                                       shrinkWrap: true,
                                       itemBuilder:
                                           (BuildContext context, int index) {
+<<<<<<< Updated upstream
                                         
+=======
+                                        print(trips.basketItems.length);
+>>>>>>> Stashed changes
                                         return TripCard(
                                           trips.basketItems[index].Trip_name,
                                           trips.basketItems[index].Trip_price,
@@ -176,8 +194,12 @@ class Trips_home extends StatelessWidget {
                                               .Trip_description,
                                           trips.basketItems[index].Location,
                                           trips.basketItems[index].tid,
+<<<<<<< Updated upstream
                                           trips.basketItems[index].pl,
                                           trips.basketItems[index].imagePath
+=======
+                                          trips.basketItems[index].pl
+>>>>>>> Stashed changes
                                         );
                                       },
                                     );

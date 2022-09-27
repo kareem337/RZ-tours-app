@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rz_tours/providers/Trips_provider.dart';
 import 'package:rz_tours/screens/Trips_home.dart';
+<<<<<<< Updated upstream
 import 'package:rz_tours/screens/cart_.dart';
+=======
+>>>>>>> Stashed changes
 import 'package:rz_tours/utils/helper.dart';
 import 'package:rz_tours/widgets/drawer.dart';
 import 'package:rz_tours/widgets/horizontal_place_item.dart';
